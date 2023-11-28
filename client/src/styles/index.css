@@ -26,6 +26,7 @@
   /* COLORS */
   --clr-primary-500: hsl(26, 90%, 40%);
   --clr-primary-400: hsl(27, 77%, 56%);
+  --clr-white: #ffff;
 
   --clr-body-bg: #121316;
   --clr-border: hsla(0, 0%, 100%, 0.1);
@@ -58,8 +59,16 @@ body {
 main {
   --header-height: 57px;
   --footer-height: 105px;
+
   min-height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
+  padding: 0 1rem;
 }
+
+h1 {
+  font-size: var(--fs-700);
+  color: var(--clr-white);
+}
+
 [type="button"],
 [type="reset"],
 [type="submit"],

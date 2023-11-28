@@ -36,7 +36,7 @@ const Tooltip = ({ text, delay = 400, children, className }: TooltipProps) => {
 
         const parentCenterX = buttonRect.left + buttonRect.width / 2;
         const tooltipWidth = tooltipRef.current.offsetWidth;
-
+        const tooltipVerticalPosition = buttonRect.y + 44;
         // Calculate the left position to center the tooltip
         const tooltipPosition = parentCenterX - tooltipWidth / 2;
 
@@ -66,17 +66,17 @@ const Tooltip = ({ text, delay = 400, children, className }: TooltipProps) => {
           tooltipStyle = {
             transform: `translate3d(${
               buttonRect.width - tooltipWidth + buttonRect.x + 2
-            }px, 64px, 0)`,
+            }px, ${tooltipVerticalPosition}px, 0)`,
           };
         } else if (overflowToLeft) {
           // If overflow to the left, position to the left of the parent
           tooltipStyle = {
-            transform: `translate3d(${buttonRect.left}px, 64px, 0)`,
+            transform: `translate3d(${buttonRect.left}px, ${tooltipVerticalPosition}px, 0)`,
           };
         } else {
           // No overflow, use the original position
           tooltipStyle = {
-            transform: `translate3d(${tooltipPosition}px, 64px, 0)`,
+            transform: `translate3d(${tooltipPosition}px, ${tooltipVerticalPosition}px, 0)`,
           };
         }
 

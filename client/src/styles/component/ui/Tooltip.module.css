@@ -1,7 +1,6 @@
 .tooltip-wrapper {
   display: inline-block;
   position: relative;
-  border: 1px solid red;
 }
 
 .tooltip {

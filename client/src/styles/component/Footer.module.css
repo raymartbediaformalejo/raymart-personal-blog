@@ -1,0 +1,29 @@
+.footer-wrapper {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  padding: 0 1rem;
+}
+
+.footer {
+  border-top: 1px solid var(--clr-border);
+  border-top-style: dashed;
+  display: flex;
+  justify-content: space-between;
+  place-items: center;
+  padding: 1.5rem 0 2.5rem;
+}
+
+.footer p:first-child {
+  font-size: var(--fs-200);
+}
+
+.social-icon {
+  color: rgb(255 255 255/1);
+  fill: currentColor;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-icon:hover svg {
+  fill: var(--clr-primary-500);
+}

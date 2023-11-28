@@ -26,9 +26,9 @@
   /* COLORS */
   --clr-primary-500: hsl(26, 90%, 40%);
   --clr-primary-400: hsl(27, 77%, 56%);
-  --clr-gray: rgba(75, 85, 99);
 
   --clr-body-bg: #121316;
+  --clr-border: hsla(0, 0%, 100%, 0.1);
 }
 
 * {
@@ -39,7 +39,6 @@
 
 html {
   height: 100%;
-  font-family: var(--ff-primary);
 }
 
 body {
@@ -54,4 +53,32 @@ body {
 html,
 body {
   scroll-behavior: smooth;
+  font-family: var(--ff-primary);
+}
+main {
+  --header-height: 57px;
+  --footer-height: 105px;
+  min-height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
+}
+[type="button"],
+[type="reset"],
+[type="submit"],
+button {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+  cursor: pointer;
+  border: none;
+}
+
+audio,
+canvas,
+embed,
+iframe,
+img,
+object,
+svg,
+video {
+  display: block;
+  vertical-align: middle;
 }

@@ -5,13 +5,15 @@ import classes from "../styles/component/Layout.module.css";
 
 const Layout = () => {
   return (
-    <main className={classes["main"]}>
+    <div className={classes["main"]}>
       <div className={classes["main-wrapper"]}>
         <Header />
-        <Outlet />
+        <main>
+          <Outlet />
+        </main>
         <Footer />
       </div>
-    </main>
+    </div>
   );
 };
 

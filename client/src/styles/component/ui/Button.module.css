@@ -1,13 +1,35 @@
 .button {
+  --height: 2rem;
+  --width: 2rem;
+  --border-radius: 9999px;
+  --border: inset 0 0 0 0px #fff, inset 0 0 0 1px var(--clr-border), 0 0 #0000;
+
   position: relative;
-  display: inline-block;
-  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--height);
+  width: var(--width);
+  box-shadow: var(--border);
+  border-radius: var(--border-radius);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.button[title]:hover::after {
-  border: 1px solid red;
-  content: attr(title);
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.button:hover {
+  background-color: hsla(0, 0%, 100%, 0.05);
+}
+
+.button.transparent {
+  --border: none;
+  --border-radius: 9999px;
+}
+
+.button.icon {
+  --width: 2rem;
+  --border-radius: 9999px;
+}
+
+.button.large {
+  --height: 40px;
+  --width: 40px;
 }

@@ -1,0 +1,19 @@
+.main {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  height: 100dvh;
+}
+
+.main-wrapper {
+  position: relative;
+  height: 100%;
+  background: linear-gradient(
+      0deg,
+      rgba(154, 52, 18, 0.0001) 0%,
+      rgba(154, 52, 18, 0.1) 100%
+    )
+    no-repeat;
+
+  background-size: 100% 400px;
+}

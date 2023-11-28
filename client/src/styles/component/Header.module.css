@@ -1,0 +1,11 @@
+.header {
+  background-color: rgb(18 18 23 / 0.3);
+  backdrop-filter: blur(12px);
+  padding: 0.75rem;
+  border-bottom: 1px solid hwb(219 61% 31% / 0.1);
+}
+
+.header .nav {
+  display: flex;
+  justify-content: space-between;
+}

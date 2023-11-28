@@ -1,0 +1,57 @@
+@import url(https://db.onlinewebfonts.com/c/d2131eb0b29a303e6cb097d456593104?family=dc-ui-font);
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+
+:root {
+  color-scheme: dark;
+
+  --ff-primary: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+
+  /* FONT SIZE */
+  --fs-100: 11px;
+  --fs-200: 12px;
+  --fs-300: 13px;
+  --fs-400: 14px;
+  --fs-450: 14.5px;
+  --fs-500: 16px;
+  --fs-600: 18px;
+  --fs-700: 24px;
+
+  /* FONT WEIGHT */
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+
+  /* COLORS */
+  --clr-primary-500: hsl(26, 90%, 40%);
+  --clr-primary-400: hsl(27, 77%, 56%);
+  --clr-gray: rgba(75, 85, 99);
+
+  --clr-body-bg: #121316;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-family: var(--ff-primary);
+}
+
+body {
+  min-height: 100dvh;
+  line-height: 1.333;
+  font-weight: normal;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  background: #131317;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}

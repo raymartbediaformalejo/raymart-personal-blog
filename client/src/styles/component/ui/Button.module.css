@@ -1,0 +1,13 @@
+.button {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.button[title]:hover::after {
+  border: 1px solid red;
+  content: attr(title);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

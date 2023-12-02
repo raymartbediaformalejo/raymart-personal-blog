@@ -40,7 +40,6 @@ const FeturedPosts = () => {
   }
 
   return <> {content}</>;
-  // <div>{posts && posts.ids.map((post) => <PostCard postId={post} />)}</div>
 };
 
 export default FeturedPosts;

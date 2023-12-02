@@ -7,6 +7,9 @@ type FeaturedPostCardProps = {
 
 const FeaturedPostCard = ({ postId }: FeaturedPostCardProps) => {
   const post = useAppSelector((state) => selectPostById(state, postId));
+
+  console.log(`${postId}: ${post?.title} = ${post?.image}`);
+
   return (
     <div>
       <img src={post?.image} alt={post?.title} />

@@ -1,5 +1,4 @@
 const Post = require("../models/Post");
-const User = require("../models/User");
 
 // @desc Get all posts
 // @route GET /posts
@@ -103,7 +102,7 @@ const updatePost = async (req, res) => {
   }
 
   // Check for duplicate title
-  const duplicate = await Blog.findOne({ title })
+  const duplicate = await Post.findOne({ title })
     .collation({ locale: "en", strength: 2 })
     .lean()
     .exec();

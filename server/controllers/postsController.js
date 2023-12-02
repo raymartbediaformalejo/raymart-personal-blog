@@ -25,6 +25,7 @@ const createNewPost = async (req, res) => {
     category,
     tag,
     title,
+    summary,
     image,
     content,
     status,
@@ -54,6 +55,7 @@ const createNewPost = async (req, res) => {
     category,
     tag,
     title,
+    summary,
     image,
     content,
     status,
@@ -79,6 +81,7 @@ const updatePost = async (req, res) => {
     category,
     tag,
     title,
+    summary,
     image,
     content,
     status,
@@ -113,6 +116,7 @@ const updatePost = async (req, res) => {
   post.category = category;
   post.tag = tag;
   post.title = title;
+  post.summary = summary;
   post.image = image;
   post.content = content;
   post.status = status;

@@ -31,9 +31,6 @@ const Tooltip = ({ text, delay = 400, children, className }: TooltipProps) => {
 
       const childeRect = tooltipRef.current.getBoundingClientRect();
       if (buttonRect) {
-        console.log(`buttonRect ${text}: `, buttonRect);
-        console.log(`window: ${window.innerWidth}`);
-
         const parentCenterX = buttonRect.left + buttonRect.width / 2;
         const tooltipWidth = tooltipRef.current.offsetWidth;
         const tooltipVerticalPosition = buttonRect.y + 44;
@@ -45,19 +42,6 @@ const Tooltip = ({ text, delay = 400, children, className }: TooltipProps) => {
         //   windowWidth - (tooltipPosition + tooltipWidth) < 0;
         const overflowToRight =
           windowWidth - (childeRect.x + childeRect.width) < 50;
-        console.log(
-          `childRect ${text}: `,
-          tooltipRef.current.getBoundingClientRect()
-        );
-
-        console.log(`tooltipPosition ${text}: `, tooltipPosition);
-        console.log(
-          `overflowToRight ${text} = ${
-            windowWidth - (childeRect.x + childeRect.width)
-          }: `,
-          overflowToRight
-        );
-        console.log(`overflowToLeft ${text}: `, overflowToLeft);
 
         let tooltipStyle = {};
 
@@ -88,7 +72,6 @@ const Tooltip = ({ text, delay = 400, children, className }: TooltipProps) => {
   useEffect(() => {
     calculateTooltipPosition();
   }, [active]);
-  console.log(`tooltipRef ${text}: `, tooltipRef);
 
   return (
     <div

@@ -24,10 +24,11 @@
   --fw-700: 700;
 
   /* COLORS */
-  --clr-primary-500: hsl(26, 90%, 40%);
+  --clr-primary-300: hsl(32, 98%, 83%);
   --clr-primary-400: hsl(27, 77%, 56%);
-  --clr-white: #ffff;
+  --clr-primary-500: hsl(26, 90%, 40%);
 
+  --clr-white: #ffff;
   --clr-body-bg: #121316;
   --clr-border: hsla(0, 0%, 100%, 0.1);
 }
@@ -67,6 +68,17 @@ main {
 h1 {
   font-size: var(--fs-700);
   color: var(--clr-white);
+}
+
+a {
+  color: var(--clr-primary-400);
+  text-decoration-color: var(--clr-primary-500);
+  transition: all 0.15s ease;
+}
+
+a:hover {
+  color: var(--clr-primary-300);
+  text-decoration-color: var(--clr-primary-300);
 }
 
 [type="button"],

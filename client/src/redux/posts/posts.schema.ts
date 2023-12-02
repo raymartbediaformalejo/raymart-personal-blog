@@ -7,6 +7,7 @@ export const postsSchema = z.object({
   category: z.array(z.string()),
   tag: z.array(z.string()),
   title: z.string(),
+  summary: z.string(),
   image: z.string(),
   content: z.string(),
   status: z.enum(["Published", "Draft"]),

@@ -2,7 +2,7 @@ import { createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 import type { EntityState } from "@reduxjs/toolkit";
 import { baseApi } from "../index.api";
 import { TPostsResponse } from "./posts.type";
-import { RootState } from "..";
+import { RootState } from "../index";
 
 const postsAdapter = createEntityAdapter<TPostsResponse>({
   sortComparer: (a, b) => a.createdAt.getTime() - b.createdAt.getTime(),
@@ -19,8 +19,8 @@ export const postsApi = baseApi.injectEndpoints({
       transformResponse: (responseData: TPostsResponse[]) => {
         const loadedPosts = responseData.map((post) => {
           post.id = post._id;
-          // Ensure createdAt is a Date object
           post.createdAt = new Date(post.createdAt);
+          post.updatedAt = new Date(post.updatedAt);
           return post;
         });
         return postsAdapter.setAll(initialState, loadedPosts);

@@ -6,6 +6,7 @@
   backdrop-filter: blur(12px);
   padding: 0.75rem;
   border-bottom: 1px solid hwb(219 61% 31% / 0.1);
+  z-index: 99;
 }
 
 .header .nav {

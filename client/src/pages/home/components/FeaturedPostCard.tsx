@@ -13,16 +13,25 @@ const FeaturedPostCard = ({ postId }: FeaturedPostCardProps) => {
   return (
     <a href="/">
       <div className={classes["feature-post-card"]}>
-        <div className={classes["thumbnail-wrapper"]}>
-          <img
-            src={post?.image}
-            alt={post?.title}
-            className={classes["thumbnail"]}
-          />
+        <div
+          className={classes["thumbnail-wrapper"]}
+          style={{
+            backgroundImage: `url(${post?.image})`,
+          }}
+        >
+          <div className={classes["thumbnail__inner-wrapper"]}>
+            <img
+              src={post?.image}
+              alt={post?.title}
+              className={classes["thumbnail"]}
+            />
+          </div>
+
+          <span className={classes["dot-bg"]}></span>
         </div>
         <div className={classes["info-wrapper"]}>
           <div>
-            <h2>{post?.title}</h2>
+            <h2 className={classes["title"]}>{post?.title}</h2>
             <p className={classes["summary"]}>{post?.summary}</p>
           </div>
           {/* <div

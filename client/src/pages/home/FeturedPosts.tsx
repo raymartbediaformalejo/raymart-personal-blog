@@ -1,5 +1,7 @@
 import { useGetPostsQuery } from "../../redux/posts/posts.api";
 import FeaturedPostCard from "./components/FeaturedPostCard";
+import classes from "../../styles/pages/home/FeaturedPost.module.css";
+import Chip from "../../components/ui/Chip";
 
 const FeturedPosts = () => {
   const {
@@ -25,13 +27,16 @@ const FeturedPosts = () => {
 
     if (Array.isArray(ids)) {
       content = (
-        <section>
-          <div>
-            <h3>Featured Blog</h3> <a href="/">View all</a>
+        <section className={classes["featured-post-section"]}>
+          <div className={classes["featured-post-section__title-wrapper"]}>
+            <h3 className={classes["title"]}>Featured blog</h3>
+            <Chip text="View all" color="primary" />
           </div>
-          {ids.map((postId) => (
-            <FeaturedPostCard key={postId} postId={postId as string} />
-          ))}
+          <div className={classes["featured-post-items-wrapper"]}>
+            {ids.map((postId) => (
+              <FeaturedPostCard key={postId} postId={postId as string} />
+            ))}
+          </div>
         </section>
       );
     } else {
@@ -39,7 +44,7 @@ const FeturedPosts = () => {
     }
   }
 
-  return <> {content}</>;
+  return <>{content}</>;
 };
 
 export default FeturedPosts;

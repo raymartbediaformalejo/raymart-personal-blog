@@ -1,0 +1,24 @@
+.featured-post-section {
+  padding: 2rem 0;
+  border-top: 1px solid var(--clr-border);
+  border-top-style: dashed;
+}
+
+.featured-post-section__title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-size: 14.5px;
+  color: rgb(229 231 235);
+}
+
+.featured-post-items-wrapper {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}

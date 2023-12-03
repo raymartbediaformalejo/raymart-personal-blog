@@ -1,0 +1,66 @@
+.chip {
+  --color: var(--clr-primary-300);
+  --padding: 0.5rem 0.75rem;
+  --font-weight: var(--fw-500);
+  --font-size: var(--fs-300);
+  --bg-opacity: 0;
+  --bg-color: 0 0 0;
+  --border-color: 0 0 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: fit-content;
+  border-radius: 9999px;
+  padding: var(--padding);
+  background-color: hsl(var(--bg-color) / var(--bg-opacity));
+  border: 1px solid hsl(var(--border-color) / var(--bg-opacity));
+
+  color: var(--color);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: 1;
+  letter-spacing: 0.2px;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chip.contained:hover {
+  --bg-opacity: 1;
+}
+
+.chip.transparent.primary:hover,
+.chip.transparent.gray:hover {
+  --bg-color: 0 0% 100%;
+  --bg-opacity: 0.05;
+}
+
+.small {
+  --font-size: var(--fs-100);
+  --padding: 0.25rem 0.375rem;
+}
+
+.large {
+  --font-size: var(--fs-500);
+}
+
+.transparent.primary {
+  --color: var(--clr-primary-300);
+}
+.transparent.gray {
+  --color: hsl(218, 11%, 65%);
+}
+
+.contained.js {
+  --bg-opacity: 0.5;
+  --color: hsl(50 98% 64%); /*d: 300  */
+  --bg-color: 28 73% 26%; /*d: 900  */
+  --border-color: 35 92% 33%; /*d: 700  */
+}
+
+.contained.react {
+  --bg-opacity: 0.5;
+  --color: hsl(199 95% 74%);
+  --bg-color: 202 80% 24%;
+  --border-color: 201 96% 32%;
+}

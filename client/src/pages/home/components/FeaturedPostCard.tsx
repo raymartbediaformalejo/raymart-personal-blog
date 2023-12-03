@@ -2,6 +2,8 @@ import { useAppSelector } from "../../../redux/hooks/useAppSelector";
 import { selectPostById } from "../../../redux/posts/posts.api";
 import FeaturedPostTag from "./FeaturedPostTag";
 import classes from "../../../styles/pages/home/FeaturedPostCard.module.css";
+import Button from "../../../components/ui/Button";
+import ArrrowIcon from "../../../components/icons/ArrrowIcon";
 
 type FeaturedPostCardProps = {
   postId: string;
@@ -12,7 +14,7 @@ const FeaturedPostCard = ({ postId }: FeaturedPostCardProps) => {
 
   return (
     <a href="/">
-      <div className={classes["feature-post-card"]}>
+      <div className={`card ${classes["feature-post-card"]}`}>
         <div
           className={classes["thumbnail-wrapper"]}
           style={{
@@ -34,18 +36,14 @@ const FeaturedPostCard = ({ postId }: FeaturedPostCardProps) => {
             <h2 className={classes["title"]}>{post?.title}</h2>
             <p className={classes["summary"]}>{post?.summary}</p>
           </div>
-          {/* <div
-          style={{
-            height: "100px",
-            width: "100px",
-            border: "1px solid red",
-            backgroundImage: `url(${post?.image})`,
-            backgroundSize: "1px 1px",
-            filter: "saturate(5)",
-          }}
-        ></div> */}
           <div className={classes["info__bottom-wrapper"]}>
-            <button>Read more</button>
+            <Button
+              icon={<ArrrowIcon />}
+              size="x-small"
+              color="primary"
+              text="Read more"
+              className="read-more-btn"
+            />
             <div className={classes["tags-wrapper"]}>
               {post?.tag.map((tag) => (
                 <FeaturedPostTag key={tag} tagId={tag} />

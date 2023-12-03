@@ -3,26 +3,34 @@ import classes from "../../styles/component/ui/Button.module.css";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "outlined" | "contained" | "icon" | "transparent";
-  size?: "small" | "medium" | "large";
+  size?: "x-small" | "small" | "medium" | "large";
   text?: string;
+  color?: "primary" | "gray";
+  icon?: React.ReactNode;
 };
 
 const Button = ({
   variant = "transparent",
   size = "medium",
+  color,
   text,
+  icon,
   className,
   children,
 }: ButtonProps) => {
-  let content;
-  const buttonClass =
-    className && variant && size
-      ? `${classes["button"]} ${classes[variant]} ${classes[size]} ${className}`
-      : variant && size
-      ? `${classes["button"]} ${classes[variant]} ${classes[size]}`
-      : `${classes["button"]}  ${classes[size]}`;
+  // console.log(isIconWithText);
 
-  if (text) content = <button className={buttonClass}>{text}</button>;
+  let content;
+  const buttonClass = `${classes["button"]} ${className ? className : ""}  ${
+    classes[variant]
+  } ${classes[size]} ${color ? classes[color] : ""} `;
+
+  if (text)
+    content = (
+      <button className={buttonClass}>
+        {text} {icon}
+      </button>
+    );
 
   if (!text) content = <button className={buttonClass}>{children}</button>;
 

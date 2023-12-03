@@ -3,6 +3,9 @@
   --width: 2rem;
   --border-radius: 9999px;
   --border: inset 0 0 0 0px #fff, inset 0 0 0 1px var(--clr-border), 0 0 #0000;
+  --padding: 0;
+
+  --color: var(--clr-primary-500);
 
   position: relative;
   display: flex;
@@ -10,26 +13,40 @@
   justify-content: center;
   height: var(--height);
   width: var(--width);
+  color: var(--color);
+  padding: var(--padding);
   box-shadow: var(--border);
   border-radius: var(--border-radius);
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition);
 }
 
-.button:hover {
+.button:hover:not(.transparent):not(.x-small):not(.primary) {
   background-color: hsla(0, 0%, 100%, 0.05);
 }
 
-.button.transparent {
+.transparent {
   --border: none;
-  --border-radius: 9999px;
+  --width: fit-content;
 }
 
-.button.icon {
+.icon {
   --width: 2rem;
   --border-radius: 9999px;
 }
+.small {
+  font-size: var(--fs-300);
+}
 
-.button.large {
+.x-small {
+  font-size: var(--fs-300);
+  --height: auto;
+  --padding: 0;
+}
+.large {
   --height: 40px;
   --width: 40px;
+}
+
+.primary {
+  --color: var(--clr-primary-300);
 }

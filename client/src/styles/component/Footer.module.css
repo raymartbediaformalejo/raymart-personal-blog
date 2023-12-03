@@ -21,7 +21,7 @@
 .social-icon {
   color: rgb(255 255 255/1);
   fill: currentColor;
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition);
 }
 
 .social-icon:hover svg {

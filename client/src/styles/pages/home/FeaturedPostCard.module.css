@@ -15,9 +15,8 @@ a:has(.feature-post-card) {
   border-color: var(--border-color); */
   border: 1px solid var(--border-color);
   opacity: var(--opacity);
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition);
   overflow: hidden;
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .feature-post-card:hover {
@@ -38,7 +37,7 @@ a:has(.feature-post-card) {
   width: 100%;
   object-position: center;
   object-fit: cover;
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition);
   overflow: hidden;
 }
 .thumbnail-wrapper:before {

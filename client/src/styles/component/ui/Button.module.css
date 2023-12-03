@@ -4,8 +4,10 @@
   --border-radius: 9999px;
   --border: inset 0 0 0 0px #fff, inset 0 0 0 1px var(--clr-border), 0 0 #0000;
   --padding: 0;
-
-  --color: var(--clr-primary-500);
+  --font-weight: var(--fw-500);
+  --font-size: var(--fs-500);
+  --color: var(--clr-primary-300);
+  --letter-spacing: 0;
 
   position: relative;
   display: flex;
@@ -14,13 +16,18 @@
   height: var(--height);
   width: var(--width);
   color: var(--color);
+  font-family: var(--ff-primary);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  letter-spacing: var(--letter-spacing);
   padding: var(--padding);
   box-shadow: var(--border);
   border-radius: var(--border-radius);
   transition: var(--transition);
 }
 
-.button:hover:not(.transparent):not(.x-small):not(.primary) {
+.button:hover:not(.x-small, .primary),
+.button:focus:not(.x-small, .primary) {
   background-color: hsla(0, 0%, 100%, 0.05);
 }
 
@@ -29,12 +36,17 @@
   --width: fit-content;
 }
 
+.outlined {
+  --border: inset 0 0 0 0px #fff, inset 0 0 0 1px hsla(0, 0%, 100%, 0.1),
+    0 0 #0000;
+}
+
 .icon {
   --width: 2rem;
   --border-radius: 9999px;
 }
 .small {
-  font-size: var(--fs-300);
+  --font-size: var(--fs-300);
 }
 
 .x-small {
@@ -45,6 +57,9 @@
 .large {
   --height: 40px;
   --width: 40px;
+  --font-size: var(--fs-300);
+  --letter-spacing: 0.2px;
+  --font-weight: var(--fw-600);
 }
 
 .primary {

@@ -7,16 +7,14 @@ type FeaturedPostTagProps = {
 };
 const FeaturedPostTag = ({ tagId }: FeaturedPostTagProps) => {
   const tag = useAppSelector((state) => selectTagById(state, tagId));
-  console.log("tag: ", tag);
-  console.log("tagId: ", tagId);
 
   let content;
 
-  if (tag) content = <Chip text={tag?.name} variant="contained" size="small" />;
+  if (tag) content = <Chip text={tag.name} variant="contained" size="small" />;
 
   if (!tag) content = <Chip text="Loading..." />;
 
-  return <>{content}</>;
+  return content;
 };
 
 export default FeaturedPostTag;

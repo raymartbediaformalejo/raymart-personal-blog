@@ -51,8 +51,7 @@ body {
   min-height: 100dvh;
   line-height: 1.333;
   font-weight: normal;
-  overflow-x: hidden;
-  scrollbar-gutter: stable;
+
   background: #131317;
 }
 
@@ -60,6 +59,8 @@ html,
 body {
   scroll-behavior: smooth;
   font-family: var(--ff-primary);
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
 }
 main {
   --header-height: 57px;
@@ -72,6 +73,11 @@ main {
 h1 {
   font-size: var(--fs-700);
   color: var(--clr-white);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 [type="button"],
@@ -97,7 +103,8 @@ video {
   vertical-align: middle;
 }
 
-.card:is(:hover, :focus) .read-more-btn svg {
+.card:is(:hover) .read-more-btn svg,
+.card:is(:focus) .read-more-btn svg {
   transition: var(--transition);
   transform: translateX(0.125rem);
 }

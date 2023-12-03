@@ -1,0 +1,36 @@
+.nav-item {
+  --border-color: rgba(75, 85, 99, 0.2);
+
+  font-weight: var(--fw-500);
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-item ~ .nav-item {
+  border-top: 1px solid var(--border-color);
+}
+
+.nav-item-inner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  stroke: var(--clr-primary-500);
+  height: 1rem;
+  width: 1rem;
+}
+
+.button-wrapper {
+  border-top: 1px solid var(--border-color);
+  padding: 1rem;
+}
+
+.close-button {
+  width: 100%;
+}

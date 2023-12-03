@@ -15,6 +15,7 @@ const Button = ({
   color,
   text,
   icon,
+  onClick,
   className,
   children,
 }: ButtonProps) => {
@@ -27,12 +28,17 @@ const Button = ({
 
   if (text)
     content = (
-      <button className={buttonClass}>
+      <button className={buttonClass} onClick={onClick}>
         {text} {icon}
       </button>
     );
 
-  if (!text) content = <button className={buttonClass}>{children}</button>;
+  if (!text)
+    content = (
+      <button onClick={onClick} className={buttonClass}>
+        {children}
+      </button>
+    );
 
   return <>{content}</>;
 };

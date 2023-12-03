@@ -1,0 +1,131 @@
+.modal {
+  --animation-duration: 250ms;
+  --overlay-bg-color: 240 12% 5%;
+  --bg-color: hsl(240 12% 8%);
+  --color: #ffff;
+  --max-width: inherit;
+  --width: 100%;
+  --border-color: hsla(215 14% 34%/ 0.2);
+  --margin: auto;
+  /* --padding: 1rem; */
+
+  box-shadow: 0 3px 15px 8px hsl(var(--overlay-bg-color) / 0.9),
+    0 7px 20px 12px hsl(var(--overlay-bg-color) / 0.8),
+    0 0 0 calc(100dvh + 10rem) hsla(var(--overlay-bg-color) / 0.749);
+
+  margin: auto;
+  border-radius: 0.75rem;
+  background: var(--bg-color);
+  color: var(--color);
+  border: 1px solid var(--border-color);
+  max-width: var(--max-width);
+  width: var(--width);
+  margin: var(--margin);
+  overflow: hidden;
+  /* padding: var(--padding); */
+}
+
+.bottom {
+  --max-width: 28rem;
+  --width: calc(100% - 2rem);
+  margin-block-end: 1rem;
+}
+
+/* ======== START CENTER ====== */
+
+.modal[open] {
+  animation: scale-in var(--animation-duration) forwards,
+    fade-in var(--animation-duration) forwards;
+}
+
+.modal[open]::backdrop {
+  animation: fade-in var(--animation-duration) forwards;
+}
+
+.modal[closing] {
+  display: block;
+  pointer-events: none;
+  inset: 0;
+  animation: fade-out var(--animation-duration) forwards;
+}
+
+.modal[closing]::backdrop {
+  animation: fade-out var(--animation-duration) forwards;
+}
+
+/* ======== END CENTER ====== */
+
+/* ======== START BOTTOM ====== */
+.bottom[open] {
+  animation: slide-up var(--animation-duration) forwards,
+    fade-in var(--animation-duration) forwards;
+}
+
+.bottom[closing] {
+  animation: slide-down var(--animation-duration) forwards;
+}
+/* ======== END BOTTOM ====== */
+
+.title {
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 4px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.close-button {
+  align-self: end;
+}
+
+/* .modal-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1rem;
+} */
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@keyframes slide-down {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    scale: 0.9;
+  }
+
+  100% {
+    scale: 100%;
+  }
+}

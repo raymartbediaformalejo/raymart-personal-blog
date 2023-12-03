@@ -23,7 +23,6 @@ const FeturedPosts = () => {
 
   if (isSuccess) {
     const { ids } = posts;
-    console.log(ids);
 
     if (Array.isArray(ids)) {
       content = (

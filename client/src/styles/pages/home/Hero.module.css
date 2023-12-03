@@ -23,7 +23,8 @@
   transition: all 0.15s ease;
 }
 
-.sub-title a:hover {
+.sub-title a:hover,
+.sub-title a:focus {
   color: var(--clr-primary-200);
   text-decoration-color: var(--clr-primary-300);
 }

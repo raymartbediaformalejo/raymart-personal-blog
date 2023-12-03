@@ -24,6 +24,7 @@
   transition: var(--transition);
 }
 
-.social-icon:hover svg {
+.social-icon:hover svg,
+.social-icon:focus svg {
   fill: var(--clr-primary-500);
 }

@@ -1,8 +1,9 @@
 import Modal from "./Modal";
 import classes from "../../../styles/component/ui/Modals/MainNavigationModal.module.css";
-import { NAVIGATION_ITEMS } from "../../../utils/Constant";
+import { MAIN_NAVIGATION_ITEMS } from "../../../utils/Constant";
 import ArrrowIcon from "../../icons/ArrrowIcon";
 import Button from "../Button";
+import { Link } from "react-router-dom";
 
 type MainNavigationModalProps = {
   isOpen: boolean;
@@ -11,13 +12,18 @@ type MainNavigationModalProps = {
 const MainNavigationModal = ({ isOpen, onClose }: MainNavigationModalProps) => {
   return (
     <Modal onClose={onClose} isOpened={isOpen} position="bottom">
-      {Object.entries(NAVIGATION_ITEMS).map(([key, { url, name }]) => (
-        <a className={classes["nav-item"]} key={key} href={url}>
+      {Object.entries(MAIN_NAVIGATION_ITEMS).map(([key, { url, name }]) => (
+        <Link
+          className={classes["nav-item"]}
+          key={key}
+          to={url}
+          onClick={onClose}
+        >
           <div className={classes["nav-item-inner"]}>
             {name}
             <ArrrowIcon className={classes["arrow"]} size="large" />
           </div>
-        </a>
+        </Link>
       ))}
 
       <div className={classes["button-wrapper"]}>
@@ -25,6 +31,7 @@ const MainNavigationModal = ({ isOpen, onClose }: MainNavigationModalProps) => {
           className={classes["close-button"]}
           variant="outlined"
           size="large"
+          onClick={onClose}
         >
           Close
         </Button>

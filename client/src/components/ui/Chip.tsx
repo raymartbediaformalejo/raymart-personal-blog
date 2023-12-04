@@ -1,8 +1,7 @@
-import React from "react";
-
 import classes from "../../styles/component/ui/Chip.module.css";
+import { Link, LinkProps } from "react-router-dom";
 
-type ChipProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+type ChipProps = LinkProps & {
   variant?: "transparent" | "outlined" | "contained";
   size?: "small" | "medium" | "large";
   color?: "primary" | "gray";
@@ -15,6 +14,7 @@ const Chip = ({
   color,
   text,
   className,
+  to,
 }: ChipProps) => {
   const chipClass = `${classes["chip"]} ${className ? className : ""} ${
     classes[variant]
@@ -22,7 +22,11 @@ const Chip = ({
     classes[size]
   }`;
 
-  return <a className={chipClass}>{text}</a>;
+  return (
+    <Link to={to} className={chipClass}>
+      {text}
+    </Link>
+  );
 };
 
 export default Chip;

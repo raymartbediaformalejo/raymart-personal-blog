@@ -45,13 +45,15 @@
 
 html {
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
 }
 
 body {
   min-height: 100dvh;
   line-height: 1.333;
   font-weight: normal;
-
   background: #131317;
 }
 
@@ -59,9 +61,8 @@ html,
 body {
   scroll-behavior: smooth;
   font-family: var(--ff-primary);
-  overflow-x: hidden;
-  scrollbar-gutter: stable;
 }
+
 main {
   --header-height: 57px;
   --footer-height: 105px;

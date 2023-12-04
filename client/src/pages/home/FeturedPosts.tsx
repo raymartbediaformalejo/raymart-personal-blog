@@ -2,6 +2,7 @@ import { useGetPostsQuery } from "../../redux/posts/posts.api";
 import FeaturedPostCard from "./components/FeaturedPostCard";
 import classes from "../../styles/pages/home/FeaturedPost.module.css";
 import Chip from "../../components/ui/Chip";
+import { MAIN_NAVIGATION_ITEMS } from "../../utils/Constant";
 
 const FeturedPosts = () => {
   const {
@@ -29,7 +30,11 @@ const FeturedPosts = () => {
         <section className={classes["featured-post-section"]}>
           <div className={classes["featured-post-section__title-wrapper"]}>
             <h3 className={classes["title"]}>Featured blog</h3>
-            <Chip text="View all" color="primary" />
+            <Chip
+              to={MAIN_NAVIGATION_ITEMS.ARTICLES.url}
+              text="View all"
+              color="primary"
+            />
           </div>
           <div className={classes["featured-post-items-wrapper"]}>
             {ids.map((postId) => (

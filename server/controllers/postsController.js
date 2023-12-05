@@ -1,9 +1,12 @@
 const Post = require("../models/Post");
+const Tag = require("../models/Tag");
 
 // @desc Get all posts
 // @route GET /posts
 // @access Public
 const getAllPosts = async (req, res) => {
+  const page = parseInt(req.query.page) - 1 || 0;
+  const limit = parseInt(req.query.limit) || 5;
   // Get all posts from MongoDB
   const posts = await Post.find().lean();
 
@@ -12,7 +15,63 @@ const getAllPosts = async (req, res) => {
     return res.status(400).json({ message: "No posts found" });
   }
 
-  res.json(posts);
+  const total = await Post.countDocuments();
+
+  const response = {
+    total,
+    page: page + 1,
+    limit,
+    posts,
+  };
+
+  res.status(200).json(response);
+};
+
+// @desc Search  post
+// @route POST /posts
+// @access Public
+const searchPosts = async (req, res) => {
+  const page = parseInt(req.query.page) - 1 || 0;
+  const limit = parseInt(req.query.limit) || 5;
+  const search = req.query.q || "";
+  let sort = req.query.sort || "createdAt";
+  let tag = req.query.tag || "All";
+
+  const tagOptions = (await Tag.find().lean()).map((tag) => tag._id);
+
+  tag === "All" ? (tag = [...tagOptions]) : (tag = req.query.tag.split(","));
+
+  req.query.sort ? (sort = req.query.sort.split(",")) : (sort = [sort]);
+
+  let sortBy = {};
+
+  if (sort[1]) {
+    sortBy[sort[0]] = sort[1];
+  } else {
+    sortBy[sort[0]] = "asc";
+  }
+
+  const posts = await Post.find({ title: { $regex: search, $options: "i" } })
+    .where("tag")
+    .in([...tag])
+    .sort(sortBy)
+    .skip(page * limit)
+    .limit(limit);
+
+  const total = await Post.countDocuments({
+    tag: { $in: [...tag] },
+    title: { $regex: search, $options: "i" },
+  });
+
+  const response = {
+    total,
+    page: page + 1,
+    limit,
+    tags: tagOptions,
+    posts,
+  };
+
+  res.status(200).json(response);
 };
 
 // @desc Create new post
@@ -155,6 +214,7 @@ const deletePost = async (req, res) => {
 
 module.exports = {
   getAllPosts,
+  searchPosts,
   createNewPost,
   updatePost,
   deletePost,

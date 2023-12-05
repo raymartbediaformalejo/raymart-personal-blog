@@ -4,6 +4,7 @@ const postsController = require("../controllers/postsController");
 const verifyJWT = require("../middleware/verifyJWT");
 
 router.get("/", postsController.getAllPosts);
+router.get("/search", postsController.searchPosts);
 
 router
   .route("/")

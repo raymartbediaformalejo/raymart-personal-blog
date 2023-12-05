@@ -1,0 +1,10 @@
+.title {
+  margin: 0.75rem 0;
+}
+
+.tags {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

@@ -7,7 +7,6 @@
   box-shadow: var(--border);
   border-radius: var(--search-border-radius);
   overflow: hidden;
-  margin-top: 1rem;
 }
 
 .search-form {
@@ -17,6 +16,7 @@
   align-items: center;
   width: 100%;
   padding-left: 1rem;
+  transition: var(--transition);
 }
 
 .search-form:hover,

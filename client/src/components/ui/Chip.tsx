@@ -16,15 +16,17 @@ const Chip = ({
   className,
   to,
 }: ChipProps) => {
+  const newtext = text === "JavaScript" ? "JS" : text;
+
   const chipClass = `${classes["chip"]} ${className ? className : ""} ${
     classes[variant]
-  } ${classes[text.toLowerCase()]} ${color ? classes[color] : ""} ${
+  } ${classes[newtext.toLowerCase()]} ${color ? classes[color] : ""} ${
     classes[size]
   }`;
 
   return (
     <Link to={to} className={chipClass}>
-      {text}
+      {newtext}
     </Link>
   );
 };

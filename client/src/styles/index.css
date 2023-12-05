@@ -31,8 +31,11 @@
   --clr-primary-500: hsl(26, 90%, 40%);
 
   --clr-white: #ffff;
+  --clr-off-white: #f1f1f1;
+  --clr-neutral-off-white: 0 0% 95%;
   --clr-body-bg: #121316;
   --clr-border: hsla(0, 0%, 100%, 0.1);
+  --clr-neutral-border: 0 0% 100%;
 
   --transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -74,6 +77,7 @@ main {
 h1 {
   font-size: var(--fs-700);
   color: var(--clr-white);
+  font-weight: var(--fw-700);
 }
 
 a {

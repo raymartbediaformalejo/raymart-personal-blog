@@ -40,6 +40,7 @@ const FeaturedPostCard = ({ postId }: FeaturedPostCardProps) => {
             icon={<ArrrowIcon />}
             size="x-small"
             color="primary"
+            noHover
             text="Read more"
             className="read-more-btn"
           />

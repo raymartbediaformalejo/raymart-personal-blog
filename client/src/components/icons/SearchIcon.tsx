@@ -9,6 +9,7 @@ const SearchIcon = (props: SVGProps<SVGSVGElement>) => {
       width="24"
       viewBox="0 0 24 24"
       focusable="false"
+      fill="currentColor"
       {...props}
       // style="pointer-events: none; display: block; width: 100%; height: 100%;"
     >

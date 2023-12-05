@@ -7,6 +7,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   text?: string;
   color?: "primary" | "gray";
   icon?: React.ReactNode;
+  noHover?: boolean;
 };
 
 const Button = ({
@@ -15,6 +16,7 @@ const Button = ({
   color,
   text,
   icon,
+  noHover = false,
   onClick,
   className,
   children,
@@ -24,7 +26,9 @@ const Button = ({
   let content;
   const buttonClass = `${classes["button"]} ${className ? className : ""}  ${
     classes[variant]
-  } ${classes[size]} ${color ? classes[color] : ""} `;
+  } ${classes[size]} ${color ? classes[color] : ""} ${
+    noHover ? classes["no-hover"] : ""
+  } `;
 
   if (text)
     content = (

@@ -26,8 +26,8 @@
   transition: var(--transition);
 }
 
-.button:hover:not(.x-small, .primary),
-.button:focus:not(.x-small, .primary) {
+.button:hover:not(.no-hover),
+.button:focus:not(.no-hover) {
   background-color: hsla(0, 0%, 100%, 0.05);
 }
 

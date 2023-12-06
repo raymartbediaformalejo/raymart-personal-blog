@@ -11,6 +11,7 @@ const Articles = () => {
       q: "Inheritance",
       tag: ["65642b73fb695419c0df9e89"],
       sort: ["createdAt", "desc"],
+      page: 2,
     });
   }, [searchPosts]);
 

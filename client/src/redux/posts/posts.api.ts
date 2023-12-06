@@ -56,10 +56,10 @@ export const postsApi = baseApi.injectEndpoints({
       },
     }),
     searchPost: build.query<TPostsResponse, TSearchPostParams>({
-      query: ({ q, tag, sort }) => ({
+      query: ({ q, tag, sort, page, limit }) => ({
         url: `/posts/search?q=${q}&tag=${arrayToString({
           arr: tag,
-        })}&sort=${arrayToString({ arr: sort })}`,
+        })}&sort=${arrayToString({ arr: sort })}&page=${page}&limit=${limit}`,
       }),
       transformResponse: (responseData: TPostsResponse) => {
         let loadedPosts = responseData.posts;

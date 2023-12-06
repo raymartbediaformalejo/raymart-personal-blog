@@ -64,7 +64,8 @@ const searchPosts = async (req, res) => {
     .in([...tag])
     .sort(sortBy)
     .skip(page * limit)
-    .limit(limit);
+    .limit(limit)
+    .select("_id");
 
   const total = await Post.countDocuments({
     tag: { $in: [...tag] },

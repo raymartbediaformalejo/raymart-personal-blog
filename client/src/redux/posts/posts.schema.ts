@@ -24,3 +24,11 @@ export const postsSchema = z.object({
   limit: z.number(),
   posts: z.array(postSchema),
 });
+
+export const searchPostParams = z.object({
+  q: z.string().optional(),
+  tag: z.array(z.string()).optional(),
+  sort: z.array(z.string()).optional(),
+  page: z.number().optional(),
+  limit: z.number().optional(),
+});

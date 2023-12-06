@@ -27,29 +27,25 @@ const FeturedPosts = () => {
   if (isError) content = <p>Error!</p>;
 
   if (isSuccess) {
-    const { ids } = featuredPosts;
+    // const { ids } = featuredPosts;
 
-    if (Array.isArray(ids)) {
-      content = (
-        <section className={classes["featured-post-section"]}>
-          <div className={classes["featured-post-section__title-wrapper"]}>
-            <h3 className={classes["title"]}>Featured blog</h3>
-            <Chip
-              to={MAIN_NAVIGATION_ITEMS.ARTICLES.url}
-              text="View all"
-              color="primary"
-            />
-          </div>
-          <div className={classes["featured-post-items-wrapper"]}>
-            {ids.map((postId) => (
-              <FeaturedPostCard key={postId} postId={postId as string} />
-            ))}
-          </div>
-        </section>
-      );
-    } else {
-      content = <p>Not Array</p>;
-    }
+    content = (
+      <section className={classes["featured-post-section"]}>
+        <div className={classes["featured-post-section__title-wrapper"]}>
+          <h3 className={classes["title"]}>Featured blog</h3>
+          <Chip
+            to={MAIN_NAVIGATION_ITEMS.ARTICLES.url}
+            text="View all"
+            color="primary"
+          />
+        </div>
+        <div className={classes["featured-post-items-wrapper"]}>
+          {featuredPosts.posts.map((post) => (
+            <FeaturedPostCard key={post._id} postId={post._id as string} />
+          ))}
+        </div>
+      </section>
+    );
   }
 
   return <>{content}</>;

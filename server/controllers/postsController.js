@@ -7,15 +7,23 @@ const Tag = require("../models/Tag");
 const getAllPosts = async (req, res) => {
   const page = parseInt(req.query.page) - 1 || 0;
   const limit = parseInt(req.query.limit) || 5;
+  const featured = req.query.featured || false;
   // Get all posts from MongoDB
-  const posts = await Post.find().lean();
+  let posts;
+  let total;
+
+  if (JSON.parse(featured)) {
+    posts = await Post.find({ featured: true }).lean();
+    total = await Post.countDocuments({ featured: true });
+  } else {
+    posts = await Post.find().lean();
+    total = await Post.countDocuments();
+  }
 
   // If no posts
   if (!posts?.length) {
     return res.status(400).json({ message: "No posts found" });
   }
-
-  const total = await Post.countDocuments();
 
   const response = {
     total,

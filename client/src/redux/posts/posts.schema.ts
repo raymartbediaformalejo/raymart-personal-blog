@@ -1,19 +1,26 @@
-import z from "zod";
+import { z } from "zod";
 
-export const postsSchema = z.object({
+export const postSchema = z.object({
   _id: z.string(),
-  id: z.string(),
   author: z.string(),
   category: z.array(z.string()),
   tag: z.array(z.string()),
   title: z.string(),
-  summary: z.string(),
   image: z.string(),
+  summary: z.string(),
   content: z.string(),
-  status: z.enum(["Published", "Draft"]),
-  visibility: z.enum(["Public", "Private"]),
+  status: z.string(),
+  visibility: z.string(),
   featured: z.boolean(),
-  articles: z.array(z.string()),
+  articles: z.array(z.unknown()),
   createdAt: z.date(),
   updatedAt: z.date(),
+  __v: z.number(),
+});
+
+export const postsSchema = z.object({
+  total: z.number(),
+  page: z.number(),
+  limit: z.number(),
+  posts: z.array(postSchema),
 });

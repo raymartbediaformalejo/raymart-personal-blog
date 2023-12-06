@@ -1,4 +1,4 @@
-import { useGetPostsQuery } from "../../redux/posts/posts.api";
+import { useGetFeaturedPostsQuery } from "../../redux/posts/posts.api";
 import FeaturedPostCard from "./components/FeaturedPostCard";
 import classes from "../../styles/pages/home/FeaturedPost.module.css";
 import Chip from "../../components/ui/Chip";
@@ -6,15 +6,19 @@ import { MAIN_NAVIGATION_ITEMS } from "../../utils/Constant";
 
 const FeturedPosts = () => {
   const {
-    data: posts,
+    data: featuredPosts,
     isLoading,
     isSuccess,
     isError,
     // error,
-  } = useGetPostsQuery(undefined, {
-    refetchOnFocus: true,
-    refetchOnMountOrArgChange: true,
-  });
+  } = useGetFeaturedPostsQuery(
+    { featured: true },
+    {
+      refetchOnFocus: true,
+      refetchOnMountOrArgChange: true,
+    }
+  );
+  console.log(featuredPosts);
 
   let content;
 
@@ -23,7 +27,7 @@ const FeturedPosts = () => {
   if (isError) content = <p>Error!</p>;
 
   if (isSuccess) {
-    const { ids } = posts;
+    const { ids } = featuredPosts;
 
     if (Array.isArray(ids)) {
       content = (

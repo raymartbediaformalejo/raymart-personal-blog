@@ -36,6 +36,7 @@
   --clr-body-bg: #121316;
   --clr-border: hsla(0, 0%, 100%, 0.1);
   --clr-neutral-border: 0 0% 100%;
+  --clr-icon: 216 12% 84%;
 
   --transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }

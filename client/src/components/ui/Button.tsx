@@ -20,6 +20,7 @@ const Button = ({
   onClick,
   className,
   children,
+  type = "button",
 }: ButtonProps) => {
   // console.log(isIconWithText);
 
@@ -32,14 +33,14 @@ const Button = ({
 
   if (text)
     content = (
-      <button className={buttonClass} onClick={onClick}>
+      <button type={type} className={buttonClass} onClick={onClick}>
         {text} {icon}
       </button>
     );
 
   if (!text)
     content = (
-      <button onClick={onClick} className={buttonClass}>
+      <button type={type} onClick={onClick} className={buttonClass}>
         {children}
       </button>
     );

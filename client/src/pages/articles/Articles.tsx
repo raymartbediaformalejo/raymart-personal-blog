@@ -1,26 +1,55 @@
-import { useEffect } from "react";
+import { useEffect, useDeferredValue } from "react";
+import { useSearchParams } from "react-router-dom";
+
 import SearchForm from "../../components/SearchForm";
-import { MAIN_NAVIGATION_ITEMS } from "../../utils/Constant";
+import { MAIN_NAVIGATION_ITEMS, POST_QUERY_KEYS } from "../../utils/Constant";
 import classes from "../../styles/pages/articles/Articles.module.css";
 import { useLazySearchPostQuery } from "../../redux/posts/posts.api";
 import ArticleCard from "./components/ArticleCard";
 import ArticleTagOptions from "./components/ArticleTagOptions";
 const Articles = () => {
   const [searchPosts, { data: posts }] = useLazySearchPostQuery();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const q = searchParams.get(POST_QUERY_KEYS.QUERY) || "";
+  const page = searchParams.get(POST_QUERY_KEYS.PAGE) || "1";
+  const sort = searchParams.get(POST_QUERY_KEYS.SORT) || `[]`;
+  const tag = searchParams.get(POST_QUERY_KEYS.TAG) || `["All"]`;
+
+  const defferedQuery = useDeferredValue(q);
+  console.log(tag);
+
+  let articlesContent;
+
   useEffect(() => {
+    console.log("eme");
+
+    // if (defferedQuery) {
     searchPosts({
-      tag: [
-        "65642b73fb695419c0df9e89",
-        "6564390db525ad8137d85ccc",
-        "65703c1b51c5f6906a17c7d6",
-        "65703c3051c5f6906a17c7d9",
-        "65703c9a51c5f6906a17c7dc",
-      ],
-      page: 3,
+      q: defferedQuery,
+      tag: JSON.parse(tag),
+      sort: JSON.parse(sort),
+      page: +page,
     });
-  }, [searchPosts]);
+    // }
+  }, [searchPosts, defferedQuery, tag, sort, page]);
 
   console.log("posts: ", posts);
+
+  if (posts?.posts && posts.posts.length > 0) {
+    articlesContent = (
+      <section className={classes["article-section"]}>
+        {posts?.posts.map((post) => (
+          <ArticleCard key={post._id} postId={post._id} />
+        ))}
+      </section>
+    );
+  } else {
+    articlesContent = (
+      <p className={classes["no-result"]}>
+        No result to {`"${defferedQuery}"`}
+      </p>
+    );
+  }
 
   return (
     <div className="container">
@@ -28,15 +57,10 @@ const Articles = () => {
         {MAIN_NAVIGATION_ITEMS.ARTICLES.name}
       </h1>
 
-      <SearchForm />
+      <SearchForm q={defferedQuery} setSearchParams={setSearchParams} />
 
       <ArticleTagOptions />
-
-      <section className={classes["article-section"]}>
-        {posts?.posts.map((post) => (
-          <ArticleCard key={post._id} postId={post._id} />
-        ))}
-      </section>
+      {articlesContent}
     </div>
   );
 };

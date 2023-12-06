@@ -67,3 +67,22 @@
   --bg-color: 202 80% 24%;
   --border-color: 201 96% 32%;
 }
+
+.contained.nodejs {
+  --bg-opacity: 0.5;
+  --color: hsl(142 77% 73%);
+  --bg-color: 144 61% 20%;
+  --border-color: 142 72% 29%;
+}
+.contained.css {
+  --bg-opacity: 0.5;
+  --color: hsl(212 96% 78%);
+  --bg-color: 224 64% 33%;
+  --border-color: 224 76% 48%;
+}
+.contained.html {
+  --bg-opacity: 0.5;
+  --color: hsl(31 97% 72%);
+  --bg-color: 15 75% 28%;
+  --border-color: 17 88% 40%;
+}

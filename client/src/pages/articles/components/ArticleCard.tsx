@@ -13,7 +13,6 @@ type ArticleCardProps = {
 const ArticleCard = ({ postId }: ArticleCardProps) => {
   const post = useAppSelector((state) => selectPostById(state, postId));
   let content;
-  console.log(post);
 
   if (post) {
     content = (

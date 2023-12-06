@@ -11,3 +11,10 @@ export const SECONDARY_NAVIGATIONS_ITEMS = {
   TOPICS: { url: "/topics", name: "Topics" },
   POPULAR_POSTS: { url: "/popular-posts", name: "Popular posts" },
 };
+
+export const POST_QUERY_KEYS = {
+  QUERY: "q",
+  TAG: "tag",
+  SORT: "sort",
+  PAGE: "page",
+};

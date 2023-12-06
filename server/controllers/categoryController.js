@@ -7,7 +7,6 @@ const Post = require("../models/Post");
 const getAllCategory = async (req, res) => {
   // Get all cateogy from MongoDB
   const categories = await Category.find().lean();
-  console.log("categories: ", categories);
   // If no category
   if (!categories.length) {
     return res.status(400).json({ message: "No category found" });
@@ -57,7 +56,6 @@ const createNewCategory = async (req, res) => {
 // @access Private
 const updateCategory = async (req, res) => {
   const { _id, name, description, image } = req.body;
-  console.log(req.body);
 
   // Confirm data
   if (!name) {
@@ -66,7 +64,6 @@ const updateCategory = async (req, res) => {
 
   // Confirm category exists to update
   const category = await Category.findById(_id).exec();
-  console.log(category);
   if (!category) {
     return res.status(400).json({ message: "Category not found" });
   }
@@ -76,9 +73,6 @@ const updateCategory = async (req, res) => {
     .collation({ locale: "en", strength: 2 })
     .lean()
     .exec();
-
-  console.log(duplicate);
-  console.log(duplicate && duplicate._id.toString() !== _id);
 
   if (duplicate && duplicate._id.toString() !== _id) {
     return res.status(409).json({ message: "Duplicate category" });

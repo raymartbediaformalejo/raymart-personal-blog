@@ -7,7 +7,6 @@ const Post = require("../models/Post");
 const getAllTag = async (req, res) => {
   // Get all tag from MongoDB
   const tags = await Tag.find().lean();
-  console.log("tags: ", tags);
   // If no tag
   if (!tags.length) {
     return res.status(400).json({ message: "No tags found" });
@@ -62,7 +61,6 @@ const createNewTag = async (req, res) => {
 // @access Private
 const updateTag = async (req, res) => {
   const { _id, name, description, image } = req.body;
-  console.log(req.body);
 
   // Confirm data
   if (!name) {
@@ -71,7 +69,6 @@ const updateTag = async (req, res) => {
 
   // Confirm category exists to update
   const tag = await Tag.findById(_id).exec();
-  console.log(tag);
   if (!tag) {
     return res.status(400).json({ message: "Tag not found" });
   }

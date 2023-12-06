@@ -8,3 +8,9 @@
 .title {
   margin: 0.75rem 0;
 }
+
+.no-result {
+  margin-top: 3rem;
+  font-size: var(--fs-400);
+  color: var(--clr-off-white);
+}

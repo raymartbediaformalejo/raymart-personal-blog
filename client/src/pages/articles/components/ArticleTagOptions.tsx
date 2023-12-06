@@ -1,6 +1,6 @@
-import React from "react";
 import { useGetTagsQuery } from "../../../redux/tags/tags.api";
 import CheckboxTag from "../../../components/CheckboxTag";
+import classes from "../../../styles/pages/articles/ArticleTagOptions.module.css";
 
 const ArticleTagOptions = () => {
   const { data: tags, isLoading, isSuccess, isError } = useGetTagsQuery();
@@ -15,10 +15,9 @@ const ArticleTagOptions = () => {
   if (isSuccess) {
     const { ids } = tags;
     content = (
-      <div>
-        {" "}
+      <div className={classes["tags"]}>
         {ids.map((tag) => (
-          <CheckboxTag tagId={tag as string} />
+          <CheckboxTag key={tag} tagId={tag as string} />
         ))}
       </div>
     );

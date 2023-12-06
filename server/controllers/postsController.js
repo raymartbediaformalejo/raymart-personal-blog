@@ -76,7 +76,6 @@ const searchPosts = async (req, res) => {
     total,
     page: page + 1,
     limit,
-    tags: tagOptions,
     posts,
   };
 

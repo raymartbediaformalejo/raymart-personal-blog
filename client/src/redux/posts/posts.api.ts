@@ -3,7 +3,7 @@ import type { EntityState } from "@reduxjs/toolkit";
 import { baseApi } from "../index.api";
 import { TPost, TPostsResponse, TSearchPostParams } from "./posts.type";
 import { RootState } from "../index";
-import { arrayToString } from "../utils/utils";
+import { arrayToString, toEmptyStringIfNullish } from "../utils/utils";
 
 const postsAdapter = createEntityAdapter<TPost>({
   selectId: (post) => post._id,
@@ -57,9 +57,13 @@ export const postsApi = baseApi.injectEndpoints({
     }),
     searchPost: build.query<TPostsResponse, TSearchPostParams>({
       query: ({ q, tag, sort, page, limit }) => ({
-        url: `/posts/search?q=${q}&tag=${arrayToString({
+        url: `/posts/search?q=${toEmptyStringIfNullish({
+          item: q!,
+        })}&tag=${arrayToString({
           arr: tag,
-        })}&sort=${arrayToString({ arr: sort })}&page=${page}&limit=${limit}`,
+        })}&sort=${arrayToString({ arr: sort })}&page=${toEmptyStringIfNullish({
+          item: page!,
+        })}&limit=${toEmptyStringIfNullish({ item: limit! })}`,
       }),
     }),
   }),

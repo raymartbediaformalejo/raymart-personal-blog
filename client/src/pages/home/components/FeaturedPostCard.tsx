@@ -13,7 +13,7 @@ const FeaturedPostCard = ({ postId }: FeaturedPostCardProps) => {
   const post = useAppSelector((state) => selectPostById(state, postId));
 
   return (
-    <div className={`card ${classes["feature-post-card"]}`}>
+    <article className={`card ${classes["feature-post-card"]}`}>
       <div
         className={classes["thumbnail-wrapper"]}
         style={{
@@ -51,7 +51,7 @@ const FeaturedPostCard = ({ postId }: FeaturedPostCardProps) => {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

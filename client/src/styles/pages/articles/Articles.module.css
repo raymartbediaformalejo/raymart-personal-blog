@@ -1,3 +1,10 @@
+.article-section {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem 0;
+  gap: 3rem;
+}
+
 .title {
   margin: 0.75rem 0;
 }

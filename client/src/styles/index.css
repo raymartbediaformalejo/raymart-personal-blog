@@ -113,3 +113,8 @@ video {
   transition: var(--transition);
   transform: translateX(0.125rem);
 }
+
+.container {
+  width: min(700px, 100%);
+  margin-inline: auto;
+}

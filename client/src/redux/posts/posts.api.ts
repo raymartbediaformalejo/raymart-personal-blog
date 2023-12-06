@@ -61,20 +61,6 @@ export const postsApi = baseApi.injectEndpoints({
           arr: tag,
         })}&sort=${arrayToString({ arr: sort })}&page=${page}&limit=${limit}`,
       }),
-      transformResponse: (responseData: TPostsResponse) => {
-        let loadedPosts = responseData.posts;
-        if (loadedPosts) {
-          loadedPosts = responseData.posts.map((post) => {
-            post.createdAt = new Date(post.createdAt);
-            post.updatedAt = new Date(post.updatedAt);
-            return post;
-          });
-        } else {
-          loadedPosts = responseData.posts;
-        }
-
-        return { ...responseData, posts: loadedPosts };
-      },
     }),
   }),
 });

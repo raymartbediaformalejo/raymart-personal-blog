@@ -6,6 +6,7 @@ export const tagsSchema = z.object({
   name: z.string(),
   description: z.string(),
   image: z.string(),
+  tagCount: z.number(),
   createdAt: z.date(),
   updatedAt: z.date(),
 });

@@ -13,6 +13,11 @@ const getAllTag = async (req, res) => {
     return res.status(400).json({ message: "No tags found" });
   }
 
+  for (const tag of tags) {
+    const tagCount = await Post.countDocuments({ tag: tag._id });
+    tag.tagCount = tagCount;
+  }
+
   res.json(tags);
 };
 

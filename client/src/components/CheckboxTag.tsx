@@ -1,22 +1,24 @@
+import { useAppSelector } from "../redux/hooks/useAppSelector";
+import { selectTagById } from "../redux/tags/tags.api";
 import classes from "../styles/component/CheckBoxTag.module.css";
 
 type CheckboxTagProps = {
-  tag: string;
-  tagCount: number;
+  tagId: string;
 };
 
-const CheckboxTag = ({ tag, tagCount }: CheckboxTagProps) => {
+const CheckboxTag = ({ tagId }: CheckboxTagProps) => {
+  const tag = useAppSelector((state) => selectTagById(state, tagId));
   return (
     <>
       <input
         className={classes["tag-input"]}
         type="checkbox"
-        id={`tag-${tag}`}
-        value={tag}
+        id={`tag-${tag?.name}`}
+        value={tag?.name}
       />
       <label className={classes["tag-checkbox"]} htmlFor={`tag-${tag}`}>
-        <span className={classes["tag-name"]}>{tag}</span>
-        <div className={classes["tag-count"]}>{tagCount}</div>
+        <span className={classes["tag-name"]}>{tag?.name}</span>
+        <div className={classes["tag-count"]}>{tag?.tagCount}</div>
       </label>
     </>
   );

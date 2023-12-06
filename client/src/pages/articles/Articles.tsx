@@ -5,6 +5,7 @@ import { MAIN_NAVIGATION_ITEMS } from "../../utils/Constant";
 import classes from "../../styles/pages/articles/Articles.module.css";
 import { useLazySearchPostQuery } from "../../redux/posts/posts.api";
 import ArticleCard from "./components/ArticleCard";
+import ArticleTagOptions from "./components/ArticleTagOptions";
 const Articles = () => {
   const [searchPosts, { data: posts }] = useLazySearchPostQuery();
   useEffect(() => {
@@ -24,15 +25,7 @@ const Articles = () => {
         {MAIN_NAVIGATION_ITEMS.ARTICLES.name}
       </h1>
       <SearchForm />
-      <div className={classes["tags"]}>
-        <CheckboxTag tag={"JavaScript"} tagCount={21} />
-        <CheckboxTag tag={"React"} tagCount={21} />
-        <CheckboxTag tag={"CSS"} tagCount={1} />
-        <CheckboxTag tag={"NodeJS"} tagCount={2} />
-        <CheckboxTag tag={"HTML"} tagCount={12} />
-        <CheckboxTag tag={"Database"} tagCount={5} />
-      </div>
-
+      <ArticleTagOptions />
       <section className={classes["article-section"]}>
         {posts?.posts.map((post) => (
           <ArticleCard key={post._id} postId={post._id} />

@@ -2,11 +2,16 @@ import { useState, useEffect, useDeferredValue } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import SearchForm from "../../components/SearchForm";
-import { MAIN_NAVIGATION_ITEMS, POST_QUERY_KEYS } from "../../utils/Constant";
+import {
+  MAIN_NAVIGATION_ITEMS,
+  POSTS_LIMIT,
+  POST_QUERY_KEYS,
+} from "../../utils/Constant";
 import classes from "../../styles/pages/articles/Articles.module.css";
 import { useLazySearchPostQuery } from "../../redux/posts/posts.api";
 import ArticleCard from "./components/ArticleCard";
 import ArticleTagOptions from "./components/ArticleTagOptions";
+import Pagination from "../../components/Pagination";
 const Articles = () => {
   const [searchPosts, { data: posts }] = useLazySearchPostQuery();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -15,11 +20,11 @@ const Articles = () => {
   const sort = searchParams.get(POST_QUERY_KEYS.SORT) || `[]`;
   const tag =
     decodeURIComponent(searchParams.get(POST_QUERY_KEYS.TAG) + "") || `["All"]`;
-
   const [tagOptions, setTagOptions] = useState<string[]>([]);
-
   const defferedQuery = useDeferredValue(q);
-  console.log("Article tag param: ", JSON.parse(tag));
+  const start = (+page - 1) * POSTS_LIMIT;
+  const end = start + POSTS_LIMIT;
+  const postLength = posts && posts.posts && posts.posts.length;
 
   let articlesContent;
 
@@ -30,9 +35,29 @@ const Articles = () => {
       sort: JSON.parse(sort),
       page: +page,
     });
-  }, [searchPosts, defferedQuery, tag, sort, page, tagOptions]);
+
+    if (posts?.total && !posts.posts.length) {
+      setSearchParams((prev) => {
+        prev.set(POST_QUERY_KEYS.PAGE, "1");
+        return prev;
+      });
+    }
+  }, [
+    searchPosts,
+    defferedQuery,
+    tag,
+    sort,
+    page,
+    tagOptions,
+    posts?.total,
+    posts?.posts,
+    setSearchParams,
+  ]);
 
   console.log("posts: ", posts);
+  console.log("postLength: ", postLength);
+
+  console.log("postLength: ", posts && Math.ceil(posts.total / POSTS_LIMIT));
 
   if (posts?.posts && posts.posts.length > 0) {
     articlesContent = (
@@ -45,7 +70,7 @@ const Articles = () => {
   } else {
     articlesContent = (
       <p className={classes["no-result"]}>
-        No result to {`"${defferedQuery}"`}
+        No result {` ${defferedQuery ? `to ${`"${defferedQuery}"`}` : ""}`}
       </p>
     );
   }
@@ -64,6 +89,16 @@ const Articles = () => {
         setSearchParams={setSearchParams}
       />
       {articlesContent}
+
+      {!!postLength && !!(Math.ceil(posts.total / POSTS_LIMIT) > 1) && (
+        <Pagination
+          activePage={page}
+          hasNextPage={end < postLength}
+          hasPrevPage={start > 0}
+          total={posts?.total}
+          setSearchParams={setSearchParams}
+        />
+      )}
     </div>
   );
 };

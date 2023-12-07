@@ -4,6 +4,7 @@ import { baseApi } from "../index.api";
 import { TPost, TPostsResponse, TSearchPostParams } from "./posts.type";
 import { RootState } from "../index";
 import { arrayToString, toEmptyStringIfNullish } from "../utils/utils";
+import { POSTS_LIMIT } from "../../utils/Constant";
 
 const postsAdapter = createEntityAdapter<TPost>({
   selectId: (post) => post._id,
@@ -56,14 +57,14 @@ export const postsApi = baseApi.injectEndpoints({
       },
     }),
     searchPost: build.query<TPostsResponse, TSearchPostParams>({
-      query: ({ q, tag, sort, page, limit }) => ({
+      query: ({ q, tag, sort, page }) => ({
         url: `/posts/search?q=${toEmptyStringIfNullish({
           item: q!,
         })}&tag=${arrayToString({
           arr: tag,
         })}&sort=${arrayToString({ arr: sort })}&page=${toEmptyStringIfNullish({
           item: page!,
-        })}&limit=${toEmptyStringIfNullish({ item: limit! })}`,
+        })}&limit=${POSTS_LIMIT}`,
       }),
     }),
   }),

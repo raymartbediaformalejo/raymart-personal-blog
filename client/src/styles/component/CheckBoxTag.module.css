@@ -37,8 +37,7 @@
   --opacity: 0.2;
 }
 .tag-checkbox.selected {
-  --outline: 2px auto var(--clr-primary-500);
-  outline-offset: 2px;
+  --outline: 2px solid var(--clr-off-white);
 }
 
 .tag-name,

@@ -18,3 +18,5 @@ export const POST_QUERY_KEYS = {
   SORT: "sort",
   PAGE: "page",
 };
+
+export const POSTS_LIMIT = 5;

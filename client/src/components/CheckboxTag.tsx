@@ -26,7 +26,7 @@ const CheckboxTag = ({ tagId, isSelected, onClick }: CheckboxTagProps) => {
         />
         <label onClick={onClick} className={tagClass} htmlFor={`tag-${tag}`}>
           <span className={classes["tag-name"]}>{tag?.name}</span>
-          <div className={classes["tag-count"]}>{tag?.tagCount}</div>
+          <span className={classes["tag-count"]}>{tag?.tagCount}</span>
         </label>
       </>
     );

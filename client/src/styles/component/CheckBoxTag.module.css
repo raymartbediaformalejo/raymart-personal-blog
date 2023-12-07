@@ -20,7 +20,6 @@
   cursor: pointer;
   user-select: none;
   width: fit-content;
-  /* line-height: 2rem; */
   font-size: var(--fs-100);
   height: var(--height);
   border-radius: var(--tag-border-raduis);
@@ -48,6 +47,8 @@
 }
 
 .tag-count {
+  display: flex;
+  align-items: center;
   height: calc(var(--height) - 2px);
   border-top-right-radius: var(--tag-border-raduis);
   border-bottom-right-radius: var(--tag-border-raduis);

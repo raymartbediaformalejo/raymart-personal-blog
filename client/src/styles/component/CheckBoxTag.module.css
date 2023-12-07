@@ -38,7 +38,7 @@
 }
 .tag-checkbox.selected {
   --outline: 2px auto var(--clr-primary-500);
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
 .tag-name,

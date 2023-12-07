@@ -1,4 +1,4 @@
-import { useEffect, useDeferredValue } from "react";
+import { useState, useEffect, useDeferredValue } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import SearchForm from "../../components/SearchForm";
@@ -13,10 +13,13 @@ const Articles = () => {
   const q = searchParams.get(POST_QUERY_KEYS.QUERY) || "";
   const page = searchParams.get(POST_QUERY_KEYS.PAGE) || "1";
   const sort = searchParams.get(POST_QUERY_KEYS.SORT) || `[]`;
-  const tag = searchParams.get(POST_QUERY_KEYS.TAG) || `["All"]`;
+  const tag =
+    decodeURIComponent(searchParams.get(POST_QUERY_KEYS.TAG) + "") || `["All"]`;
+
+  const [tagOptions, setTagOptions] = useState<string[]>([]);
 
   const defferedQuery = useDeferredValue(q);
-  console.log(tag);
+  console.log("Article tag param: ", JSON.parse(tag));
 
   let articlesContent;
 
@@ -31,7 +34,7 @@ const Articles = () => {
       page: +page,
     });
     // }
-  }, [searchPosts, defferedQuery, tag, sort, page]);
+  }, [searchPosts, defferedQuery, tag, sort, page, tagOptions]);
 
   console.log("posts: ", posts);
 
@@ -59,7 +62,11 @@ const Articles = () => {
 
       <SearchForm q={defferedQuery} setSearchParams={setSearchParams} />
 
-      <ArticleTagOptions />
+      <ArticleTagOptions
+        tagOptions={tagOptions}
+        setTagOptions={setTagOptions}
+        setSearchParams={setSearchParams}
+      />
       {articlesContent}
     </div>
   );

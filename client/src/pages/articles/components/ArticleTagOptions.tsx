@@ -1,12 +1,55 @@
+import { Dispatch, SetStateAction } from "react";
+
 import { useGetTagsQuery } from "../../../redux/tags/tags.api";
 import CheckboxTag from "../../../components/CheckboxTag";
 import classes from "../../../styles/pages/articles/ArticleTagOptions.module.css";
+import { SetURLSearchParams } from "react-router-dom";
+import { POST_QUERY_KEYS } from "../../../utils/Constant";
 
-const ArticleTagOptions = () => {
+type ArticleTagOptionsProps = {
+  tagOptions: string[];
+  setTagOptions: Dispatch<SetStateAction<string[]>>;
+  setSearchParams: SetURLSearchParams;
+};
+
+const ArticleTagOptions = ({
+  tagOptions,
+  setTagOptions,
+  setSearchParams,
+}: ArticleTagOptionsProps) => {
   const { data: tags, isLoading, isSuccess, isError } = useGetTagsQuery();
   let content;
 
   console.log("tags: ", tags);
+  console.log("tagOptions: ", tagOptions);
+
+  const handleTagOption = (tag: string) => {
+    setTagOptions((prev) => {
+      const isTagExist = prev.includes(tag);
+
+      let updatedTagOptions: string[];
+
+      if (isTagExist) {
+        updatedTagOptions = prev.filter((existingTag) => existingTag !== tag);
+      } else {
+        updatedTagOptions = [...prev, tag];
+      }
+      setSearchParams((prevSearchParams) => {
+        if (updatedTagOptions.length > 0) {
+          prevSearchParams.set(
+            POST_QUERY_KEYS.TAG,
+            JSON.stringify(updatedTagOptions)
+          );
+        } else {
+          prevSearchParams.delete(POST_QUERY_KEYS.TAG);
+        }
+
+        return prevSearchParams;
+      });
+
+      return updatedTagOptions;
+    });
+  };
 
   if (isLoading) content = <p>Loading...</p>;
 
@@ -17,7 +60,12 @@ const ArticleTagOptions = () => {
     content = (
       <div className={classes["tags"]}>
         {ids.map((tag) => (
-          <CheckboxTag key={tag} tagId={tag as string} />
+          <CheckboxTag
+            key={tag}
+            onClick={() => handleTagOption(tag + "")}
+            tagId={tag as string}
+            isSelected={tagOptions.includes(tag + "")}
+          />
         ))}
       </div>
     );

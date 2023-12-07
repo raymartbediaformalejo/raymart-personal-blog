@@ -4,11 +4,17 @@ import classes from "../styles/component/CheckBoxTag.module.css";
 
 type CheckboxTagProps = {
   tagId: string;
+  isSelected: boolean;
+  onClick: () => void;
 };
 
-const CheckboxTag = ({ tagId }: CheckboxTagProps) => {
+const CheckboxTag = ({ tagId, isSelected, onClick }: CheckboxTagProps) => {
   const tag = useAppSelector((state) => selectTagById(state, tagId));
+  const tagClass = `${classes["tag-checkbox"]} ${
+    isSelected ? classes["selected"] : ""
+  }`;
   let content;
+
   if (tag?.tagCount) {
     content = (
       <>
@@ -18,7 +24,7 @@ const CheckboxTag = ({ tagId }: CheckboxTagProps) => {
           id={`tag-${tag?.name}`}
           value={tag?.name}
         />
-        <label className={classes["tag-checkbox"]} htmlFor={`tag-${tag}`}>
+        <label onClick={onClick} className={tagClass} htmlFor={`tag-${tag}`}>
           <span className={classes["tag-name"]}>{tag?.name}</span>
           <div className={classes["tag-count"]}>{tag?.tagCount}</div>
         </label>

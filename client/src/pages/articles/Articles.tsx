@@ -24,16 +24,12 @@ const Articles = () => {
   let articlesContent;
 
   useEffect(() => {
-    console.log("eme");
-
-    // if (defferedQuery) {
     searchPosts({
       q: defferedQuery,
       tag: JSON.parse(tag),
       sort: JSON.parse(sort),
       page: +page,
     });
-    // }
   }, [searchPosts, defferedQuery, tag, sort, page, tagOptions]);
 
   console.log("posts: ", posts);

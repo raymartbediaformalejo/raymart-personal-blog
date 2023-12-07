@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { SetURLSearchParams } from "react-router-dom";
 
 import SearchIcon from "./icons/SearchIcon";
@@ -13,9 +12,7 @@ type SearchFormProps = {
   setSearchParams: SetURLSearchParams;
 };
 const SearchForm = ({ q, setSearchParams }: SearchFormProps) => {
-  const [query, setQuery] = useState("");
   const handleDeleteQuery = () => {
-    setQuery("");
     setSearchParams((prev) => {
       prev.delete(POST_QUERY_KEYS.QUERY);
       return prev;
@@ -27,9 +24,8 @@ const SearchForm = ({ q, setSearchParams }: SearchFormProps) => {
         <input
           type="text"
           placeholder="Search title..."
-          value={query ?? ""}
+          value={q ?? ""}
           onChange={(e) => {
-            setQuery(e.target.value);
             setSearchParams((prev) => {
               prev.set("q", e.target.value);
               return prev;

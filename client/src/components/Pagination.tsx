@@ -43,36 +43,45 @@ const Pagination = ({
     });
   };
 
+  console.log("hasNextPage: ", hasNextPage);
+
   return (
     <div className={classes["pagination-container"]}>
-      {hasPrevPage && (
+      <div className={classes["pagination"]}>
         <button
           onClick={handlePrevPageClick}
-          className={`${classes["prev-button"]}`}
+          className={`${classes["prev-button"]} ${
+            hasPrevPage ? classes["has-page"] : ""
+          } `}
+          disabled={!hasPrevPage}
         >
           <ArrrowIcon />
         </button>
-      )}
-      {pages &&
-        pages.map((page, i) => (
-          <button
-            key={page}
-            className={`${classes["pagination-number"]} ${
-              activePage === page ? classes.active : ""
-            } `}
-            onClick={() => handleSetActivePage(page)}
-            onKeyDown={() => handleSetActivePage(page)}
-            role="button"
-            tabIndex={i}
-          >
-            {page}
-          </button>
-        ))}
-      {hasNextPage && (
-        <button onClick={handleNextPageClick}>
+        {pages &&
+          pages.map((page, i) => (
+            <button
+              key={page}
+              className={`${classes["pagination-number"]} ${
+                activePage === page ? classes.active : ""
+              } `}
+              onClick={() => handleSetActivePage(page)}
+              onKeyDown={() => handleSetActivePage(page)}
+              role="button"
+              tabIndex={i}
+            >
+              {page}
+            </button>
+          ))}
+        <button
+          onClick={handleNextPageClick}
+          className={`${classes["next-button"]} ${
+            hasPrevPage ? classes["has-page"] : ""
+          }`}
+          disabled={!hasNextPage}
+        >
           <ArrrowIcon />
         </button>
-      )}
+      </div>
     </div>
   );
 };

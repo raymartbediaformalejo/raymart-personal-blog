@@ -24,9 +24,13 @@ const Articles = () => {
   const defferedQuery = useDeferredValue(q);
   const start = (+page - 1) * POSTS_LIMIT;
   const end = start + POSTS_LIMIT;
-  const postLength = posts && posts.posts && posts.posts.length;
+  const postLength = posts?.total;
 
   let articlesContent;
+
+  console.log("start: ", start);
+  console.log("end: ", end);
+  console.log("postLength: ", postLength);
 
   useEffect(() => {
     searchPosts({

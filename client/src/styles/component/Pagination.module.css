@@ -30,7 +30,7 @@
 
 .pagination button:hover,
 .pagination button:focus {
-  background-color: var(--bg-color);
+  --bg-color: hsl(var(--clr-neutral-border) / 0.2);
 }
 
 /* .pagination-number,
@@ -40,7 +40,7 @@
 } */
 
 .pagination button.active {
-  background-color: hsl(var(--clr-neutral-primary-500) / 0.5);
+  --bg-color: hsl(var(--clr-neutral-primary-500) / 0.5);
 }
 
 .next-button,

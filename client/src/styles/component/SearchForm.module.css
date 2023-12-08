@@ -40,7 +40,7 @@
 }
 
 .search-icon {
-  color: hsl(var(--clr-icon));
+  color: hsl(var(--clr-neutral-off-white));
 }
 
 .search-button-wrapper {

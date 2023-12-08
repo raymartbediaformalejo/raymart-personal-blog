@@ -8,6 +8,7 @@ router.get("/search", postsController.searchPosts);
 
 router
   .route("/")
+  // .get(verifyJWT, postsController.getAllPosts)
   .post(verifyJWT, postsController.createNewPost)
   .patch(verifyJWT, postsController.updatePost)
   .delete(verifyJWT, postsController.deletePost);

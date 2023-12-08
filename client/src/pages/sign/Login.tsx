@@ -11,9 +11,11 @@ import { useLoginMutation } from "../../redux/auth/auth.api";
 import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../../redux/auth/auth.slice";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import usePersist from "../../hooks/usePersist";
 
 const Login = () => {
   const dispatch = useAppDispatch();
+  const [persist, setPersist] = usePersist();
   const [login, { isLoading }] = useLoginMutation();
   const navigate = useNavigate();
 
@@ -28,6 +30,8 @@ const Login = () => {
     resolver: zodResolver(loginSchema),
   });
   console.log("watch: ", watch(["username", "password"]));
+
+  const handleToggle = () => setPersist((prev) => !prev);
 
   // const [canFocus, setCanFocus] = useState(false);
 
@@ -81,6 +85,16 @@ const Login = () => {
           <button className="form__submit-button">
             {isLoading ? "Loading..." : "Login"}
           </button>
+          <label htmlFor="persist" className="form__persist">
+            <input
+              type="checkbox"
+              className="form__checkbox"
+              id="persist"
+              onChange={handleToggle}
+              checked={persist}
+            />
+            Trust This Device
+          </label>
         </form>
       </div>
     </section>

@@ -3,9 +3,10 @@ import { jwtDecode } from "jwt-decode";
 
 const useAuth = () => {
   const token = useAppSelector((state) => state.auth.token);
-  console.log(token);
   let isAdmin = false;
   let status = "";
+
+  console.log("token: ", token);
 
   if (token) {
     const decoded = jwtDecode(token);

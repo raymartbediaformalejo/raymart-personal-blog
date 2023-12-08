@@ -14,6 +14,7 @@ const FeturedPosts = () => {
   } = useGetFeaturedPostsQuery(
     { featured: true },
     {
+      pollingInterval: 15000,
       refetchOnFocus: true,
       refetchOnMountOrArgChange: true,
     }

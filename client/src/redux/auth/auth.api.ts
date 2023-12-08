@@ -1,6 +1,6 @@
 import { baseApi } from "../index.api";
 import { TAuthInitial, TAuthToken } from "../../types/types";
-import { logOut } from "./auth.slice";
+import { logOut, setCredentials } from "./auth.slice";
 
 export const authApiSlice = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -34,6 +34,16 @@ export const authApiSlice = baseApi.injectEndpoints({
         url: "/auth/refresh",
         method: "GET",
       }),
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          console.log(data);
+          const { accessToken } = data;
+          dispatch(setCredentials({ accessToken }));
+        } catch (err) {
+          console.log(err);
+        }
+      },
     }),
   }),
 });

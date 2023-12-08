@@ -1,7 +1,13 @@
-import { useState, useEffect } from "react";
+// usePersist.ts
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
 
-const usePersist = () => {
-  const [persist, setPersist] = useState(
+export type PersistHookReturnType = [
+  boolean,
+  Dispatch<SetStateAction<boolean>>
+];
+
+const usePersist = (): PersistHookReturnType => {
+  const [persist, setPersist] = useState<boolean>(
     JSON.parse(localStorage.getItem("persist") + "") || false
   );
 

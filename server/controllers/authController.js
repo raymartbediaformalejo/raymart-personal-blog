@@ -30,12 +30,14 @@ const login = async (req, res) => {
       },
     },
     process.env.ACCESS_TOKEN_SECRET,
+    // { expiresIn: "10s" }
     { expiresIn: "35m" }
   );
 
   const refreshToken = jwt.sign(
     { username: foundUser.username },
     process.env.REFRESH_TOKEN_SECRET,
+    // { expiresIn: "20s" }
     { expiresIn: "7d" }
   );
 
@@ -81,6 +83,7 @@ const refresh = (req, res) => {
           },
         },
         process.env.ACCESS_TOKEN_SECRET,
+        // { expiresIn: "10s" }
         { expiresIn: "35m" }
       );
 

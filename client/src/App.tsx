@@ -6,15 +6,17 @@ import Articles from "./pages/articles/Articles";
 import TodayILearned from "./pages/til/TodayILearned";
 import About from "./pages/about/About";
 import Login from "./pages/sign/Login";
-import { jwtDecode } from "jwt-decode";
+import PersistLogin from "./pages/sign/PersistLogin";
+import NewArticle from "./pages/articles/NewArticle";
 import { useAppSelector } from "./redux/hooks/useAppSelector";
+import { selectCurrentToken } from "./redux/auth/auth.slice";
 
 function App() {
-  const token = useAppSelector((state) => state.auth.token);
+  const token = useAppSelector(selectCurrentToken);
   console.log("token: ", token);
 
-  const decoded = jwtDecode(token!);
-  console.log(decoded);
+  // const decoded = jwtDecode(token!);
+  // console.log(decoded);
 
   return (
     <Routes>
@@ -25,6 +27,10 @@ function App() {
           <Route path="today-i-learned" element={<TodayILearned />} />
           <Route path="about" element={<About />} />
           <Route path="login" element={<Login />} />
+
+          <Route element={<PersistLogin />}>
+            <Route path="/articles/new" element={<NewArticle />} />
+          </Route>
         </Route>
       </Route>
     </Routes>

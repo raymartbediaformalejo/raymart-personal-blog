@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -74,7 +74,7 @@ const Login = () => {
           <LoginControllerInput
             name="password"
             placeholder="Password"
-            type="text"
+            type="password"
             control={control}
             errorMessage={formState.errors.password?.message}
           />

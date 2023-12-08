@@ -6,8 +6,16 @@ import Articles from "./pages/articles/Articles";
 import TodayILearned from "./pages/til/TodayILearned";
 import About from "./pages/about/About";
 import Login from "./pages/sign/Login";
+import { jwtDecode } from "jwt-decode";
+import { useAppSelector } from "./redux/hooks/useAppSelector";
 
 function App() {
+  const token = useAppSelector((state) => state.auth.token);
+  console.log("token: ", token);
+
+  const decoded = jwtDecode(token!);
+  console.log(decoded);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

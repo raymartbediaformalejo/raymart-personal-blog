@@ -1,11 +1,8 @@
 import z from "zod";
 
 const isValidPassword = (password: string) => {
-  return (
-    /[a-zA-Z]/.test(password) &&
-    /\d/.test(password) &&
-    !/[^a-zA-Z0-9]/.test(password)
-  );
+  // Check if the password contains only letters or numbers, or both
+  return /^[a-zA-Z0-9]+$/.test(password);
 };
 
 export const loginSchema = z.object({

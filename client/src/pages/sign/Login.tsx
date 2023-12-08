@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -6,9 +6,20 @@ import classes from "../../styles/pages/sign/Login.module.css";
 import { TLogin } from "../../types/types";
 import { loginSchema } from "../../types/schema/Login.schema";
 import LoginControllerInput from "../../components/input/LoginControllerInput";
+import { useAppDispatch } from "../../redux/hooks/useAppDispatch";
+import { useLoginMutation } from "../../redux/auth/auth.api";
+import { useNavigate } from "react-router-dom";
+import { setCredentials } from "../../redux/auth/auth.slice";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
 const Login = () => {
-  const { handleSubmit, control, watch, formState } = useForm<TLogin>({
+  const dispatch = useAppDispatch();
+  const [login, { isLoading }] = useLoginMutation();
+  const navigate = useNavigate();
+
+  const [errMsg, setErrMsg] = useState("");
+
+  const { handleSubmit, control, watch, reset, formState } = useForm<TLogin>({
     shouldFocusError: false,
     defaultValues: {
       username: "",
@@ -16,22 +27,43 @@ const Login = () => {
     },
     resolver: zodResolver(loginSchema),
   });
-  const [canFocus, setCanFocus] = useState(false);
+  console.log("watch: ", watch(["username", "password"]));
 
-  const onSubmit = () => {};
-  const onErrors = () => {
-    setCanFocus(true);
+  // const [canFocus, setCanFocus] = useState(false);
+
+  const onSubmit = async (data: TLogin) => {
+    const { username, password } = data;
+    try {
+      const { accessToken } = await login({ username, password }).unwrap();
+      dispatch(setCredentials({ accessToken }));
+      reset();
+      navigate("/");
+    } catch (err) {
+      // @ts-expect-error: Unreachable code error
+      if (!("status" in err)) {
+        setErrMsg("No Server Response");
+      } else if ((err as FetchBaseQueryError).status === 400) {
+        setErrMsg("Missing Username or Password");
+      } else if ((err as FetchBaseQueryError).status === 401) {
+        setErrMsg("Unauthorized");
+      } else {
+        // @ts-expect-error: Unreachable code error
+        // prettier-ignore
+        setErrMsg((err as FetchBaseQueryError).data?.message)
+      }
+    }
   };
+  // const onErrors = () => {
+  //   setCanFocus(true);
+  // };
   return (
     <section className={classes["login-wrapper"]}>
       <header>
         <h1>Login</h1>
       </header>
       <div className={classes["login"]}>
-        <form
-          className={classes["form"]}
-          onSubmit={handleSubmit(onSubmit, onErrors)}
-        >
+        <p aria-live="assertive">{errMsg}</p>
+        <form className={classes["form"]} onSubmit={handleSubmit(onSubmit)}>
           <LoginControllerInput
             name="username"
             placeholder="Username"
@@ -46,28 +78,9 @@ const Login = () => {
             control={control}
             errorMessage={formState.errors.password?.message}
           />
-          {/* <label htmlFor={classes["username"]}>Username:</label>
-          <input
-            className="form__input"
-            type="text"
-            id="username"
-            ref={userRef}
-            value={username}
-            onChange={handleUserInput}
-            autoComplete="off"
-            required
-          /> */}
-          {/* 
-          <label htmlFor="password">Password:</label>
-          <input
-            className="form__input"
-            type="password"
-            id="password"
-            onChange={handlePwdInput}
-            value={password}
-            required
-          /> */}
-          <button className="form__submit-button">Sign In</button>
+          <button className="form__submit-button">
+            {isLoading ? "Loading..." : "Login"}
+          </button>
         </form>
       </div>
     </section>

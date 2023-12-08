@@ -44,6 +44,9 @@
   --clr-neutral-border: 0 0% 100%;
   --clr-neutral-off-white: 0 0% 95%;
 
+  --clr-danger: hsl(0 77% 53%);
+  --clr-neutral-danger: 0 77% 53%;
+
   /* ANIMATION */
   --transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }

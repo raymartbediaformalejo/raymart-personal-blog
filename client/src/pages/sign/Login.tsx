@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../../redux/auth/auth.slice";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import usePersist from "../../hooks/usePersist";
+import Button from "../../components/ui/Button";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -74,6 +75,7 @@ const Login = () => {
             type="text"
             control={control}
             errorMessage={formState.errors.username?.message}
+            autoComplete="off"
           />
           <LoginControllerInput
             name="password"
@@ -82,19 +84,19 @@ const Login = () => {
             control={control}
             errorMessage={formState.errors.password?.message}
           />
-          <button className="form__submit-button">
-            {isLoading ? "Loading..." : "Login"}
-          </button>
-          <label htmlFor="persist" className="form__persist">
+          <label htmlFor="persist" className={classes["form__persist"]}>
             <input
               type="checkbox"
-              className="form__checkbox"
+              className={classes["form__checkbox"]}
               id="persist"
               onChange={handleToggle}
               checked={persist}
             />
-            Trust This Device
+            Trust this device
           </label>
+          <Button type="submit" className={classes["form__submit-button"]}>
+            {isLoading ? "Loading..." : "Sign in"}
+          </Button>
         </form>
       </div>
     </section>

@@ -21,6 +21,7 @@ const Input = ({
   errorMessage,
   inputRef,
   className,
+  autoComplete
 }: TInputProps) => {
   // const {
   //   formState: { errors },
@@ -54,6 +55,7 @@ const Input = ({
             value={value}
             className={`${classes["input-field"]} ${classes[variant]} ${classes[sizes]}`}
             aria-describedby={`error-for-${getId() as string}`}
+            autoComplete={autoComplete}
           />
         </div>
       </div>

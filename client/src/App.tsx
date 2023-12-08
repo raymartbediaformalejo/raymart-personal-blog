@@ -21,12 +21,12 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route path="login" element={<Login />} />
         <Route element={<Prefetch />}>
           <Route index element={<Home />} />
           <Route path="articles" element={<Articles />} />
           <Route path="today-i-learned" element={<TodayILearned />} />
           <Route path="about" element={<About />} />
-          <Route path="login" element={<Login />} />
 
           <Route element={<PersistLogin />}>
             <Route path="/articles/new" element={<NewArticle />} />

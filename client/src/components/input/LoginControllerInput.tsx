@@ -10,6 +10,7 @@ type LoginControllerInputProps = {
   errorMessage?: string;
   placeholder?: string;
   type?: HTMLInputTypeAttribute;
+  autoComplete?: string
 };
 
 const LoginControllerInput = ({
@@ -18,6 +19,7 @@ const LoginControllerInput = ({
   type,
   control,
   errorMessage,
+  autoComplete
 }: LoginControllerInputProps) => {
   return (
     <Controller
@@ -30,6 +32,7 @@ const LoginControllerInput = ({
           value={field.value as string | undefined}
           onChange={(value) => field.onChange(value)}
           errorMessage={errorMessage}
+          autoComplete={autoComplete}
         />
       )}
     />

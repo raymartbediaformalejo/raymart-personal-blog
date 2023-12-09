@@ -3,6 +3,7 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import "react-quill/dist/quill.snow.css";
 import Select from "react-select";
+import axios from "axios";
 
 import { useAppSelector } from "../../../redux/hooks/useAppSelector";
 import { selectAllCategories } from "../../../redux/categories/categories.api";
@@ -42,6 +43,7 @@ const NewPost = () => {
     },
     resolver: zodResolver(postSchema),
   });
+  const coverImage = watch("image");
   // const { data: categories } = useGetCategoriesQuery();
   const categories = useAppSelector(selectAllCategories);
   const tags = useAppSelector(selectAllTags);
@@ -88,6 +90,75 @@ const NewPost = () => {
           type="text"
           errorMessage={formState.errors.summary?.message}
         />
+        <Controller
+          control={control}
+          name="image"
+          render={({ field }) => {
+            return (
+              <div>
+                <p>Cover photo:</p>
+                <div>
+                  <label htmlFor="cover-photo">
+                    <p>Choose file</p>
+                  </label>
+                  <input
+                    onChange={async (image) => {
+                      const fileInput = image.target as HTMLInputElement;
+
+                      if (fileInput.files && fileInput.files.length > 0) {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(fileInput.files[0]);
+
+                        const formData = new FormData();
+                        for (const file of fileInput.files) {
+                          console.log("file: ", file);
+
+                          formData.append("file", file);
+                        }
+                        formData.append(
+                          "upload_preset",
+                          import.meta.env.VITE_CLOUDINARY_PRESET_NAME
+                        );
+
+                        console.log(formData);
+
+                        try {
+                          const response = await axios.post(
+                            import.meta.env.VITE_CLOUDINARY_URL,
+                            formData
+                          );
+                          const imageData = response.data;
+
+                          console.log("Image data:", imageData.secure_url);
+                          // if (imageData.secure_url) {
+                          //   imageSrc = imageData.secure_url;
+                          // }
+                        } catch (error) {
+                          console.error("Error uploading image:", error);
+                        }
+                      }
+
+                      field.onChange(image);
+                    }}
+                    id="cover-photo"
+                    name="cover-photo"
+                    type="file"
+                  />
+                  <span>{field.value ? field.value : "No file chosen"}</span>
+                </div>
+
+                {field.value && typeof field.value === "string" ? (
+                  <div>
+                    <img src={coverImage} alt="Cover photo" />
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+            );
+          }}
+        />
+
         <Controller
           name="content"
           control={control}

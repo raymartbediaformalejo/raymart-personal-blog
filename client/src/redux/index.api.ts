@@ -7,14 +7,6 @@ import type {
 
 import { RootState } from "./index";
 
-// export const baseApi = createApi({
-//   baseQuery: fetchBaseQuery({
-//     baseUrl: "http://localhost:5500",
-//   }),
-//   tagTypes: ["Post", "Category", "Tag"],
-//   endpoints: () => ({}),
-// });
-
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:5500",
   credentials: "include",

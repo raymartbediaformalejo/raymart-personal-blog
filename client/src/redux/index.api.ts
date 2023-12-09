@@ -25,10 +25,6 @@ const baseQueryWithReauth: BaseQueryFn<
   unknown,
   FetchBaseQueryError
 > = async (args, api, extraOptions) => {
-  // console.log(args) // request url, method, body
-  // console.log(api) // signal, dispatch, getState()
-  // console.log(extraOptions) //custom like {shout: true}
-
   let result = await baseQuery(args, api, extraOptions);
 
   // If you want, handle other status codes, too

@@ -5,10 +5,16 @@ import { TOption } from "../../types/types";
 import classes from "../../styles/component/select/PostSelectController.module.css";
 type PostInputControllerProps = {
   control: Control<TPost>;
-  name: FieldPath<{ category: string; tag: string }>;
+  name: FieldPath<{
+    category: string;
+    tag: string;
+    status: string;
+    visibility: string;
+  }>;
   errors: FieldErrors<TPost>;
   options: TOption[];
   placeholder?: string;
+  isMulti?: boolean;
 };
 
 const PostSelectController = ({
@@ -17,6 +23,7 @@ const PostSelectController = ({
   control,
   options,
   errors,
+  isMulti = false,
 }: PostInputControllerProps) => {
   return (
     <div>
@@ -25,8 +32,9 @@ const PostSelectController = ({
         control={control}
         render={({ field }) => (
           <Select
-            isMulti
             // @ts-expect-error: Unreachable code error
+            getOptionValue={({ id }) => id}
+            isMulti={isMulti}
             options={options}
             placeholder={placeholder}
             value={field.value}

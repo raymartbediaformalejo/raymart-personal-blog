@@ -22,6 +22,7 @@ export type TAuthMsgResponse = {
 export type TOption = {
   value: string;
   label: string;
+  id?: string;
 };
 
 export type TGroupOption = {

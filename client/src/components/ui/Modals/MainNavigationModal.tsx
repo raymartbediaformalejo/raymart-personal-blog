@@ -14,8 +14,8 @@ const MainNavigationModal = ({ isOpen, onClose }: MainNavigationModalProps) => {
     <Modal onClose={onClose} isOpened={isOpen} position="bottom">
       {Object.entries(MAIN_NAVIGATION_ITEMS).map(([key, { url, name }]) => (
         <Link
-          className={classes["nav-item"]}
           key={key}
+          className={classes["nav-item"]}
           to={url}
           onClick={onClose}
         >

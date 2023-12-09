@@ -30,9 +30,11 @@ const ArticleCard = ({ postId }: ArticleCardProps) => {
             }
           )}`}</p>
           <div className={classes["tag-wrapper"]}>
-            {post.tag.map((tag) => (
-              <ArticleTag key={tag} tagId={tag} />
-            ))}
+            {post.tag.map((tag) => {
+              if (typeof tag === "string") {
+                return <ArticleTag key={tag} tagId={tag} />;
+              } else return null;
+            })}
           </div>
         </header>
         <p className={classes["summary"]}>{post.summary}</p>

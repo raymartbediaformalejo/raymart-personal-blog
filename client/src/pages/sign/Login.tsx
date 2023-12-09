@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import classes from "../../styles/pages/sign/Login.module.css";
 import { TLogin } from "../../types/types";
 import { loginSchema } from "../../types/schema/Login.schema";
-import LoginControllerInput from "../../components/input/LoginControllerInput";
+import LoginInputController from "../../components/input/LoginInputController";
 import { useAppDispatch } from "../../redux/hooks/useAppDispatch";
 import { useLoginMutation } from "../../redux/auth/auth.api";
 import { useNavigate } from "react-router-dom";
@@ -69,7 +69,7 @@ const Login = () => {
       <div className={classes["login"]}>
         <p aria-live="assertive">{errMsg}</p>
         <form className={classes["form"]} onSubmit={handleSubmit(onSubmit)}>
-          <LoginControllerInput
+          <LoginInputController
             name="username"
             placeholder="Username"
             type="text"
@@ -77,7 +77,7 @@ const Login = () => {
             errorMessage={formState.errors.username?.message}
             autoComplete="off"
           />
-          <LoginControllerInput
+          <LoginInputController
             name="password"
             placeholder="Password"
             type="password"

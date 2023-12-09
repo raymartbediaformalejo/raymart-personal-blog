@@ -3,20 +3,20 @@ import { Controller, Control, FieldPath } from "react-hook-form";
 import Input from "./Input";
 import { TPost } from "../../redux/posts/posts.type";
 
-type PostControllerInputProps = {
+type PostInputControllerProps = {
   control: Control<TPost>;
   name: FieldPath<TPost>;
   errorMessage?: string;
   placeholder?: string;
   type?: HTMLInputTypeAttribute;
 };
-const PostControllerInput = ({
+const PostInputController = ({
   name,
   placeholder,
   type,
   control,
   errorMessage,
-}: PostControllerInputProps) => {
+}: PostInputControllerProps) => {
   return (
     <Controller
       name={name}
@@ -34,4 +34,4 @@ const PostControllerInput = ({
   );
 };
 
-export default PostControllerInput;
+export default PostInputController;

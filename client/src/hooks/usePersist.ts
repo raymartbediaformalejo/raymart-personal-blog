@@ -1,10 +1,7 @@
 // usePersist.ts
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 
-export type PersistHookReturnType = [
-  boolean,
-  Dispatch<SetStateAction<boolean>>
-];
+type PersistHookReturnType = [boolean, Dispatch<SetStateAction<boolean>>];
 
 const usePersist = (): PersistHookReturnType => {
   const [persist, setPersist] = useState<boolean>(

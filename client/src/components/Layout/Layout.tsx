@@ -8,15 +8,24 @@ const Layout = () => {
   const { pathname } = useLocation();
   const isDashboard = pathname.includes(DASHBOARD);
 
-  return (
-    <div className={classes["main"]}>
-      <div className={classes["main-wrapper"]}>
-        {!isDashboard && <Header />}
+  let content;
+
+  if (!isDashboard) {
+    content = (
+      <>
+        <Header />
         <main>
           <Outlet />
         </main>
-        {!isDashboard && <Footer />}
-      </div>
+        <Footer />
+      </>
+    );
+  } else {
+    content = <Outlet />;
+  }
+  return (
+    <div className={classes["main"]}>
+      <div className={classes["main-wrapper"]}>{content}</div>
     </div>
   );
 };

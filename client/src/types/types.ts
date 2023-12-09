@@ -18,3 +18,13 @@ export type TAuthInitial = {
 export type TAuthMsgResponse = {
   message: string;
 };
+
+export type TOption = {
+  value: string;
+  label: string;
+};
+
+export type TGroupOption = {
+  label: string;
+  options: TOption[];
+};

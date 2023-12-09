@@ -4,7 +4,7 @@ import { Controller, Control, FieldPath } from "react-hook-form";
 import { TLogin } from "../../types/types";
 import Input from "./Input";
 
-type LoginControllerInput = {
+type LoginInputControllerProps = {
   control: Control<TLogin>;
   name: FieldPath<TLogin>;
   errorMessage?: string;
@@ -13,14 +13,14 @@ type LoginControllerInput = {
   autoComplete?: string;
 };
 
-const LoginControllerInput = ({
+const LoginInputController = ({
   name,
   placeholder,
   type,
   control,
   errorMessage,
   autoComplete,
-}: LoginControllerInput) => {
+}: LoginInputControllerProps) => {
   return (
     <Controller
       name={name}
@@ -39,4 +39,4 @@ const LoginControllerInput = ({
   );
 };
 
-export default LoginControllerInput;
+export default LoginInputController;

@@ -1,27 +1,29 @@
 import { useState } from "react";
 
-import classes from "../styles/component/Header.module.css";
-import HamburgerIcon from "./icons/HamburgerIcon";
-import SunIcon from "./icons/SunIcon";
-import Button from "./ui/Button";
-import Tooltip from "./ui/Tooltip";
-import MainNavigationModal from "./ui/Modals/MainNavigationModal";
+import classes from "../../../styles/component/Header.module.css";
+import HamburgerIcon from "../../icons/HamburgerIcon";
+import SunIcon from "../../icons/SunIcon";
+import Button from "../../ui/Button";
+import Tooltip from "../../ui/Tooltip";
 import { Link } from "react-router-dom";
+import DashboardNavigationModal from "../../ui/Modals/DashboardNavigationModal";
 
-const Header = () => {
+const DashboardHeader = () => {
   const [isOpenNavModal, setIsOpenNavModal] = useState(false);
 
   const handleToggleNav = () => {
     setIsOpenNavModal((prev) => !prev);
   };
-
   return (
     <>
-      <MainNavigationModal isOpen={isOpenNavModal} onClose={handleToggleNav} />
+      <DashboardNavigationModal
+        isOpen={isOpenNavModal}
+        onClose={handleToggleNav}
+      />
       <header className={classes["header"]}>
         <nav className={classes["nav"]}>
-          <Link to="/">
-            <Tooltip text="Raymart Formalejo Blog">
+          <Link to="/dashboard">
+            <Tooltip text="Dashboard Raymart Blog">
               <Button variant="icon">
                 <p className={classes["logo"]}>RB</p>
               </Button>
@@ -43,4 +45,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default DashboardHeader;

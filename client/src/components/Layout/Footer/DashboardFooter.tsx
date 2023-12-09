@@ -1,11 +1,11 @@
-import classes from "../styles/component/Footer.module.css";
-import Button from "./ui/Button";
-import LinkenIcon from "./icons/social/LinkenIcon";
-import Tooltip from "./ui/Tooltip";
-import GithubIcon from "./icons/social/GithubIcon";
-import FacebookIcon from "./icons/social/FacebookIcon";
+import classes from "../../../styles/component/Footer.module.css";
+import Button from "../../ui/Button";
+import LinkenIcon from "../../icons/social/LinkenIcon";
+import Tooltip from "../../ui/Tooltip";
+import GithubIcon from "../../icons/social/GithubIcon";
+import FacebookIcon from "../../icons/social/FacebookIcon";
 
-const Footer = () => {
+const DashboardFooter = () => {
   return (
     <footer className={classes["footer-wrapper"]}>
       <div className={classes["footer"]}>
@@ -44,4 +44,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default DashboardFooter;

@@ -6,8 +6,6 @@ const useAuth = () => {
   let isAdmin = false;
   let status = "";
 
-  console.log("token: ", token);
-
   if (token) {
     const decoded = jwtDecode(token);
     // @ts-expect-error: Unreachable code error

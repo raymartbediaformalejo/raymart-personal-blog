@@ -1,26 +1,22 @@
 import { HTMLInputTypeAttribute } from "react";
 import { Controller, Control, FieldPath } from "react-hook-form";
-
-import { TLogin } from "../../types/types";
 import Input from "./Input";
+import { TPost } from "../../redux/posts/posts.type";
 
-type LoginControllerInput = {
-  control: Control<TLogin>;
-  name: FieldPath<TLogin>;
+type PostControllerInputProps = {
+  control: Control<TPost>;
+  name: FieldPath<TPost>;
   errorMessage?: string;
   placeholder?: string;
   type?: HTMLInputTypeAttribute;
-  autoComplete?: string;
 };
-
-const LoginControllerInput = ({
+const PostControllerInput = ({
   name,
   placeholder,
   type,
   control,
   errorMessage,
-  autoComplete,
-}: LoginControllerInput) => {
+}: PostControllerInputProps) => {
   return (
     <Controller
       name={name}
@@ -32,11 +28,10 @@ const LoginControllerInput = ({
           value={field.value as string | undefined}
           onChange={(value) => field.onChange(value)}
           errorMessage={errorMessage}
-          autoComplete={autoComplete}
         />
       )}
     />
   );
 };
 
-export default LoginControllerInput;
+export default PostControllerInput;

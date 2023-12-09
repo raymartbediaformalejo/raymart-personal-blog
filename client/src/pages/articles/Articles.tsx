@@ -58,11 +58,6 @@ const Articles = () => {
     setSearchParams,
   ]);
 
-  console.log("posts: ", posts);
-  console.log("postLength: ", postLength);
-
-  console.log("postLength: ", posts && Math.ceil(posts.total / POSTS_LIMIT));
-
   if (posts?.posts && posts.posts.length > 0) {
     articlesContent = (
       <section className={classes["article-section"]}>

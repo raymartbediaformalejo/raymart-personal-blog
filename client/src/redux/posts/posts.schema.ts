@@ -1,7 +1,10 @@
 import { z } from "zod";
 
-export const postSchema = z.object({
+export const postIdSchema = z.object({
   _id: z.string(),
+});
+
+const postSchemaRaw = z.object({
   author: z.string(),
   category: z.array(z.string()),
   tag: z.array(z.string()),
@@ -13,16 +16,23 @@ export const postSchema = z.object({
   visibility: z.string(),
   featured: z.boolean(),
   articles: z.array(z.unknown()),
+});
+
+export const postSchema = postIdSchema.merge(postSchemaRaw);
+
+const postResponseSchemaRaw = z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
   __v: z.number(),
 });
 
+export const postResponseSchema = postSchema.merge(postResponseSchemaRaw);
+
 export const postsSchema = z.object({
   total: z.number(),
   page: z.number(),
   limit: z.number(),
-  posts: z.array(postSchema),
+  posts: z.array(postResponseSchema),
 });
 
 export const searchPostParams = z.object({

@@ -6,40 +6,14 @@ export const postIdSchema = z.object({
 
 export const postSchema = z.object({
   author: z.string(),
-  category: z.array(
-    z.string().or(
-      z.object({
-        value: z.string(),
-        label: z.string(),
-        id: z.string(),
-      })
-    )
-  ),
-  tag: z.array(
-    z.string().or(
-      z.object({
-        value: z.string(),
-        label: z.string(),
-        id: z.string(),
-      })
-    )
-  ),
+  category: z.array(z.string()),
+  tag: z.array(z.string()),
   title: z.string(),
   image: z.string(),
   summary: z.string(),
   content: z.string(),
-  status: z.string().or(
-    z.object({
-      value: z.string(),
-      label: z.string(),
-    })
-  ),
-  visibility: z.string().or(
-    z.object({
-      value: z.string(),
-      label: z.string(),
-    })
-  ),
+  status: z.string(),
+  visibility: z.string(),
   featured: z.boolean(),
   articles: z.array(z.unknown()),
 });

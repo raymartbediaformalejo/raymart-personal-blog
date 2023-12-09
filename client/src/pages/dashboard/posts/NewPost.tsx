@@ -52,9 +52,7 @@ const NewPost = () => {
     resolver: zodResolver(postSchema),
   });
 
-  const [addNewPost, {  isSuccess, isError, error }] =
-    useAddNewPostMutation();
-  // const { data: categories } = useGetCategoriesQuery();
+  const [addNewPost, { isSuccess, isError, error }] = useAddNewPostMutation();
   const categories = useAppSelector(selectAllCategories);
   const tags = useAppSelector(selectAllTags);
   const formData: FormData = new FormData();
@@ -67,11 +65,6 @@ const NewPost = () => {
     value: category._id,
     label: category.name,
   }));
-
-  // const categoryArr = categories.map((category) => ({
-  //   label: category.name,
-  //   value: category._id,
-  // }));
 
   const tagOptions = tags.map((tag) => ({
     value: tag._id,
@@ -87,22 +80,14 @@ const NewPost = () => {
     { value: "Draft", label: "Draft" },
     { value: "Published", label: "Published" },
   ];
-  // const categoriesOption = categories;
 
   const onSubmit = async (data: TPost) => {
     try {
-      console.log("========FINAL===============");
-
-      console.log(watch());
       await addNewPost({ ...data });
       reset();
     } catch (error) {
       console.log(`💥 ${error}`);
     }
-
-    // if(title) {
-    //   addNewPost({author, })
-    // }
   };
   console.log("ERRORS: ", formState.errors);
   if (isError) console.log(error);

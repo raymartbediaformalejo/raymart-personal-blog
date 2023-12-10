@@ -27,6 +27,7 @@ import classes from "../../../styles/pages/dashboard/NewPost.module.css";
 import { TOption } from "../../../types/types";
 import { selectAllTags } from "../../../redux/tags/tags.api";
 import { useAddNewPostMutation } from "../../../redux/posts/posts.api";
+import { Paper } from "@mui/material";
 const loadQuillNoSSRWrapper = () =>
   import("react-quill").then((module) => ({ default: module.default }));
 
@@ -159,6 +160,7 @@ const NewPost = () => {
             render={({ field }) => (
               <TextField
                 {...field}
+                maxRows={4}
                 className={classes["input-texfield-item-wrapper"]}
                 id="title"
                 label="Title"
@@ -173,6 +175,7 @@ const NewPost = () => {
             render={({ field }) => (
               <TextField
                 {...field}
+                className={classes["input-texfield-item-wrapper"]}
                 id="summary"
                 label="Summary"
                 variant="outlined"
@@ -189,6 +192,7 @@ const NewPost = () => {
                   component="label"
                   variant="outlined"
                   startIcon={<UploadFileIcon />}
+                  size="large"
                 >
                   Upload Cover Photo
                   <input
@@ -233,14 +237,23 @@ const NewPost = () => {
               );
             }}
           />
-          {watch("image") && <img src={watch("image")} alt="cover photo" />}
+          {watch("image") && (
+            <Paper
+              variant="outlined"
+              elevation={1}
+              className={classes["cover-photo-wrapper"]}
+            >
+              <img src={watch("image")} alt="cover photo" />
+            </Paper>
+          )}
           <Controller
             name="featured"
             control={control}
             render={({ field }) => (
               <FormControlLabel
+                className={classes["form__checkbox-wrapper"]}
                 {...field}
-                control={<Checkbox defaultChecked />}
+                control={<Checkbox />}
                 label="Is featured?"
               />
             )}

@@ -1,2 +1,79 @@
-.editor {
+.new-post {
+  --border-color: var(--clr-border);
+  --color: var(--clr-primary-100);
+  --border-radius: 4px;
+  --label-color: var(--clr-neutral-off-white);
+
+  color: var(--color);
+}
+
+.title-wrapper {
+  border-bottom: 1px solid var(--clr-border);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  padding: 16px 17.5px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: var(--fw-600);
+}
+
+.new-form__form-wrapper {
+  background-color: hsl(var(--clr-neutral-border) / 0.05);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--clr-border);
+  overflow: hidden;
+  margin: 1.25rem 0;
+}
+
+.new-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  padding: 17.5px;
+}
+
+/* =========================== INPUT FIELD=============== */
+.input-texfield-item-wrapper {
+}
+
+/* ===========================END INPUT FIELD=============== */
+
+.input-item-wrapper label {
+  color: hsl(var(--label-color) / 0.3);
+}
+
+.select-category {
+}
+
+.new-form__form .input-item-wrapper .select-category div:first-child {
+  background: hsl(var(--clr-neutral-body-bg) / 0.2);
+}
+
+.new-form__form .input-item-wrapper .select-category fieldset {
+  color: var(--color);
+  border-color: var(--border-color);
+}
+.new-form__form .input-item-wrapper .select-category svg {
+  color: hsl(var(--clr-neutral-border) / 0.2);
+}
+
+.new-form__form
+  .input-item-wrapper
+  .select-category[class*="Mui-focused"]
+  fieldset {
+  --border-color: var(--clr-primary-500);
+}
+
+.new-form__form .input-item-wrapper .select-category[class*="Mui-focused"] svg {
+  --color: hsl(var(--clr-neutral-border) / 0.2);
+}
+
+.new-form__form .input-item-wrapper .select-category:hover fieldset {
+  --border-color: hsl(var(--clr-neutral-border) / 0.2);
+}
+
+.new-form__form .input-item-wrapper .select-category:hover svg {
+  --color: hsl(var(--clr-neutral-border) / 0.2);
 }

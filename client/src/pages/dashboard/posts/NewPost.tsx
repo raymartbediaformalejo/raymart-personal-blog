@@ -13,7 +13,6 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
-import Container from "@mui/material/Container";
 
 import { useAppSelector } from "../../../redux/hooks/useAppSelector";
 import { selectAllCategories } from "../../../redux/categories/categories.api";
@@ -94,30 +93,31 @@ const NewPost = () => {
   if (isSuccess) console.log("Successfully add post");
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Container
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-            marginTop: "1rem",
-          }}
-        >
+    <div className={classes["new-post"]}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={classes["new-form__form-wrapper"]}
+      >
+        <div className={classes["title-wrapper"]}>
+          <h2 className={classes["title"]}>Add new form</h2>
+        </div>
+
+        <div className={classes["new-form__form"]}>
           <Controller
             control={control}
             name="category"
             defaultValue={[]}
             render={({ field }) => (
-              <FormControl>
+              <FormControl className={classes["input-item-wrapper"]}>
                 <InputLabel id="category">Category</InputLabel>
                 <Select
                   {...field}
+                  className={classes["select-category"]}
                   labelId="category"
                   id="category"
                   multiple
                   value={field.value}
-                  input={<OutlinedInput label="Name" />}
+                  input={<OutlinedInput label="Category" />}
                 >
                   {categoryOptions.map((categ) => (
                     <MenuItem key={categ.label} value={categ.value}>
@@ -133,15 +133,16 @@ const NewPost = () => {
             name="tag"
             defaultValue={[]}
             render={({ field }) => (
-              <FormControl>
+              <FormControl className={classes["input-item-wrapper"]}>
                 <InputLabel id="tag">Tag</InputLabel>
                 <Select
                   {...field}
+                  className={classes["select-category"]}
                   labelId="tag"
                   id="tag"
                   multiple
                   value={field.value}
-                  input={<OutlinedInput label="Name" />}
+                  input={<OutlinedInput label="Tag" />}
                 >
                   {tagOptions.map((tag) => (
                     <MenuItem key={tag.label} value={tag.value}>
@@ -158,6 +159,7 @@ const NewPost = () => {
             render={({ field }) => (
               <TextField
                 {...field}
+                className={classes["input-texfield-item-wrapper"]}
                 id="title"
                 label="Title"
                 variant="outlined"
@@ -247,10 +249,11 @@ const NewPost = () => {
             control={control}
             name="status"
             render={({ field }) => (
-              <FormControl>
+              <FormControl className={classes["input-item-wrapper"]}>
                 <InputLabel id="status">Status</InputLabel>
                 <Select
                   {...field}
+                  className={classes["select-category"]}
                   labelId="status"
                   id="status"
                   value={field.value}
@@ -270,10 +273,11 @@ const NewPost = () => {
             control={control}
             name="visibility"
             render={({ field }) => (
-              <FormControl>
+              <FormControl className={classes["input-item-wrapper"]}>
                 <InputLabel id="visibility">Visibility</InputLabel>
                 <Select
                   {...field}
+                  className={classes["select-category"]}
                   labelId="visibility"
                   id="visibility"
                   value={field.value}
@@ -311,7 +315,7 @@ const NewPost = () => {
           <Button type="submit" variant="contained">
             Save
           </Button>
-        </Container>
+        </div>
       </form>
     </div>
   );

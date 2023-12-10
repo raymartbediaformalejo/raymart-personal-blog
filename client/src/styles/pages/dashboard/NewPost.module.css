@@ -35,7 +35,9 @@
 }
 
 /* =========================== INPUT FIELD=============== */
-.input-texfield-item-wrapper {
+.input-texfield-item-wrapper div:first-child {
+  color: var(--color);
+  border-color: var(--border-color);
 }
 
 /* ===========================END INPUT FIELD=============== */

@@ -2,7 +2,7 @@
   --border-color: var(--clr-border);
   --color: var(--clr-primary-100);
   --border-radius: 4px;
-  --label-color: var(--clr-neutral-off-white);
+  --label-color: hsl(var(--clr-neutral-off-white) / 0.6);
 
   color: var(--color);
 }
@@ -48,7 +48,7 @@
 
 .input-item-wrapper label,
 .input-texfield-item-wrapper label {
-  color: hsl(var(--label-color) / 0.3);
+  color: var(--label-color);
 }
 
 .select-category {
@@ -123,3 +123,235 @@
 .form__checkbox-wrapper span:first-child:not([class~="Mui-checked"]) svg {
   color: hsl(var(--clr-neutral-border) / 0.1);
 }
+
+.form__checkbox-wrapper span:nth-child(2) {
+  color: var(--label-color);
+}
+
+.form__checkbox-wrapper span:nth-child(2):hover {
+  color: var(--color);
+}
+
+.editor {
+  background-color: hsl(var(--clr-neutral-body-bg) / 0.2);
+}
+
+.editor div:first-child[class~="ql-toolbar"],
+.editor div:nth-child(2)[class~="ql-container"] {
+  border: 1px solid var(--border-color);
+}
+
+.editor div:first-child[class~="ql-toolbar"] {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+.editor div:nth-child(2)[class~="ql-container"] {
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.editor div:nth-child(2)[class~="ql-container"] div[class~="ql-editor"] {
+  resize: vertical;
+  height: 100%;
+  min-height: 100%;
+}
+
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-picker"] {
+  color: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-picker"]
+  span[class="ql-picker-label"]:hover {
+  color: var(--clr-primary-300);
+}
+
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-picker"]
+  svg
+  polygon {
+  stroke: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-picker"]:hover
+  svg
+  polygon {
+  stroke: var(--clr-primary-300);
+}
+
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[type="button"]
+  svg
+  path,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[type="button"]
+  svg
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[type="button"]
+  svg
+  polyline,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[type="button"]
+  svg
+  rect,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-color"]
+  span[class="ql-picker-label"]
+  svg
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-color"]
+  span[class="ql-picker-label"]
+  svg
+  polyline,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-background"]
+  span[class="ql-picker-label"]
+  span
+  polygon,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-background"]
+  span[class="ql-picker-label"]
+  span
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-align"]
+  span[class="ql-picker-label"]
+  svg
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-code-block"]
+  svg
+  polyline {
+  stroke: var(--label-color);
+}
+
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[type="button"]:hover
+  /* svg
+  path, */
+/* .editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[type="button"]
+  svg
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[type="button"]
+  svg
+  polyline,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[type="button"]
+  svg
+  rect,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-color"]
+  span[class="ql-picker-label"]
+  svg
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-color"]
+  span[class="ql-picker-label"]
+  svg
+  polyline,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-background"]
+  span[class="ql-picker-label"]
+  span
+  polygon,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-background"]
+  span[class="ql-picker-label"]
+  span
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-align"]
+  span[class="ql-picker-label"]
+  svg
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-code-block"]
+  svg
+  polyline  */ {
+  color: var(--clr-primary-300);
+}
+
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class~="ql-background"]
+  span[class="ql-picker-label"]
+  svg:first-child
+  g {
+  fill: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class~="ql-background"]
+  span[class="ql-picker-label"]:hover
+  svg:first-child
+  g {
+  fill: var(--clr-primary-300);
+}
+
+/* .editor line,
+.editor path,
+.editor polygon,
+.editor svg,
+.editor rect,
+.editor polyline {
+  stroke: var(--label-color);
+}
+
+.editor line,
+.editor path,
+.editor polygon,
+.editor svg,
+.editor rect,
+.editor polyline {
+  stroke: var(--label-color);
+} */

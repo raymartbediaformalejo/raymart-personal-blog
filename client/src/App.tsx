@@ -11,6 +11,7 @@ import NewPost from "./pages/dashboard/posts/NewPost";
 import Dashboard from "./pages/dashboard";
 import DashboardLayout from "./components/Layout/DashboardLayout";
 import DashbArticles from "./pages/dashboard/posts/index";
+import SingleArticle from "./pages/articles/SingleArticle";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route element={<Prefetch />}>
           <Route index element={<Home />} />
           <Route path="articles" element={<Articles />} />
+
+          <Route path="article/:id" element={<SingleArticle />} />
           <Route path="today-i-learned" element={<TodayILearned />} />
           <Route path="about" element={<About />} />
 

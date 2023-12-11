@@ -156,107 +156,63 @@
   min-height: 100%;
 }
 
+/* ===== START QUILL PICKER ===== */
+
 .editor
   div:first-child[class~="ql-toolbar"]
   span[class="ql-formats"]
-  span[class~="ql-picker"] {
+  span[class~="ql-picker"]
+  span[class="ql-picker-label"] {
   color: var(--label-color);
 }
 .editor
   div:first-child[class~="ql-toolbar"]
   span[class="ql-formats"]
   span[class~="ql-picker"]
-  span[class="ql-picker-label"]:hover {
-  color: var(--clr-primary-300);
+  span[class="ql-picker-label"]
+  svg
+  polygon {
+  stroke: var(--label-color);
 }
 
 .editor
   div:first-child[class~="ql-toolbar"]
   span[class="ql-formats"]
   span[class~="ql-picker"]
+  span[class="ql-picker-label"]:hover {
+  color: var(--clr-toolbar-icon-hover);
+}
+
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-picker"]
+  span[class="ql-picker-label"]:hover
   svg
   polygon {
-  stroke: var(--label-color);
+  stroke: var(--clr-toolbar-icon-hover);
 }
 .editor
   div:first-child[class~="ql-toolbar"]
   span[class="ql-formats"]
-  span[class~="ql-picker"]:hover
+  span[class~="ql-picker"]
+  span[class="ql-picker-label ql-active"] {
+  color: var(--clr-active);
+}
+
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class~="ql-picker"]
+  span[class="ql-picker-label ql-active"]
   svg
   polygon {
   stroke: var(--clr-primary-300);
 }
 
-/* .editor
-  div:first-child[class~="ql-toolbar"]
-  span[class="ql-formats"]
-  button[type="button"]
-  svg
-  path,
-.editor
-  div:first-child[class~="ql-toolbar"]
-  span[class="ql-formats"]
-  button[type="button"]
-  svg
-  line,
-.editor
-  div:first-child[class~="ql-toolbar"]
-  span[class="ql-formats"]
-  button[type="button"]
-  svg
-  polyline,
-.editor
-  div:first-child[class~="ql-toolbar"]
-  span[class="ql-formats"]
-  button[type="button"]
-  svg
-  rect,
-.editor
-  div:first-child[class~="ql-toolbar"]
-  span[class="ql-formats"]
-  span[class~="ql-color"]
-  span[class="ql-picker-label"]
-  svg
-  line,
-.editor
-  div:first-child[class~="ql-toolbar"]
-  span[class="ql-formats"]
-  span[class~="ql-color"]
-  span[class="ql-picker-label"]
-  svg
-  polyline,
-.editor
-  div:first-child[class~="ql-toolbar"]
-  span[class="ql-formats"]
-  span[class~="ql-background"]
-  span[class="ql-picker-label"]
-  span
-  polygon,
-.editor
-  div:first-child[class~="ql-toolbar"]
-  span[class="ql-formats"]
-  span[class~="ql-background"]
-  span[class="ql-picker-label"]
-  span
-  line,
-.editor
-  div:first-child[class~="ql-toolbar"]
-  span[class="ql-formats"]
-  span[class~="ql-align"]
-  span[class="ql-picker-label"]
-  svg
-  line,
-.editor
-  div:first-child[class~="ql-toolbar"]
-  span[class="ql-formats"]
-  button[class="ql-code-block"]
-  svg
-  polyline {
-  stroke: var(--label-color);
-} */
+/* ===== END QUILL PICKER ===== */
 
 /* ===== QUILL BOLD ===== */
-
 .editor
   div:first-child[class~="ql-toolbar"]
   span[class="ql-formats"]
@@ -623,9 +579,10 @@
 
 /* ===== END QUILL COLOR ===== */
 
+/* ===== START QUILL BG COLOR ===== */
 .editor
   div:first-child[class~="ql-toolbar"]
-  span[class~="ql-background"]
+  span[class="ql-background ql-picker ql-color-picker"]
   span[class="ql-picker-label"]
   svg:first-child
   g {
@@ -633,14 +590,493 @@
 }
 .editor
   div:first-child[class~="ql-toolbar"]
-  span[class~="ql-background"]
+  span[class="ql-background ql-picker ql-color-picker"]
+  span[class="ql-picker-label"]
+  svg:first-child
+  polyline,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-background ql-picker ql-color-picker"]
+  span[class="ql-picker-label"]
+  svg:first-child
+  polyline {
+  stroke: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-background ql-picker ql-color-picker"]
   span[class="ql-picker-label"]:hover
   svg:first-child
   g {
-  fill: var(--clr-primary-300);
+  fill: var(--clr-toolbar-icon-hover);
 }
 
-/* =====END QUILL BACKGROUND COLOR ===== */
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-background ql-picker ql-color-picker"]
+  span[class="ql-picker-label"]:hover
+  svg:first-child
+  polyline,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-background ql-picker ql-color-picker"]
+  span[class="ql-picker-label"]:hover
+  svg:first-child
+  line {
+  stroke: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-background ql-picker ql-color-picker"]
+  span[class="ql-picker-label ql-active"]
+  svg:first-child
+  polyline,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-background ql-picker ql-color-picker"]
+  span[class="ql-picker-label ql-active"]
+  svg:first-child
+  line {
+  stroke: var(--clr-active);
+}
+/* ===== END QUILL BG COLOR ===== */
+
+/* ===== START QUILL LIST ===== */
+
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-list"] {
+  color: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-list"]
+  svg
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-list"]
+  svg
+  path {
+  stroke: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-list"]:hover {
+  color: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-list"]:hover
+  svg
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-list"]:hover
+  svg
+  path {
+  stroke: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-list ql-active"] {
+  color: var(--clr-active);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-list ql-active"]
+  svg
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-list ql-active"]
+  svg
+  path {
+  stroke: var(--clr-active);
+}
+
+/* ===== END QUILL LIST ===== */
+/* ===== START QUILL INDENT ===== */
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-indent"] {
+  color: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-indent"]
+  svg
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-indent"]
+  svg
+  polyline {
+  stroke: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-indent"]:hover {
+  color: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-indent"]:hover
+  svg
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-indent"]:hover
+  svg
+  polyline {
+  stroke: var(--clr-toolbar-icon-hover);
+}
+
+/* ===== END QUILL INDENT ===== */
+/* ===== START QUILL LINK ===== */
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-link"] {
+  color: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-link"]
+  svg
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-link"]
+  svg
+  path {
+  stroke: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-link"]:hover {
+  color: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-link"]:hover
+  svg
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-link"]:hover
+  svg
+  path {
+  stroke: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-link ql-active"] {
+  color: var(--clr-active);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-link ql-active"]
+  svg
+  line,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-link ql-active"]
+  svg
+  path {
+  stroke: var(--clr-active);
+}
+/* ===== END QUILL LINK ===== */
+/* ===== START QUILL IMAGE ===== */
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-image"] {
+  color: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-image"]
+  svg
+  rect,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-image"]
+  svg
+  circle,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-image"]
+  svg
+  polyline {
+  stroke: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-image"]:hover {
+  color: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-image"]:hover
+  svg
+  rect,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-image"]:hover
+  svg
+  circle,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-image"]:hover
+  svg
+  polyline {
+  stroke: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-image"]:hover {
+  color: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-image"]:hover
+  svg
+  rect,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-image"]:hover
+  svg
+  circle,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-image"]:hover
+  svg
+  polyline {
+  stroke: var(--clr-toolbar-icon-hover);
+}
+/* ===== END QUILL IMAGE ===== */
+/* ===== START QUILL VIDEO ===== */
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-video"] {
+  color: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-video"]
+  svg
+  rect {
+  stroke: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-video"]:hover {
+  color: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-video"]:hover
+  svg
+  rect {
+  stroke: var(--clr-toolbar-icon-hover);
+}
+/* ===== END QUILL ALIGN ===== */
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class="ql-align ql-picker ql-icon-picker"]
+  span[class="ql-picker-label"] {
+  color: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class="ql-align ql-picker ql-icon-picker"]
+  span[class="ql-picker-label"]
+  svg
+  line {
+  stroke: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class="ql-align ql-picker ql-icon-picker"]
+  span[class="ql-picker-label"]:hover {
+  color: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class="ql-align ql-picker ql-icon-picker"]
+  span[class="ql-picker-label"]:hover
+  svg
+  line {
+  stroke: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class="ql-align ql-picker ql-icon-picker"]
+  span[class="ql-picker-label ql-active"] {
+  color: var(--clr-active);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  span[class="ql-align ql-picker ql-icon-picker"]
+  span[class="ql-picker-label ql-active"]
+  svg
+  line {
+  stroke: var(--clr-active);
+}
+/* ===== END QUILL ALIGN ===== */
+
+/* ===== START QUILL CODE BLOCK ===== */
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-code-block"] {
+  color: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-code-block"]
+  svg
+  polyline,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-code-block"]
+  svg
+  line {
+  stroke: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-code-block"]:hover {
+  color: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-code-block"]:hover
+  svg
+  polyline,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-code-block"]:hover
+  svg
+  line {
+  stroke: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-code-block ql-active"] {
+  color: var(--clr-active);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-code-block ql-active"]
+  svg
+  polyline,
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-code-block ql-active"]
+  svg
+  line {
+  stroke: var(--clr-active);
+}
+/* ===== END QUILL CODE BLOCK ===== */
+
+/* ===== START QUILL CODE CLEAN ===== */
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-clean"] {
+  color: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-clean"]
+  svg
+  line {
+  stroke: var(--label-color);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-clean"]:hover {
+  color: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-clean"]:hover
+  svg
+  line {
+  stroke: var(--clr-toolbar-icon-hover);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-clean ql-active"] {
+  color: var(--clr-active);
+}
+.editor
+  div:first-child[class~="ql-toolbar"]
+  span[class="ql-formats"]
+  button[class="ql-clean ql-active"]
+  svg
+  line {
+  stroke: var(--clr-active);
+}
+/* ===== END QUILL CODE CLEAN ===== */
 
 /* .editor line,
 .editor path,

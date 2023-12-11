@@ -106,6 +106,38 @@ const NewPost = () => {
         <div className={classes["new-form__form"]}>
           <Controller
             control={control}
+            name="title"
+            render={({ field }) => (
+              <TextField
+                {...field}
+                className={classes["input-texfield-item-wrapper"]}
+                multiline
+                maxRows={4}
+                id="title"
+                label="Title"
+                variant="outlined"
+                autoComplete="off"
+              />
+            )}
+          />
+          <Controller
+            control={control}
+            name="summary"
+            render={({ field }) => (
+              <TextField
+                {...field}
+                className={classes["input-texfield-item-wrapper"]}
+                multiline
+                maxRows={5}
+                id="summary"
+                label="Summary"
+                variant="outlined"
+                autoComplete="off"
+              />
+            )}
+          />
+          <Controller
+            control={control}
             name="category"
             defaultValue={[]}
             render={({ field }) => (
@@ -152,38 +184,6 @@ const NewPost = () => {
                   ))}
                 </Select>
               </FormControl>
-            )}
-          />
-          <Controller
-            control={control}
-            name="title"
-            render={({ field }) => (
-              <TextField
-                {...field}
-                className={classes["input-texfield-item-wrapper"]}
-                multiline
-                maxRows={4}
-                id="title"
-                label="Title"
-                variant="outlined"
-                autoComplete="off"
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="summary"
-            render={({ field }) => (
-              <TextField
-                {...field}
-                className={classes["input-texfield-item-wrapper"]}
-                multiline
-                maxRows={5}
-                id="summary"
-                label="Summary"
-                variant="outlined"
-                autoComplete="off"
-              />
             )}
           />
           <Controller

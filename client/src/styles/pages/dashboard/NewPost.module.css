@@ -44,7 +44,7 @@
   border-color: var(--border-color);
 }
 
-.input-texfield-item-wrapper div[class*="MuiInputBase-root"] input {
+.input-texfield-item-wrapper div[class*="MuiInputBase-root"] {
   background: hsl(var(--clr-neutral-body-bg) / 0.2);
 }
 

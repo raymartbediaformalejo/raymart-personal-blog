@@ -160,8 +160,9 @@ const NewPost = () => {
             render={({ field }) => (
               <TextField
                 {...field}
-                maxRows={4}
                 className={classes["input-texfield-item-wrapper"]}
+                multiline
+                maxRows={4}
                 id="title"
                 label="Title"
                 variant="outlined"
@@ -176,6 +177,8 @@ const NewPost = () => {
               <TextField
                 {...field}
                 className={classes["input-texfield-item-wrapper"]}
+                multiline
+                maxRows={5}
                 id="summary"
                 label="Summary"
                 variant="outlined"

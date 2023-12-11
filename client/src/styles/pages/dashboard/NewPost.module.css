@@ -36,7 +36,7 @@
   padding: 17.5px;
 }
 
-.input-texfield-item-wrapper div[class*="MuiInputBase-root"] input {
+.input-texfield-item-wrapper div[class*="MuiInputBase-root"] textarea {
   color: var(--color);
 }
 .input-texfield-item-wrapper div[class*="MuiInputBase-root"] fieldset {

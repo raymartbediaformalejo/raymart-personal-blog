@@ -16,3 +16,11 @@
 
   background-size: 100% 400px;
 }
+
+.main main {
+  padding: 0 1rem;
+}
+
+.main main.no-padding {
+  padding: 0;
+}

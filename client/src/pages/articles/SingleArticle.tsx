@@ -4,10 +4,16 @@ import { vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import { useAppSelector } from "../../redux/hooks/useAppSelector";
 import { selectPostById } from "../../redux/posts/posts.api";
+import classes from "../../styles/pages/articles/SingleArticle.module.css";
+import ArticleTag from "./components/ArticleTag";
+import CalendarIcon from "../../components/icons/Calendar";
 
 const SingleArticle = () => {
   const { id } = useParams();
   const post = useAppSelector((state) => selectPostById(state, id as string));
+  let content;
+
+  console.log(post);
 
   const splitStringByPreTag = (inputString: string) => {
     const preTagStart = "<pre";
@@ -51,31 +57,66 @@ const SingleArticle = () => {
     return inputString.replace(regex, "");
   };
 
-  return (
-    <div>
-      <img src={post?.image} />
-      <h2>{post?.title}</h2>
-      <code>Hello world</code>
-      {post &&
-        post?.content &&
-        splitStringByPreTag(post.content).map((content) => {
-          if (content.startsWith("<pre")) {
-            return (
-              <SyntaxHighlighter key={content} language="jsx" style={vs2015}>
-                {`${removePreTags(content)}`}
-              </SyntaxHighlighter>
-            );
-          } else {
-            return (
-              <div
-                key={content}
-                dangerouslySetInnerHTML={{ __html: content }}
-              ></div>
-            );
-          }
-        })}
-    </div>
-  );
+  if (post) {
+    content = (
+      <article className={classes["single-post"]}>
+        <header className={classes["single-post__header"]}>
+          <img
+            src={post?.image}
+            alt={post?.title}
+            className={classes["thumbnail"]}
+          />
+          <div className={classes["header-info-wrapper"]}>
+            <h1 className={classes["title"]}>{post?.title}</h1>
+            <div className={classes["post-date-published"]}>
+              <CalendarIcon />{" "}
+              <p>{`Posted at ${post.createdAt.toLocaleDateString("en-PH", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}`}</p>
+            </div>
+            <div className={classes["tag-wrapper"]}>
+              {post &&
+                post.tag.map((tag) => {
+                  if (typeof tag === "string") {
+                    return <ArticleTag key={tag} tagId={tag} />;
+                  } else return null;
+                })}
+            </div>
+          </div>
+        </header>
+        <div className={classes["single-post__body"]}>
+          {post &&
+            post?.content &&
+            splitStringByPreTag(post.content).map((content) => {
+              if (content.startsWith("<pre")) {
+                return (
+                  <SyntaxHighlighter
+                    key={content}
+                    language="jsx"
+                    style={vs2015}
+                  >
+                    {`${removePreTags(content)}`}
+                  </SyntaxHighlighter>
+                );
+              } else {
+                return (
+                  <div
+                    key={content}
+                    dangerouslySetInnerHTML={{ __html: content }}
+                  ></div>
+                );
+              }
+            })}
+        </div>
+      </article>
+    );
+  } else {
+    content = <p>Loading...</p>;
+  }
+
+  return content;
 };
 
 export default SingleArticle;

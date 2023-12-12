@@ -15,7 +15,6 @@ export const postSchema = z.object({
   status: z.string(),
   visibility: z.string(),
   featured: z.boolean(),
-  articles: z.array(z.unknown()),
 });
 
 export const postSchemaWithId = postIdSchema.merge(postSchema);

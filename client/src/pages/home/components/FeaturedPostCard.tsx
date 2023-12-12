@@ -4,6 +4,7 @@ import FeaturedPostTag from "./FeaturedPostTag";
 import classes from "../../../styles/pages/home/FeaturedPostCard.module.css";
 import Button from "../../../components/ui/Button";
 import ArrrowIcon from "../../../components/icons/ArrrowIcon";
+import { useNavigate } from "react-router-dom";
 
 type FeaturedPostCardProps = {
   postId: string;
@@ -11,9 +12,17 @@ type FeaturedPostCardProps = {
 
 const FeaturedPostCard = ({ postId }: FeaturedPostCardProps) => {
   const post = useAppSelector((state) => selectPostById(state, postId));
-
+  const navigate = useNavigate();
+  const handleRedirect = () => {
+    if (post) {
+      navigate(`/article/${post?._id}`);
+    }
+  };
   return (
-    <article className={`card ${classes["feature-post-card"]}`}>
+    <article
+      onClick={handleRedirect}
+      className={`card ${classes["feature-post-card"]}`}
+    >
       <div
         className={classes["thumbnail-wrapper"]}
         style={{
@@ -43,6 +52,7 @@ const FeaturedPostCard = ({ postId }: FeaturedPostCardProps) => {
             noHover
             text="Read more"
             className="read-more-btn"
+            onClick={handleRedirect}
           />
           <div className={classes["tags-wrapper"]}>
             {post?.tag.map((tag) => (

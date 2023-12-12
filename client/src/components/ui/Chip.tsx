@@ -1,7 +1,6 @@
 import classes from "../../styles/component/ui/Chip.module.css";
-import { Link, LinkProps } from "react-router-dom";
 
-type ChipProps = LinkProps & {
+type ChipProps = React.HtmlHTMLAttributes<HTMLDivElement> & {
   variant?: "transparent" | "outlined" | "contained";
   size?: "small" | "medium" | "large";
   color?: "primary" | "gray";
@@ -14,7 +13,6 @@ const Chip = ({
   color,
   text,
   className,
-  to,
 }: ChipProps) => {
   const newtext = text === "JavaScript" ? "JS" : text;
 
@@ -24,11 +22,7 @@ const Chip = ({
     classes[size]
   }`;
 
-  return (
-    <Link to={to} className={chipClass}>
-      {newtext}
-    </Link>
-  );
+  return <div className={chipClass}>{newtext}</div>;
 };
 
 export default Chip;

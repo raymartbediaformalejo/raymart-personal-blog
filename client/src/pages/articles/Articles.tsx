@@ -28,9 +28,7 @@ const Articles = () => {
 
   let articlesContent;
 
-  console.log("start: ", start);
-  console.log("end: ", end);
-  console.log("postLength: ", postLength);
+  console.log("posts: ", posts);
 
   useEffect(() => {
     searchPosts({
@@ -38,6 +36,7 @@ const Articles = () => {
       tag: JSON.parse(tag),
       sort: JSON.parse(sort),
       page: +page,
+      limit: POSTS_LIMIT,
     });
 
     if (posts?.total && !posts.posts.length) {

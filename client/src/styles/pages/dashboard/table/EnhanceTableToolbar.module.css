@@ -18,3 +18,10 @@
   fieldset[class*="MuiOutlinedInput-notchedOutline"] {
   border-color: hsl(var(--clr-neutral-border) / 0.2);
 }
+
+.delete-icon[class*="MuiInputAdornment-root"] {
+  display: none;
+}
+.delete-icon[class*="MuiInputAdornment-root"].show {
+  display: inline-flex;
+}

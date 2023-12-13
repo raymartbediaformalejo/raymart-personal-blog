@@ -93,7 +93,9 @@ const EnhancedTableToolbar = ({
             endAdornment: (
               <InputAdornment
                 position="end"
-                className={classes["delete-icon"]}
+                className={`${classes["delete-icon"]} ${
+                  query && query.length > 0 ? classes["show"] : ""
+                }`}
                 // style={{ display: showClearIcon }}
                 onClick={handleDeleteQuery}
               >

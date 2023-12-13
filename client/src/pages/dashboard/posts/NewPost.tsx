@@ -47,7 +47,6 @@ const NewPost = () => {
       status: "",
       visibility: "",
       featured: false,
-      articles: [],
     },
     resolver: zodResolver(postSchema),
   });

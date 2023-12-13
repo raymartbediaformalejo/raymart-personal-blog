@@ -7,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { SetURLSearchParams } from "react-router-dom";
 
 import EnhanceTableHead from "./EnhanceTableHead";
 import EnhancedTableToolbar from "./EnhancedTableToolbar";
@@ -15,22 +16,19 @@ import { TPostResponse } from "../../../../redux/posts/posts.type";
 import classes from "../../../../styles/pages/dashboard/table/EnhanceTable.module.css";
 
 type EnhancedTableProps = {
+  query: string | null;
   rows: TPostResponse[];
+  setSearchParams: SetURLSearchParams;
 };
 
-const EnhancedTable = ({ rows }: EnhancedTableProps) => {
+const EnhancedTable = ({
+  query,
+  rows,
+  setSearchParams,
+}: EnhancedTableProps) => {
   const [selected, setSelected] = React.useState<readonly string[]>([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  // const handleRequestSort = (
-  //   _: React.MouseEvent<unknown>,
-  //   property: keyof PostTableData
-  // ) => {
-  //   const isAsc = orderBy === property && order === "asc";
-  //   setOrder(isAsc ? "desc" : "asc");
-  //   setOrderBy(property);
-  // };
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -81,7 +79,11 @@ const EnhancedTable = ({ rows }: EnhancedTableProps) => {
         sx={{ width: "100%", mb: 2 }}
         className={classes["all-posts-table-wrapper"]}
       >
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar
+          query={query}
+          numSelected={selected.length}
+          setSearchParams={setSearchParams}
+        />
         <TableContainer>
           <Table
             className={classes["all-posts-table"]}

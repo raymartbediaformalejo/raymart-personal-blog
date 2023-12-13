@@ -1,3 +1,4 @@
+import React from "react";
 import Toolbar from "@mui/material/Toolbar";
 import { alpha } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
@@ -8,14 +9,36 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import { FormControl, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
+import { SetURLSearchParams } from "react-router-dom";
+
 import classes from "../../../../styles/pages/dashboard/table/EnhanceTableToolbar.module.css";
+import { POST_QUERY_KEYS } from "../../../../utils/Constant";
 
 type EnhancedTableToolbarProps = {
+  query: string | null;
   numSelected: number;
+  setSearchParams: SetURLSearchParams;
 };
-const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
-  const { numSelected } = props;
+const EnhancedTableToolbar = ({
+  query,
+  numSelected,
+  setSearchParams,
+}: EnhancedTableToolbarProps) => {
+  const handleChangeSearch = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setSearchParams((prev) => {
+      prev.set(POST_QUERY_KEYS.QUERY, e.target.value);
+      return prev;
+    });
+  };
 
+  const handleDeleteQuery = () => {
+    setSearchParams((prev) => {
+      prev.delete(POST_QUERY_KEYS.QUERY);
+      return prev;
+    });
+  };
   return (
     <Toolbar
       sx={{
@@ -56,7 +79,8 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
           className={classes["search-field"]}
           size="small"
           variant="outlined"
-          // onChange={handleChange}
+          onChange={handleChangeSearch}
+          value={query ?? ""}
           InputProps={{
             startAdornment: (
               <InputAdornment
@@ -71,7 +95,7 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
                 position="end"
                 className={classes["delete-icon"]}
                 // style={{ display: showClearIcon }}
-                // onClick={handleClick}
+                onClick={handleDeleteQuery}
               >
                 <ClearIcon />
               </InputAdornment>

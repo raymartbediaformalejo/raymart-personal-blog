@@ -22,6 +22,7 @@ export const POST_QUERY_KEYS = {
   TAG: "tag",
   SORT: "sort",
   PAGE: "page",
+  LIMIT: "limit",
 };
 
 export const POSTS_LIMIT = 5;

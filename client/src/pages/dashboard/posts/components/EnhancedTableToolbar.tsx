@@ -96,7 +96,6 @@ const EnhancedTableToolbar = ({
                 className={`${classes["delete-icon"]} ${
                   query && query.length > 0 ? classes["show"] : ""
                 }`}
-                // style={{ display: showClearIcon }}
                 onClick={handleDeleteQuery}
               >
                 <ClearIcon />

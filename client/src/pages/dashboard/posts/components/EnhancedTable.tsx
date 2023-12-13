@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -14,21 +14,24 @@ import EnhancedTableToolbar from "./EnhancedTableToolbar";
 import EnhancedTableRow from "./EnhancedTableRow";
 import { TPostResponse } from "../../../../redux/posts/posts.type";
 import classes from "../../../../styles/pages/dashboard/table/EnhanceTable.module.css";
+import { POST_QUERY_KEYS } from "../../../../utils/Constant";
 
 type EnhancedTableProps = {
   query: string | null;
   rows: TPostResponse[];
+  rowsPerPage: number;
   setSearchParams: SetURLSearchParams;
 };
 
 const EnhancedTable = ({
   query,
   rows,
+  rowsPerPage,
   setSearchParams,
 }: EnhancedTableProps) => {
-  const [selected, setSelected] = React.useState<readonly string[]>([]);
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [selected, setSelected] = useState<readonly string[]>([]);
+  const [page, setPage] = useState(0);
+  // const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -62,10 +65,12 @@ const EnhancedTable = ({
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
+  const handleChangeRowsPerPage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchParams((prev) => {
+      prev.set(POST_QUERY_KEYS.LIMIT, e.target.value);
+      return prev;
+    });
+    // setRowsPerPage(parseInt(e.target.value, 10));
     setPage(0);
   };
 

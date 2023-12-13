@@ -10,7 +10,7 @@ const Posts = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const q = searchParams.get(POST_QUERY_KEYS.QUERY) || "";
   const page = searchParams.get(POST_QUERY_KEYS.PAGE) || "1";
-  const postLimit = searchParams.get("limit") || "5";
+  const postLimit = searchParams.get(POST_QUERY_KEYS.LIMIT) || "5";
   const sort = searchParams.get(POST_QUERY_KEYS.SORT) || `[]`;
   const tag =
     decodeURIComponent(searchParams.get(POST_QUERY_KEYS.TAG) + "") || `["All"]`;
@@ -19,8 +19,6 @@ const Posts = () => {
   const start = (+page - 1) * +postLimit;
   const end = start + +postLimit;
   const postLength = posts?.total;
-
-  let articlesContent;
 
   let content;
   useEffect(() => {
@@ -39,6 +37,7 @@ const Posts = () => {
       <EnhancedTable
         query={q}
         rows={posts.posts}
+        rowsPerPage={+postLimit}
         setSearchParams={setSearchParams}
       />
     );

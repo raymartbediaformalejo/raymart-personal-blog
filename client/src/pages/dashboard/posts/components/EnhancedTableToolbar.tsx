@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Toolbar from "@mui/material/Toolbar";
 import { alpha } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
@@ -6,10 +6,17 @@ import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import { FormControl, InputAdornment, TextField } from "@mui/material";
+import {
+  Button,
+  FormControl,
+  InputAdornment,
+  Modal,
+  TextField,
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
 import { SetURLSearchParams } from "react-router-dom";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
 import classes from "../../../../styles/pages/dashboard/table/EnhanceTableToolbar.module.css";
 import { POST_QUERY_KEYS } from "../../../../utils/Constant";
@@ -25,9 +32,9 @@ const EnhancedTableToolbar = ({
   selected,
   setSearchParams,
 }: EnhancedTableToolbarProps) => {
+  const [open, setOpen] = useState(false);
   const numSelected = selected.length;
-  const [deletePost, { isLoading, isSuccess, isError, error }] =
-    useDeletePostMutation();
+  const [deletePost, { isLoading }] = useDeletePostMutation();
   const handleChangeSearch = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -46,87 +53,135 @@ const EnhancedTableToolbar = ({
 
   const handleDeletePosts = async () => {
     await deletePost(selected);
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
-    <Toolbar
-      sx={{
-        padding: "1.3rem 1rem",
-        borderBottom: "1px solid hsla(0 0% 100% / 0.1)",
-        pl: { sm: 4 },
-        pr: { xs: 1, sm: 1 },
-        ...(numSelected > 0 && {
-          bgcolor: (theme) =>
-            alpha(
-              theme.palette.primary.main,
-              theme.palette.action.activatedOpacity
-            ),
-        }),
-      }}
-    >
-      {numSelected > 0 ? (
-        <Typography
-          sx={{ flex: "1 1 100%" }}
-          color="inherit"
-          variant="subtitle1"
-          component="div"
-        >
-          {numSelected} selected
-        </Typography>
-      ) : (
-        <Typography
-          sx={{ flex: "1 1 100%" }}
-          variant="h6"
-          id="tableTitle"
-          component="div"
-        >
-          All Posts
-        </Typography>
-      )}
-      <FormControl>
-        <TextField
-          className={classes["search-field"]}
-          size="small"
-          variant="outlined"
-          onChange={handleChangeSearch}
-          value={query ?? ""}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment
-                className={classes["search-icon"]}
-                position="start"
-              >
-                <SearchIcon />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment
-                position="end"
-                className={`${classes["delete-icon"]} ${
-                  query && query.length > 0 ? classes["show"] : ""
-                }`}
-                onClick={handleClearQuery}
-              >
-                <ClearIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </FormControl>
-      {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton onClick={handleDeletePosts}>
-            <DeleteIcon />
+    <>
+      <Modal open={open} onClose={handleClose}>
+        <div className={classes["delete-modal"]}>
+          <IconButton
+            onClick={handleClose}
+            className={classes["close-modal-button"]}
+          >
+            <CloseOutlinedIcon fontSize="small" />
           </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Filter list">
-          <IconButton>
-            <FilterListIcon />
-          </IconButton>
-        </Tooltip>
-      )}
-    </Toolbar>
+          <div className={classes["delete-modal-inner-wrapper"]}>
+            <DeleteIcon
+              className={classes["delete-modal-illustrator"]}
+              fontSize="large"
+            />
+            <h2>Are you sure?</h2>
+            <p
+              className={classes["delete-modal-description"]}
+            >{`Do you really want to delete ${
+              numSelected > 1 ? "these" : "this"
+            } ${numSelected} post(s)? This process cannot be undone.`}</p>
+            <div className={classes["delete-modal__button-wrapper"]}>
+              <Button
+                className={classes["cancel-button"]}
+                variant="contained"
+                onClick={handleClose}
+              >
+                Cancel
+              </Button>
+              <Button
+                className={classes["delete-button"]}
+                variant="contained"
+                onClick={handleDeletePosts}
+                disabled={isLoading}
+              >{`${isLoading ? "Loading..." : "Delete"}`}</Button>
+            </div>
+          </div>
+        </div>
+      </Modal>
+      <Toolbar
+        sx={{
+          padding: "1.3rem 1rem",
+          borderBottom: "1px solid hsla(0 0% 100% / 0.1)",
+          pl: { sm: 4 },
+          pr: { xs: 1, sm: 1 },
+          ...(numSelected > 0 && {
+            bgcolor: (theme) =>
+              alpha(
+                theme.palette.primary.main,
+                theme.palette.action.activatedOpacity
+              ),
+          }),
+        }}
+      >
+        {numSelected > 0 ? (
+          <Typography
+            sx={{ flex: "1 1 100%" }}
+            color="inherit"
+            variant="subtitle1"
+            component="div"
+          >
+            {numSelected} selected
+          </Typography>
+        ) : (
+          <Typography
+            sx={{ flex: "1 1 100%" }}
+            variant="h6"
+            id="tableTitle"
+            component="div"
+          >
+            All Posts
+          </Typography>
+        )}
+        <FormControl>
+          <TextField
+            className={classes["search-field"]}
+            size="small"
+            variant="outlined"
+            onChange={handleChangeSearch}
+            value={query ?? ""}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment
+                  className={classes["search-icon"]}
+                  position="start"
+                >
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment
+                  position="end"
+                  className={`${classes["delete-icon"]} ${
+                    query && query.length > 0 ? classes["show"] : ""
+                  }`}
+                  onClick={handleClearQuery}
+                >
+                  <ClearIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </FormControl>
+        {numSelected > 0 ? (
+          <Tooltip title="Delete">
+            <IconButton onClick={handleOpen}>
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        ) : (
+          <Tooltip title="Filter list">
+            <IconButton>
+              <FilterListIcon />
+            </IconButton>
+          </Tooltip>
+        )}
+      </Toolbar>
+    </>
   );
 };
 

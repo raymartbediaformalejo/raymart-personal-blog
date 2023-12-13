@@ -15,7 +15,7 @@ const Posts = () => {
   const sort = searchParams.get(POST_QUERY_KEYS.SORT) || `["createdAt", "asc"]`;
   const tag =
     decodeURIComponent(searchParams.get(POST_QUERY_KEYS.TAG) + "") || `["All"]`;
-  const [tagOptions, setTagOptions] = useState<string[]>([]);
+  // const [tagOptions, setTagOptions] = useState<string[]>([]);
   const defferedQuery = useDeferredValue(q);
   const sortBy: TSortBy = {
     sortBy: JSON.parse(sort)[0],

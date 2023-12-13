@@ -32,12 +32,15 @@ const Posts = () => {
   }, [searchPosts, defferedQuery, tag, sort, page, postLimit]);
 
   console.log("posts: ", posts);
+  console.log("page: ", page);
   if (posts) {
     content = (
       <EnhancedTable
         query={q}
         rows={posts.posts}
+        page={+page}
         rowsPerPage={+postLimit}
+        totalPosts={posts.total}
         setSearchParams={setSearchParams}
       />
     );

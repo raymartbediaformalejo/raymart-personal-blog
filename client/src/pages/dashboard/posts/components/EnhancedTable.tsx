@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { SetURLSearchParams } from "react-router-dom";
 
@@ -20,17 +18,21 @@ type EnhancedTableProps = {
   query: string | null;
   rows: TPostResponse[];
   rowsPerPage: number;
+  totalPosts: number;
+  page: number;
   setSearchParams: SetURLSearchParams;
 };
 
 const EnhancedTable = ({
   query,
   rows,
+  totalPosts,
+  page,
   rowsPerPage,
   setSearchParams,
 }: EnhancedTableProps) => {
   const [selected, setSelected] = useState<readonly string[]>([]);
-  const [page, setPage] = useState(0);
+  // const [page, setPage] = useState(0);
   // const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,21 +64,27 @@ const EnhancedTable = ({
   };
 
   const handleChangePage = (_: unknown, newPage: number) => {
-    setPage(newPage);
+    console.log("newPage: ", newPage);
+    console.log("page: ", page);
+
+    setSearchParams((prev) => {
+      prev.set(POST_QUERY_KEYS.PAGE, `${newPage + 1}`);
+      return prev;
+    });
+    // setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParams((prev) => {
       prev.set(POST_QUERY_KEYS.LIMIT, e.target.value);
+      prev.set(POST_QUERY_KEYS.PAGE, "1");
       return prev;
     });
     // setRowsPerPage(parseInt(e.target.value, 10));
-    setPage(0);
+    // setPage(0);
   };
 
   const isSelected = (id: string) => selected.indexOf(id) !== -1;
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
     <Box sx={{ width: "100%" }} className={classes["all-posts"]}>
@@ -115,15 +123,6 @@ const EnhancedTable = ({
                   />
                 );
               })}
-              {emptyRows > 0 && (
-                <TableRow
-                  style={{
-                    height: 53 * emptyRows,
-                  }}
-                >
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
             </TableBody>
           </Table>
         </TableContainer>
@@ -131,9 +130,9 @@ const EnhancedTable = ({
           className={classes["table-pagination"]}
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={rows.length}
+          count={totalPosts}
           rowsPerPage={rowsPerPage}
-          page={page}
+          page={page - 1}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />

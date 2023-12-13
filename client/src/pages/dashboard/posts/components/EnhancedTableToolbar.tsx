@@ -8,6 +8,7 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import { FormControl, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
+import classes from "../../../../styles/pages/dashboard/table/EnhanceTableToolbar.module.css";
 
 type EnhancedTableToolbarProps = {
   numSelected: number;
@@ -52,18 +53,23 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
       )}
       <FormControl>
         <TextField
+          className={classes["search-field"]}
           size="small"
           variant="outlined"
           // onChange={handleChange}
           InputProps={{
             startAdornment: (
-              <InputAdornment position="start">
+              <InputAdornment
+                className={classes["search-icon"]}
+                position="start"
+              >
                 <SearchIcon />
               </InputAdornment>
             ),
             endAdornment: (
               <InputAdornment
                 position="end"
+                className={classes["delete-icon"]}
                 // style={{ display: showClearIcon }}
                 // onClick={handleClick}
               >

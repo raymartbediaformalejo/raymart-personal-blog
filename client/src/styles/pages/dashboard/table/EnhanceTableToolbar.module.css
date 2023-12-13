@@ -1,0 +1,20 @@
+.search-field {
+}
+
+.search-field div[class*="MuiInputBase-root"],
+.search-icon[class*="MuiInputAdornment-root"],
+.delete-icon[class*="MuiInputAdornment-root"] {
+  color: var(--clr-primary-100);
+}
+
+.search-field
+  div[class*="MuiInputBase-root"]
+  fieldset[class*="MuiOutlinedInput-notchedOutline"] {
+  border-color: hsl(var(--clr-neutral-border) / 0.1);
+}
+
+.search-field
+  div[class*="MuiInputBase-root"]:hover
+  fieldset[class*="MuiOutlinedInput-notchedOutline"] {
+  border-color: hsl(var(--clr-neutral-border) / 0.2);
+}

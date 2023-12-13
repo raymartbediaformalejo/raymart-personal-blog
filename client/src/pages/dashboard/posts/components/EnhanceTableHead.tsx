@@ -24,11 +24,12 @@ const EnhanceTableHead = ({
   onSelectAllClick,
   numSelected,
   rowCount,
+  sort,
   setSearchParams,
 }: EnhancedTableProps) => {
   const [sortBy, setSortBy] = useState<TSortBy>({
-    sortBy: "",
-    order: "asc",
+    sortBy: sort[0] ?? "",
+    order: sort[1] ?? "asc",
   });
 
   const handleSort = (sortBy: string) => {

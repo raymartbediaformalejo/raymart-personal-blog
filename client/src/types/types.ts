@@ -46,3 +46,8 @@ export type HeadCell =
       numeric: boolean;
     }
   | string;
+
+export type TSortBy = {
+  sortBy: string;
+  order?: "asc" | "desc";
+};

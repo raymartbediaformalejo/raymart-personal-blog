@@ -17,6 +17,7 @@ import { POST_QUERY_KEYS } from "../../../../utils/Constant";
 type EnhancedTableProps = {
   query: string | null;
   rows: TPostResponse[];
+  sort: string[];
   rowsPerPage: number;
   totalPosts: number;
   page: number;
@@ -27,6 +28,7 @@ const EnhancedTable = ({
   query,
   rows,
   totalPosts,
+  sort,
   page,
   rowsPerPage,
   setSearchParams,
@@ -107,6 +109,8 @@ const EnhancedTable = ({
               numSelected={selected.length}
               onSelectAllClick={handleSelectAllClick}
               rowCount={rows.length}
+              sort={sort}
+              setSearchParams={setSearchParams}
             />
             <TableBody>
               {rows.map((row, index) => {

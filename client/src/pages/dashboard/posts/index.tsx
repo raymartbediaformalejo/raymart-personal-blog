@@ -11,7 +11,7 @@ const Posts = () => {
   const q = searchParams.get(POST_QUERY_KEYS.QUERY) || "";
   const page = searchParams.get(POST_QUERY_KEYS.PAGE) || "1";
   const postLimit = searchParams.get(POST_QUERY_KEYS.LIMIT) || "5";
-  const sort = searchParams.get(POST_QUERY_KEYS.SORT) || `[]`;
+  const sort = searchParams.get(POST_QUERY_KEYS.SORT) || `["createdAt", "asc"]`;
   const tag =
     decodeURIComponent(searchParams.get(POST_QUERY_KEYS.TAG) + "") || `["All"]`;
   const [tagOptions, setTagOptions] = useState<string[]>([]);
@@ -39,6 +39,7 @@ const Posts = () => {
         query={q}
         rows={posts.posts}
         page={+page}
+        sort={JSON.parse(sort)}
         rowsPerPage={+postLimit}
         totalPosts={posts.total}
         setSearchParams={setSearchParams}

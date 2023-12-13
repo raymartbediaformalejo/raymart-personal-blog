@@ -17,9 +17,6 @@ const Posts = () => {
     decodeURIComponent(searchParams.get(POST_QUERY_KEYS.TAG) + "") || `["All"]`;
   const [tagOptions, setTagOptions] = useState<string[]>([]);
   const defferedQuery = useDeferredValue(q);
-  const start = (+page - 1) * +postLimit;
-  const end = start + +postLimit;
-  const postLength = posts?.total;
   const sortBy: TSortBy = {
     sortBy: JSON.parse(sort)[0],
     order: JSON.parse(sort)[1],

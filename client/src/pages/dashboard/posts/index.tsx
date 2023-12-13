@@ -4,6 +4,7 @@ import { useLazySearchPostQuery } from "../../../redux/posts/posts.api";
 import EnhancedTable from "./components/EnhancedTable";
 import { useSearchParams } from "react-router-dom";
 import { POST_QUERY_KEYS } from "../../../utils/Constant";
+import { TSortBy } from "../../../types/types";
 
 const Posts = () => {
   const [searchPosts, { data: posts }] = useLazySearchPostQuery();
@@ -19,6 +20,10 @@ const Posts = () => {
   const start = (+page - 1) * +postLimit;
   const end = start + +postLimit;
   const postLength = posts?.total;
+  const sortBy: TSortBy = {
+    sortBy: JSON.parse(sort)[0],
+    order: JSON.parse(sort)[1],
+  };
 
   let content;
   useEffect(() => {
@@ -39,7 +44,7 @@ const Posts = () => {
         query={q}
         rows={posts.posts}
         page={+page}
-        sort={JSON.parse(sort)}
+        sort={sortBy}
         rowsPerPage={+postLimit}
         totalPosts={posts.total}
         setSearchParams={setSearchParams}

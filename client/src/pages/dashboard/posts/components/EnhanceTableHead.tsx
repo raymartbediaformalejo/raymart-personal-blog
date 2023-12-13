@@ -16,7 +16,7 @@ type EnhancedTableProps = {
   numSelected: number;
   onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
   rowCount: number;
-  sort: string[];
+  sort: TSortBy;
   setSearchParams: SetURLSearchParams;
 };
 
@@ -28,8 +28,8 @@ const EnhanceTableHead = ({
   setSearchParams,
 }: EnhancedTableProps) => {
   const [sortBy, setSortBy] = useState<TSortBy>({
-    sortBy: sort[0] ?? "",
-    order: sort[1] ?? "asc",
+    sortBy: sort.sortBy ?? "",
+    order: sort.order ?? "asc",
   });
 
   const handleSort = (sortBy: string) => {

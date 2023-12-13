@@ -13,11 +13,12 @@ import EnhancedTableRow from "./EnhancedTableRow";
 import { TPostResponse } from "../../../../redux/posts/posts.type";
 import classes from "../../../../styles/pages/dashboard/table/EnhanceTable.module.css";
 import { POST_QUERY_KEYS } from "../../../../utils/Constant";
+import { TSortBy } from "../../../../types/types";
 
 type EnhancedTableProps = {
   query: string | null;
   rows: TPostResponse[];
-  sort: string[];
+  sort: TSortBy;
   rowsPerPage: number;
   totalPosts: number;
   page: number;

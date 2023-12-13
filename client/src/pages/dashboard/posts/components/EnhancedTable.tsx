@@ -34,9 +34,9 @@ const EnhancedTable = ({
   rowsPerPage,
   setSearchParams,
 }: EnhancedTableProps) => {
-  const [selected, setSelected] = useState<readonly string[]>([]);
-  // const [page, setPage] = useState(0);
-  // const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [selected, setSelected] = useState<string[]>([]);
+
+  console.log("selected: ", selected);
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -49,7 +49,7 @@ const EnhancedTable = ({
 
   const handleClick = (id: string) => {
     const selectedIndex = selected.indexOf(id);
-    let newSelected: readonly string[] = [];
+    let newSelected: string[] = [];
 
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, id);
@@ -97,7 +97,7 @@ const EnhancedTable = ({
       >
         <EnhancedTableToolbar
           query={query}
-          numSelected={selected.length}
+          selected={selected}
           setSearchParams={setSearchParams}
         />
         <TableContainer>

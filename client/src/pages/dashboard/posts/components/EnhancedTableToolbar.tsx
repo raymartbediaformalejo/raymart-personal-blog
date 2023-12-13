@@ -13,17 +13,21 @@ import { SetURLSearchParams } from "react-router-dom";
 
 import classes from "../../../../styles/pages/dashboard/table/EnhanceTableToolbar.module.css";
 import { POST_QUERY_KEYS } from "../../../../utils/Constant";
+import { useDeletePostMutation } from "../../../../redux/posts/posts.api";
 
 type EnhancedTableToolbarProps = {
   query: string | null;
-  numSelected: number;
+  selected: string[];
   setSearchParams: SetURLSearchParams;
 };
 const EnhancedTableToolbar = ({
   query,
-  numSelected,
+  selected,
   setSearchParams,
 }: EnhancedTableToolbarProps) => {
+  const numSelected = selected.length;
+  const [deletePost, { isLoading, isSuccess, isError, error }] =
+    useDeletePostMutation();
   const handleChangeSearch = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -33,11 +37,15 @@ const EnhancedTableToolbar = ({
     });
   };
 
-  const handleDeleteQuery = () => {
+  const handleClearQuery = () => {
     setSearchParams((prev) => {
       prev.delete(POST_QUERY_KEYS.QUERY);
       return prev;
     });
+  };
+
+  const handleDeletePosts = async () => {
+    await deletePost(selected);
   };
 
   return (
@@ -97,7 +105,7 @@ const EnhancedTableToolbar = ({
                 className={`${classes["delete-icon"]} ${
                   query && query.length > 0 ? classes["show"] : ""
                 }`}
-                onClick={handleDeleteQuery}
+                onClick={handleClearQuery}
               >
                 <ClearIcon />
               </InputAdornment>
@@ -107,7 +115,7 @@ const EnhancedTableToolbar = ({
       </FormControl>
       {numSelected > 0 ? (
         <Tooltip title="Delete">
-          <IconButton>
+          <IconButton onClick={handleDeletePosts}>
             <DeleteIcon />
           </IconButton>
         </Tooltip>

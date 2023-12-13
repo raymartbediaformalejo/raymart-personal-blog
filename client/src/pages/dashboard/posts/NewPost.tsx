@@ -28,6 +28,7 @@ import { TOption } from "../../../types/types";
 import { selectAllTags } from "../../../redux/tags/tags.api";
 import { useAddNewPostMutation } from "../../../redux/posts/posts.api";
 import { Paper } from "@mui/material";
+
 const loadQuillNoSSRWrapper = () =>
   import("react-quill").then((module) => ({ default: module.default }));
 

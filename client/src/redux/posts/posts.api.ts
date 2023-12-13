@@ -6,7 +6,6 @@ import {
   TPostResponseObject,
   TSearchPostParams,
   TPost,
-  TPostId,
 } from "./posts.type";
 import { RootState } from "../index";
 import { arrayToString, toEmptyStringIfNullish } from "../utils/utils";
@@ -95,13 +94,13 @@ export const postsApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: (_, __, arg) => [{ type: "Post", id: arg._id }],
     }),
-    deletePost: build.mutation<void, TPostId>({
-      query: ({ _id }) => ({
+    deletePost: build.mutation<void, string[]>({
+      query: (ids) => ({
         url: `/posts`,
         method: "DELETE",
-        body: { _id },
+        body: { ids },
       }),
-      invalidatesTags: (_, __, arg) => [{ type: "Post", id: arg._id }],
+      invalidatesTags: [{ type: "Post", id: "LIST" }],
     }),
   }),
 });

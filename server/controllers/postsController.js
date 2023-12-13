@@ -199,25 +199,20 @@ const updatePost = async (req, res) => {
 // @route DELETE /posts
 // @access Private
 const deletePost = async (req, res) => {
-  const { _id } = req.body;
+  const { ids } = req.body;
 
   // Confirm data
-  if (!_id) {
-    return res.status(400).json({ message: "Post ID required" });
+  if (!ids || !Array.isArray(ids) || ids.length === 0) {
+    return res.status(400).json({ message: "Post IDs required" });
   }
 
-  // Confirm post exists to delete
-  const post = await Post.findById(_id).exec();
+  const deletedPosts = await Post.deleteMany({ _id: { $in: ids } });
 
-  if (!post) {
-    return res.status(400).json({ message: "Post not found" });
+  if (!deletedPosts || deletedPosts.deletedCount === 0) {
+    return res.status(400).json({ message: "No posts found to delete" });
   }
 
-  await post.deleteOne();
-
-  const reply = `Post '${post.title}' with ID ${post._id} deleted`;
-  Post;
-  res.json(reply);
+  res.json(`Deleted ${deletedPosts.deletedCount} post(s)`);
 };
 
 module.exports = {

@@ -85,6 +85,7 @@ const EnhanceTableHead = ({
                   key={headCell.id}
                   align={headCell.numeric ? "right" : "left"}
                   padding={headCell.disablePadding ? "none" : "normal"}
+                  className={classes[headCell.id.toLocaleLowerCase()]}
                 >
                   <TableSortLabel
                     active={sortBy.sortBy === headCell.id}

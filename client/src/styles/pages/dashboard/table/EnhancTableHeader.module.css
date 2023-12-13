@@ -19,3 +19,20 @@
 .header tr th span[class*="MuiCheckbox-indeterminate"] {
   color: var(--clr-primary-500);
 }
+
+.createdat span[class*="Mui-active"],
+.createdat span[class*="Mui-active"] svg[class*="MuiSvgIcon-root"],
+.updatedat span[class*="Mui-active"],
+.updatedat span[class*="Mui-active"] svg[class*="MuiSvgIcon-root"] {
+  color: var(--color);
+}
+.createdat span[class*="MuiTableSortLabel-root"]:hover,
+.createdat
+  span[class*="MuiTableSortLabel-root"]:hover
+  svg[class*="MuiSvgIcon-root"],
+.updatedat span[class*="MuiTableSortLabel-root"]:hover,
+.updatedat
+  span[class*="MuiTableSortLabel-root"]:hover
+  svg[class*="MuiSvgIcon-root"] {
+  color: var(--color);
+}

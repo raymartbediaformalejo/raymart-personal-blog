@@ -5,6 +5,9 @@ import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import { FormControl, InputAdornment, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import ClearIcon from "@mui/icons-material/Clear";
 
 type EnhancedTableToolbarProps = {
   numSelected: number;
@@ -47,6 +50,29 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
           All Posts
         </Typography>
       )}
+      <FormControl>
+        <TextField
+          size="small"
+          variant="outlined"
+          // onChange={handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <InputAdornment
+                position="end"
+                // style={{ display: showClearIcon }}
+                // onClick={handleClick}
+              >
+                <ClearIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+      </FormControl>
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton>

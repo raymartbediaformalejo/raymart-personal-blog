@@ -6,7 +6,7 @@ import { useAppSelector } from "../../../../redux/hooks/useAppSelector";
 import { selectPostById } from "../../../../redux/posts/posts.api";
 import EnhanceTableCategories from "./EnhanceTableCategories";
 import EnhancedTableTags from "./EnhancedTableTags";
-import { Button, Chip } from "@mui/material";
+import { Button } from "@mui/material";
 
 import classes from "../../../../styles/pages/dashboard/table/EnhanceTableRow.module.css";
 

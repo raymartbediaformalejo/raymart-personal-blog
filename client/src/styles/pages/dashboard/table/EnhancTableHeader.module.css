@@ -1,0 +1,20 @@
+.header {
+  --color: var(--clr-primary-100);
+}
+
+.header tr th {
+  border-color: var(--clr-border);
+  color: var(--color);
+  text-transform: uppercase;
+  font-size: var(--fs-100);
+  letter-spacing: 1px;
+  word-wrap: break-word;
+}
+
+.header tr th span[class*="MuiCheckbox-root"] {
+  color: hsla(0 0% 100% / 0.2);
+}
+
+.header tr th span[class*="Mui-checked"] {
+  color: var(--clr-primary-500);
+}

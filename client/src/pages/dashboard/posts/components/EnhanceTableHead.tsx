@@ -5,6 +5,7 @@ import TableCell from "@mui/material/TableCell";
 import Checkbox from "@mui/material/Checkbox";
 
 import { headCells } from "../utils/utils";
+import classes from "../../../../styles/pages/dashboard/table/EnhancTableHeader.module.css";
 
 type EnhancedTableProps = {
   numSelected: number;
@@ -15,7 +16,10 @@ const EnhanceTableHead = (props: EnhancedTableProps) => {
   const { onSelectAllClick, numSelected, rowCount } = props;
 
   return (
-    <TableHead sx={{ backgroundColor: "hsl(225 10% 8% / 0.33)" }}>
+    <TableHead
+      className={classes["header"]}
+      sx={{ backgroundColor: "hsl(225 10% 8% / 0.33)" }}
+    >
       <TableRow>
         <TableCell padding="checkbox">
           <Checkbox

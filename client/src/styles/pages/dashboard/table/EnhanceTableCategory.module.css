@@ -1,0 +1,31 @@
+.category[class*="MuiChip-root"] {
+  --background-color: transparent;
+  --border-color: transparent;
+  --color: white;
+
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  font-size: 14px;
+}
+
+.category span[class*="MuiChip-label"] {
+  color: var(--color);
+}
+
+.category.blog {
+  --background-color: #365314; /*d: 900  */
+  --border-color: #4d7c0f; /*d: 700  */
+}
+
+.category.blog span[class*="MuiChip-label"] {
+  --color: #bef264; /*d: 300  */
+}
+
+.category.til {
+  --background-color: #4c1d95; /*d: 900  */
+  --border-color: #6d28d9; /*d: 700  */
+}
+
+.category.til span[class*="MuiChip-label"] {
+  --color: #c4b5fd; /*d: 300  */
+}

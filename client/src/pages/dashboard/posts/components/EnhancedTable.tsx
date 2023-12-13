@@ -121,6 +121,7 @@ const EnhancedTable = ({ rows }: EnhancedTableProps) => {
           </Table>
         </TableContainer>
         <TablePagination
+          className={classes["table-pagination"]}
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
           count={rows.length}

@@ -1,5 +1,5 @@
-import React from "react";
 import TableCell from "@mui/material/TableCell";
+import classes from "../../../../styles/pages/dashboard/table/EnhanceTableTags.module.css";
 import EnhancedTableTag from "./EnhancedTableTag";
 
 type EnhancedTableTagsProps = {
@@ -8,9 +8,11 @@ type EnhancedTableTagsProps = {
 const EnhancedTableTags = ({ tags }: EnhancedTableTagsProps) => {
   return (
     <TableCell align="left">
-      {tags.map((tagId) => (
-        <EnhancedTableTag key={tagId} tagId={tagId} />
-      ))}
+      <div className={classes["tags"]}>
+        {tags.map((tagId) => (
+          <EnhancedTableTag key={tagId} tagId={tagId} />
+        ))}
+      </div>
     </TableCell>
   );
 };

@@ -1,5 +1,6 @@
 import TableCell from "@mui/material/TableCell";
 import EnhanceTableCategory from "./EnhanceTableCategory";
+import classes from "../../../../styles/pages/dashboard/table/EnhanceTableCategories.module.css";
 
 type EnhanceTableCategoriesProps = {
   categories: string[];
@@ -10,9 +11,11 @@ const EnhanceTableCategories = ({
 }: EnhanceTableCategoriesProps) => {
   return (
     <TableCell align="left">
-      {categories.map((categoryId) => (
-        <EnhanceTableCategory key={categoryId} categoryId={categoryId} />
-      ))}
+      <div className={classes["categories"]}>
+        {categories.map((categoryId) => (
+          <EnhanceTableCategory key={categoryId} categoryId={categoryId} />
+        ))}
+      </div>
     </TableCell>
   );
 };

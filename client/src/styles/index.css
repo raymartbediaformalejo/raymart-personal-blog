@@ -42,7 +42,6 @@
 
   --clr-white: hsl(0 0% 100%);
   --clr-off-white: hsl(0 0% 95%);
-  --clr-off-white: hsl(0 0% 95%);
   --clr-light-gray-400: hsl(216 12% 84% / 0.9);
   --clr-light-gray: hsl(218 11% 65%);
   --clr-border: hsla(0 0% 100% / 0.1);
@@ -52,6 +51,7 @@
 
   --clr-neutral-border: 0 0% 100%;
   --clr-neutral-off-white: 0 0% 95%;
+  --clr-neutral-light-gray: 218 11% 65%;
 
   --clr-danger: hsl(0 77% 53%);
   --clr-neutral-danger: 0 77% 53%;

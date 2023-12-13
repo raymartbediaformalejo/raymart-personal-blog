@@ -8,6 +8,8 @@ import EnhanceTableCategories from "./EnhanceTableCategories";
 import EnhancedTableTags from "./EnhancedTableTags";
 import { Button, Chip } from "@mui/material";
 
+import classes from "../../../../styles/pages/dashboard/table/EnhanceTableRow.module.css";
+
 type EnhancedTableRowProps = {
   rowId: string;
   onClick?: React.MouseEventHandler<HTMLTableRowElement>;
@@ -34,6 +36,7 @@ const EnhancedTableRow = ({
         key={rowId}
         selected={isItemSelected}
         sx={{ cursor: "pointer" }}
+        className={classes["row"]}
       >
         <TableCell padding="checkbox">
           <Checkbox
@@ -68,7 +71,9 @@ const EnhancedTableRow = ({
         <TableCell align="right">{post.featured ? "YES" : "NO"}</TableCell>
         <TableCell align="right">
           <div onClick={() => console.log("keme eme")}>
-            <Chip label="Edit" size="medium" clickable />
+            <Button variant="outlined" size="medium">
+              Edit
+            </Button>
           </div>
         </TableCell>
       </TableRow>

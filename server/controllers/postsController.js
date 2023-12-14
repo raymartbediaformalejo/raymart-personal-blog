@@ -97,7 +97,6 @@ const createNewPost = async (req, res) => {
     status,
     visibility,
     featured,
-    articles,
   } = req.body;
 
   // Confirm data
@@ -127,7 +126,6 @@ const createNewPost = async (req, res) => {
     status,
     visibility,
     featured,
-    articles,
   });
 
   if (post) {
@@ -153,7 +151,6 @@ const updatePost = async (req, res) => {
     status,
     visibility,
     featured,
-    articles,
   } = req.body;
 
   // Confirm data
@@ -188,7 +185,6 @@ const updatePost = async (req, res) => {
   post.status = status;
   post.visibility = visibility;
   post.featured = featured;
-  post.articles = articles;
 
   const updatedPost = await post.save();
 

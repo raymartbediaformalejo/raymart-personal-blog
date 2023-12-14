@@ -45,12 +45,6 @@ const postSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    articles: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Post",
-      },
-    ],
   },
   {
     timestamps: true,

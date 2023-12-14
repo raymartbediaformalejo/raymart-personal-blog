@@ -1,4 +1,4 @@
-import { useState, useEffect, useDeferredValue } from "react";
+import {  useEffect, useDeferredValue } from "react";
 
 import { useLazySearchPostQuery } from "../../../redux/posts/posts.api";
 import EnhancedTable from "./components/EnhancedTable";

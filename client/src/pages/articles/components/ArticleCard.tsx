@@ -18,7 +18,7 @@ const ArticleCard = ({ postId }: ArticleCardProps) => {
     content = (
       <article className="card">
         <header>
-          <Link to={`/article/${postId}`}>
+          <Link to={`/articles/${postId}`}>
             <h2 className={classes["title"]}>{post.title}</h2>
           </Link>
           <p className={classes["date"]}>{`${post.createdAt.toLocaleDateString(

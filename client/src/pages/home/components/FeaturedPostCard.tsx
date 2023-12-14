@@ -15,7 +15,7 @@ const FeaturedPostCard = ({ postId }: FeaturedPostCardProps) => {
   const navigate = useNavigate();
   const handleRedirect = () => {
     if (post) {
-      navigate(`/article/${post?._id}`);
+      navigate(`/articles/${post?._id}`);
     }
   };
   return (

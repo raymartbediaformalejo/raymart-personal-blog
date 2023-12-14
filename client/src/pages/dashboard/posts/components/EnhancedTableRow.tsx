@@ -9,6 +9,7 @@ import EnhancedTableTags from "./EnhancedTableTags";
 import { Button } from "@mui/material";
 
 import classes from "../../../../styles/pages/dashboard/table/EnhanceTableRow.module.css";
+import { useNavigate } from "react-router-dom";
 
 type EnhancedTableRowProps = {
   rowId: string;
@@ -23,7 +24,12 @@ const EnhancedTableRow = ({
   labelId,
 }: EnhancedTableRowProps) => {
   const post = useAppSelector((state) => selectPostById(state, rowId));
+  const navigate = useNavigate();
   let content;
+
+  const handleEdit = (id: string) => {
+    if (id) navigate(`/dashboard/articles/${id}`);
+  };
 
   if (post) {
     content = (
@@ -71,7 +77,11 @@ const EnhancedTableRow = ({
         <TableCell align="right">{post.featured ? "YES" : "NO"}</TableCell>
         <TableCell align="right">
           <div onClick={() => console.log("keme eme")}>
-            <Button variant="outlined" size="medium">
+            <Button
+              variant="outlined"
+              size="medium"
+              onClick={() => handleEdit(post._id)}
+            >
               Edit
             </Button>
           </div>

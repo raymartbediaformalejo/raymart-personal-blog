@@ -48,6 +48,7 @@
   --clr-card-bg: hsla(240, 12%, 5%, 0.8);
   --clr-body-bg: hsl(225 10% 8%);
   --clr-neutral-body-bg: 225 10% 8%;
+  color: hsla(0, 0%, 100%, 0.05);
 
   --clr-neutral-border: 0 0% 100%;
   --clr-neutral-off-white: 0 0% 95%;

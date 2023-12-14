@@ -28,7 +28,7 @@
 
 .button:hover:not(.no-hover),
 .button:focus:not(.no-hover) {
-  background-color: hsla(0, 0%, 100%, 0.05);
+  background-color: hsla(var(--clr-neutral-border) / 0.05);
 }
 
 .transparent {
@@ -37,8 +37,8 @@
 }
 
 .outlined {
-  --border: inset 0 0 0 0px #fff, inset 0 0 0 1px hsla(0, 0%, 100%, 0.1),
-    0 0 #0000;
+  --border: inset 0 0 0 0px #fff,
+    inset 0 0 0 1px hsla(var(--clr-neutral-border) / 0.1), 0 0 #0000;
 }
 
 .icon {

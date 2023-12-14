@@ -1,4 +1,4 @@
-import { useState, useEffect, useDeferredValue } from "react";
+import React, { useState, useEffect, useDeferredValue } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import SearchForm from "../../components/SearchForm";
@@ -11,7 +11,7 @@ import classes from "../../styles/pages/articles/Articles.module.css";
 import { useLazySearchPostQuery } from "../../redux/posts/posts.api";
 import ArticleCard from "./components/ArticleCard";
 import ArticleTagOptions from "./components/ArticleTagOptions";
-import Pagination from "../../components/Pagination";
+import Pagination from "@mui/material/Pagination";
 const Articles = () => {
   const [searchPosts, { data: posts }] = useLazySearchPostQuery();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -22,9 +22,15 @@ const Articles = () => {
     decodeURIComponent(searchParams.get(POST_QUERY_KEYS.TAG) + "") || `["All"]`;
   const [tagOptions, setTagOptions] = useState<string[]>([]);
   const defferedQuery = useDeferredValue(q);
-  const start = (+page - 1) * POSTS_LIMIT;
-  const end = start + POSTS_LIMIT;
   const postLength = posts?.total;
+  const totalPage = Math.ceil(postLength! / POSTS_LIMIT);
+
+  const handleSetActivePage = (__: unknown, newPage: number) => {
+    setSearchParams((prev) => {
+      prev.set("page", `${newPage}`);
+      return prev;
+    });
+  };
 
   let articlesContent;
 
@@ -87,16 +93,27 @@ const Articles = () => {
         setSearchParams={setSearchParams}
       />
       {articlesContent}
-
       {!!postLength && !!(Math.ceil(posts.total / POSTS_LIMIT) > 1) && (
         <Pagination
+          className={classes["articles-pagination"]}
+          boundaryCount={5}
+          siblingCount={5}
+          count={totalPage}
+          page={+page}
+          onChange={handleSetActivePage}
+          color="primary"
+        />
+      )}
+
+      {/* {!!postLength && !!(Math.ceil(posts.total / POSTS_LIMIT) > 1) && (
+        <CustomPagination
           activePage={page}
           hasNextPage={end < postLength}
           hasPrevPage={start > 0}
           total={posts?.total}
           setSearchParams={setSearchParams}
         />
-      )}
+      )} */}
     </div>
   );
 };

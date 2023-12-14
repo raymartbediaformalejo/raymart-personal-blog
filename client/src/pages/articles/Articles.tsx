@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useDeferredValue } from "react";
+import  { useState, useEffect, useDeferredValue } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import SearchForm from "../../components/SearchForm";

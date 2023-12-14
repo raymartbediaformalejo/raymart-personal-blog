@@ -5,8 +5,8 @@ import "./styles/index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { inject } from "@vercel/analytics";
 import { store } from "./redux/index.ts";
+import { Analytics } from "@vercel/analytics/react";
 const theme = createTheme({
   palette: {
     primary: {
@@ -17,17 +17,19 @@ const theme = createTheme({
     // },
   },
 });
-inject();
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/*" element={<App />} />
-          </Routes>
-        </BrowserRouter>
-      </Provider>
-    </ThemeProvider>
-  </React.StrictMode>
+  <>
+    <React.StrictMode>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/*" element={<App />} />
+            </Routes>
+          </BrowserRouter>
+        </Provider>
+      </ThemeProvider>
+    </React.StrictMode>
+    <Analytics />
+  </>
 );

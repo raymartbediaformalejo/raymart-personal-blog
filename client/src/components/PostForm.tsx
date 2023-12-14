@@ -38,7 +38,7 @@ const loadQuillNoSSRWrapper = () =>
 const DynamicQuillNoSSRWrapper = React.lazy(loadQuillNoSSRWrapper);
 
 const PostForm = ({ postToEdit }: PostFormProps) => {
-  const { handleSubmit, control, watch, setValue, reset, formState } =
+  const { handleSubmit, control, watch, setValue, reset } =
     useForm<TPostResponse>({
       shouldFocusError: false,
       defaultValues: {

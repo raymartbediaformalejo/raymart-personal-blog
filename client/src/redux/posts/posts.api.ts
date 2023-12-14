@@ -72,6 +72,7 @@ export const postsApi = baseApi.injectEndpoints({
           item: limit!,
         })}`,
       }),
+      providesTags: [{ type: "Post", id: "LIST" }],
     }),
     addNewPost: build.mutation<void, TPost>({
       query: (initialPost) => ({

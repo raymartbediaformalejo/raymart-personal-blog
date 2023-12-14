@@ -16,37 +16,36 @@ const ArticleCard = ({ postId }: ArticleCardProps) => {
 
   if (post) {
     content = (
-      <article className="card">
-        <header>
-          <Link to={`/articles/${postId}`}>
+      <Link to={`/articles/${postId}`}>
+        <article className="card">
+          <header>
             <h2 className={classes["title"]}>{post.title}</h2>
-          </Link>
-          <p className={classes["date"]}>{`${post.createdAt.toLocaleDateString(
-            "en-PH",
-            {
+            <p
+              className={classes["date"]}
+            >{`${post.createdAt.toLocaleDateString("en-PH", {
               month: "long",
               day: "numeric",
               year: "numeric",
-            }
-          )}`}</p>
-          <div className={classes["tag-wrapper"]}>
-            {post.tag.map((tag) => {
-              if (typeof tag === "string") {
-                return <ArticleTag key={tag} tagId={tag} />;
-              } else return null;
-            })}
-          </div>
-        </header>
-        <p className={classes["summary"]}>{post.summary}</p>
-        <Button
-          icon={<ArrrowIcon />}
-          size="x-small"
-          color="primary"
-          noHover
-          text="Read more"
-          className={`read-more-btn ${classes["read-more-button"]}`}
-        />
-      </article>
+            })}`}</p>
+            <div className={classes["tag-wrapper"]}>
+              {post.tag.map((tag) => {
+                if (typeof tag === "string") {
+                  return <ArticleTag key={tag} tagId={tag} />;
+                } else return null;
+              })}
+            </div>
+          </header>
+          <p className={classes["summary"]}>{post.summary}</p>
+          <Button
+            icon={<ArrrowIcon />}
+            size="x-small"
+            color="primary"
+            noHover
+            text="Read more"
+            className={`read-more-btn ${classes["read-more-button"]}`}
+          />
+        </article>
+      </Link>
     );
   } else null;
 

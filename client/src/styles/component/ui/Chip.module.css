@@ -10,7 +10,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   width: fit-content;
   border-radius: 9999px;
   padding: var(--padding);
@@ -25,18 +24,18 @@
   transition: var(--transition);
 }
 
-.chip.contained:hover,
+/* .chip.contained:hover,
 .chip.contained:focus {
   --bg-opacity: 1;
-}
+} */
 
-.chip.transparent.primary:hover,
+/* .chip.transparent.primary:hover,
 .chip.transparent.primary:focus,
 .chip.transparent.gray:hover,
 .chip.transparent.gray:focus {
   --bg-color: 0 0% 100%;
   --bg-opacity: 0.05;
-}
+} */
 
 .small {
   --font-size: var(--fs-100);

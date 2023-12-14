@@ -5,7 +5,7 @@ import "./styles/index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import { inject } from "@vercel/analytics";
 import { store } from "./redux/index.ts";
 const theme = createTheme({
   palette: {
@@ -17,6 +17,7 @@ const theme = createTheme({
     // },
   },
 });
+inject();
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>

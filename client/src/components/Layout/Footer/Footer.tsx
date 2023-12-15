@@ -7,7 +7,7 @@ import FacebookIcon from "../../icons/social/FacebookIcon";
 
 const Footer = () => {
   return (
-    <footer className={classes["footer-wrapper"]}>
+    <footer className={`container ${classes["footer-wrapper"]}`}>
       <div className={classes["footer"]}>
         <p>Keep in touch:</p>
         <div>

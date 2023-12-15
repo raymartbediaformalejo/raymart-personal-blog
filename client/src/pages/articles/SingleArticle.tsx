@@ -59,14 +59,14 @@ const SingleArticle = () => {
 
   if (post) {
     content = (
-      <article className={classes["single-post"]}>
+      <article className={`${classes["single-post"]}`}>
         <header className={classes["single-post__header"]}>
           <img
             src={post?.image}
             alt={post?.title}
             className={classes["thumbnail"]}
           />
-          <div className={classes["header-info-wrapper"]}>
+          <div className={`container ${classes["header-info-wrapper"]}`}>
             <h1 className={classes["title"]}>{post?.title}</h1>
             <div className={classes["date-and-views-wrapper"]}>
               <div className={classes["post-date-published"]}>
@@ -92,7 +92,7 @@ const SingleArticle = () => {
             </div>
           </div>
         </header>
-        <div className={classes["single-post__body"]}>
+        <div className={`container ${classes["single-post__body"]}`}>
           {post &&
             post?.content &&
             splitStringByPreTag(post.content).map((content) => {

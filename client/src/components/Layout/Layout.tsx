@@ -7,7 +7,7 @@ import { DASHBOARD } from "../../utils/Constant";
 const Layout = () => {
   const { pathname } = useLocation();
   const isDashboard = pathname.includes(DASHBOARD);
-  const isSinglePostPage = pathname.includes("/article/");
+  const isSinglePostPage = pathname.includes("/articles/");
 
   const classMain = `${isSinglePostPage ? classes["no-padding"] : ""}`;
 

@@ -50,7 +50,7 @@ const Posts = () => {
   } else {
     content = <p>Loading...</p>;
   }
-  return content;
+  return <div className="container__large">{content}</div>;
 };
 
 export default Posts;

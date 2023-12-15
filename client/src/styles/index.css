@@ -147,3 +147,7 @@ video {
   width: min(700px, 100%);
   margin-inline: auto;
 }
+.container__large {
+  width: min(1300px, 100%);
+  margin-inline: auto;
+}

@@ -123,8 +123,12 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
     if (isSuccessAdd) console.log("Successfully add post");
   }
 
+  console.log("watch: ", watch());
+
   useEffect(() => {
     if (postToEdit) {
+      console.log(postToEdit);
+
       setValue("_id", postToEdit._id);
       setValue("title", postToEdit.title);
       setValue("summary", postToEdit.summary);
@@ -139,7 +143,7 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
   }, [setValue, postToEdit]);
 
   return (
-    <div className={classes["new-post"]}>
+    <div className={`container__large ${classes["new-post"]}`}>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={classes["new-form__form-wrapper"]}
@@ -289,7 +293,7 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
           />
           {watch("image") && (
             <Paper
-              variant="outlined"
+              // variant="outlined"
               elevation={1}
               className={classes["cover-photo-wrapper"]}
             >
@@ -303,7 +307,7 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
               <FormControlLabel
                 className={classes["form__checkbox-wrapper"]}
                 {...field}
-                control={<Checkbox />}
+                control={<Checkbox checked={field.value} />}
                 label="Is featured?"
               />
             )}

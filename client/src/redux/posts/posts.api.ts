@@ -41,6 +41,18 @@ export const postsApi = baseApi.injectEndpoints({
         } else return [{ type: "Post" as const, id: "LIST" }];
       },
     }),
+    getPost: build.query<TPostResponse, { id: string }>({
+      query: ({ id }) => ({
+        url: `/posts/post?id${id}`,
+      }),
+      transformResponse: (responseData: TPostResponse) => {
+        return {
+          ...responseData,
+          createdAt: new Date(responseData.createdAt),
+          updatedAt: new Date(responseData.updatedAt),
+        };
+      },
+    }),
     getFeaturedPosts: build.query<TPostResponseObject, { featured: boolean }>({
       query: ({ featured }) => ({
         url: `/posts?featured=${featured}`,

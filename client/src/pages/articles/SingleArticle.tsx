@@ -2,18 +2,17 @@ import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import { useParams } from "react-router-dom";
 import { vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-import { useAppSelector } from "../../redux/hooks/useAppSelector";
-import { selectPostById } from "../../redux/posts/posts.api";
+import { useGetPostQuery } from "../../redux/posts/posts.api";
 import classes from "../../styles/pages/articles/SingleArticle.module.css";
 import ArticleTag from "./components/ArticleTag";
 import CalendarIcon from "../../components/icons/Calendar";
 
 const SingleArticle = () => {
   const { id } = useParams();
-  const post = useAppSelector((state) => selectPostById(state, id as string));
-  let content;
 
-  console.log(post);
+  const { data: post } = useGetPostQuery({ id: id! });
+
+  let content;
 
   const splitStringByPreTag = (inputString: string) => {
     const preTagStart = "<pre";

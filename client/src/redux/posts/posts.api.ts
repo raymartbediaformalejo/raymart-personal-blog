@@ -43,7 +43,7 @@ export const postsApi = baseApi.injectEndpoints({
     }),
     getPost: build.query<TPostResponse, { id: string }>({
       query: ({ id }) => ({
-        url: `/posts/post?id${id}`,
+        url: `/posts/post?id=${id}`,
       }),
       transformResponse: (responseData: TPostResponse) => {
         return {
@@ -120,6 +120,7 @@ export const postsApi = baseApi.injectEndpoints({
 
 export const {
   useGetPostsQuery,
+  useGetPostQuery,
   useGetFeaturedPostsQuery,
   useLazySearchPostQuery,
   useAddNewPostMutation,

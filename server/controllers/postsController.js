@@ -35,6 +35,29 @@ const getAllPosts = async (req, res) => {
   res.status(200).json(response);
 };
 
+// @desc Get post
+// @route GET /post
+// @access Public
+const getPost = async (req, res) => {
+  const { id } = req.query;
+
+  if (!id) {
+    return res.status(400).json({ message: "Post ID required" });
+  }
+
+  const post = await Post.findOneAndUpdate(
+    { _id: id },
+    { $inc: { viewCount: 1 } },
+    { new: true }
+  );
+
+  if (!post) {
+    return res.status(404).json({ message: "Post not found" });
+  }
+
+  res.status(200).json(post);
+};
+
 // @desc Search  post
 // @route POST /posts
 // @access Public
@@ -213,6 +236,7 @@ const deletePost = async (req, res) => {
 
 module.exports = {
   getAllPosts,
+  getPost,
   searchPosts,
   createNewPost,
   updatePost,

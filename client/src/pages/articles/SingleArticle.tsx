@@ -1,6 +1,7 @@
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import { useParams } from "react-router-dom";
 import { vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 
 import { useGetPostQuery } from "../../redux/posts/posts.api";
 import classes from "../../styles/pages/articles/SingleArticle.module.css";
@@ -67,13 +68,19 @@ const SingleArticle = () => {
           />
           <div className={classes["header-info-wrapper"]}>
             <h1 className={classes["title"]}>{post?.title}</h1>
-            <div className={classes["post-date-published"]}>
-              <CalendarIcon />{" "}
-              <p>{`Posted at ${post.createdAt.toLocaleDateString("en-PH", {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
-              })}`}</p>
+            <div className={classes["date-and-views-wrapper"]}>
+              <div className={classes["post-date-published"]}>
+                <CalendarIcon />
+                <p>{`Posted at ${post.createdAt.toLocaleDateString("en-PH", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })}`}</p>
+              </div>
+              <div className={classes["views-wrapper"]}>
+                <VisibilityOutlinedIcon fontSize="small" />
+                <p>{`${post.viewCount} views`}</p>
+              </div>
             </div>
             <div className={classes["tag-wrapper"]}>
               {post &&

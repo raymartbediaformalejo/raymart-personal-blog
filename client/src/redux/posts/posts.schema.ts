@@ -23,6 +23,7 @@ const postResponseSchemaRaw = z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
   __v: z.number(),
+  viewCount: z.number(),
 });
 
 export const postResponseSchema = postSchemaWithId.merge(postResponseSchemaRaw);

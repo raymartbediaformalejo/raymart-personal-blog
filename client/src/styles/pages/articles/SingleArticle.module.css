@@ -24,13 +24,23 @@
   line-height: 1.5;
 }
 
-.post-date-published {
+.date-and-views-wrapper {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.post-date-published,
+.views-wrapper {
   display: flex;
   align-items: center;
   color: var(--clr-light-gray);
   gap: 6px;
   font-size: var(--fs-200);
   margin: 8px 0;
+}
+
+.views-wrapper svg[class*="MuiSvgIcon-root"] {
+  font-size: 18.5px;
 }
 
 .tag-wrapper {
@@ -84,4 +94,8 @@
 
 .single-post__body img {
   width: 100%;
+}
+
+.views-wrapper {
+  display: flex;
 }

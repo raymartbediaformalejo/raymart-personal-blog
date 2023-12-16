@@ -2,9 +2,13 @@ import { useEffect, useDeferredValue } from "react";
 
 import { useLazySearchPostQuery } from "../../../redux/posts/posts.api";
 import EnhancedTable from "./components/EnhancedTable";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { POST_QUERY_KEYS } from "../../../utils/Constant";
 import { TSortBy } from "../../../types/types";
+import { Button } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+
+import classes from "../../../styles/pages/dashboard/Articles.module.css";
 
 const Posts = () => {
   const [searchPosts, { data: posts }] = useLazySearchPostQuery();
@@ -21,6 +25,7 @@ const Posts = () => {
     sortBy: JSON.parse(sort)[0],
     order: JSON.parse(sort)[1],
   };
+  const navigate = useNavigate();
 
   let content;
   useEffect(() => {
@@ -32,20 +37,34 @@ const Posts = () => {
       limit: +postLimit,
     });
   }, [searchPosts, defferedQuery, tag, sort, page, postLimit]);
-
-  console.log("posts: ", posts);
-  console.log("page: ", page);
+  const handleGoToAddPost = () => {
+    navigate("/dashboard/articles/new");
+  };
   if (posts) {
     content = (
-      <EnhancedTable
-        query={q}
-        rows={posts.posts}
-        page={+page}
-        sort={sortBy}
-        rowsPerPage={+postLimit}
-        totalPosts={posts.total}
-        setSearchParams={setSearchParams}
-      />
+      <>
+        <div className={classes["add-new-post-button-wrapper"]}>
+          <Button
+            className={classes["add-new-post-button"]}
+            variant="contained"
+            startIcon={<AddIcon />}
+            onClick={handleGoToAddPost}
+          >
+            <span className={classes["add-new-post-button__label"]}>
+              Add new post
+            </span>
+          </Button>
+        </div>
+        <EnhancedTable
+          query={q}
+          rows={posts.posts}
+          page={+page}
+          sort={sortBy}
+          rowsPerPage={+postLimit}
+          totalPosts={posts.total}
+          setSearchParams={setSearchParams}
+        />
+      </>
     );
   } else {
     content = <p>Loading...</p>;

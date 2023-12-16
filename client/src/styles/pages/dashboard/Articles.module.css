@@ -1,0 +1,29 @@
+.add-new-post-button-wrapper {
+  margin: 2rem 0 1rem 0;
+  display: flex;
+  justify-content: end;
+}
+
+.add-new-post-button[class*="MuiButtonBase-root"] {
+  padding: 8px;
+  min-width: 44px;
+}
+.add-new-post-button span[class*="MuiButton-startIcon"] {
+  margin: 0;
+}
+.add-new-post-button__label {
+  display: none;
+}
+
+@media (min-width: 700px) {
+  .add-new-post-button[class*="MuiButtonBase-root"] {
+    padding: 8px 16px;
+    min-width: 44px;
+  }
+  .add-new-post-button span[class*="MuiButton-startIcon"] {
+    margin: 0 8px 0 4px;
+  }
+  .add-new-post-button__label {
+    display: inline-block;
+  }
+}

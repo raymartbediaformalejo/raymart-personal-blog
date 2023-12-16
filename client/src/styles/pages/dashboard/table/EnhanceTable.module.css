@@ -6,7 +6,7 @@
   --clr-active: var(--clr-primary-300);
   --clr-toolbar-icon-hover: var(--clr-primary-500);
 
-  margin: 1.75rem 0;
+  margin-bottom: 1.75rem;
 }
 .all-posts-table-wrapper[class*="MuiPaper-rounded MuiPaper-elevation1"] {
   background-color: hsl(var(--clr-neutral-off-white) / 0.1);

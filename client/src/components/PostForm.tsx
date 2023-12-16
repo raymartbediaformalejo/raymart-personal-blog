@@ -14,6 +14,7 @@ import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import { Paper } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
 import classes from "../styles/component/PostForm.module.css";
 import { TPostResponse } from "../redux/posts/posts.type";
@@ -27,6 +28,7 @@ import {
   useAddNewPostMutation,
   useUpdatePostMutation,
 } from "../redux/posts/posts.api";
+import { useNavigate } from "react-router-dom";
 
 type PostFormProps = {
   postToEdit?: TPostResponse;
@@ -71,6 +73,7 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
     value: category._id,
     label: category.name,
   }));
+  const navigate = useNavigate();
 
   const tagOptions = tags.map((tag) => ({
     value: tag._id,
@@ -123,7 +126,13 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
     if (isSuccessAdd) console.log("Successfully add post");
   }
 
-  console.log("watch: ", watch());
+  const handleGoToAddPost = () => {
+    navigate("/dashboard/articles/new");
+  };
+
+  const handleCancel = () => {
+    navigate("/dashboard/articles");
+  };
 
   useEffect(() => {
     if (postToEdit) {
@@ -148,11 +157,23 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
         onSubmit={handleSubmit(onSubmit)}
         className={classes["new-form__form-wrapper"]}
       >
-        <div className={classes["title-wrapper"]}>
+        <header className={classes["header"]}>
           <h2 className={classes["title"]}>{`${
             postToEdit ? "Edit post" : "Add new post"
           }`}</h2>
-        </div>
+          {postToEdit && (
+            <Button
+              className={classes["add-new-post-button"]}
+              variant="contained"
+              startIcon={<AddIcon />}
+              onClick={handleGoToAddPost}
+            >
+              <span className={classes["add-new-post-button__label"]}>
+                Add new post
+              </span>
+            </Button>
+          )}
+        </header>
 
         <div className={classes["new-form__form"]}>
           <Controller
@@ -307,8 +328,8 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
                 control={control}
                 render={({ field }) => (
                   <FormControlLabel
-                    className={classes["form__checkbox-wrapper"]}
                     {...field}
+                    className={classes["form__checkbox-wrapper"]}
                     control={<Checkbox checked={field.value} />}
                     label="Is featured?"
                     labelPlacement="start"
@@ -387,21 +408,18 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
             render={({ field }) => (
               <Suspense fallback={<div>Loading Quill editor</div>}>
                 <DynamicQuillNoSSRWrapper
+                  {...field}
                   id="content"
                   className={classes["editor"]}
                   theme="snow"
                   modules={QUILL_EDITOR_MODULES}
                   formats={QUILL_EDITOR_FORMATS}
-                  value={field.value || ""}
-                  onChange={(text) => {
-                    field.onChange(text);
-                  }}
                 />
               </Suspense>
             )}
           />
           <div className={classes["button-wrapper"]}>
-            <Button variant="outlined" size="large">
+            <Button variant="outlined" size="large" onClick={handleCancel}>
               Cancel
             </Button>
             <Button type="submit" variant="contained" size="large">

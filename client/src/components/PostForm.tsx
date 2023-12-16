@@ -161,7 +161,7 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
             render={({ field }) => (
               <TextField
                 {...field}
-                className={classes["input-texfield-item-wrapper"]}
+                className={`${classes["input-texfield-item-wrapper"]} ${classes["title"]}`}
                 multiline
                 maxRows={4}
                 id="title"
@@ -177,7 +177,7 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
             render={({ field }) => (
               <TextField
                 {...field}
-                className={classes["input-texfield-item-wrapper"]}
+                className={`${classes["input-texfield-item-wrapper"]} ${classes["summary"]}`}
                 multiline
                 maxRows={5}
                 id="summary"
@@ -187,179 +187,200 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
               />
             )}
           />
-          <Controller
-            control={control}
-            name="category"
-            defaultValue={[]}
-            render={({ field }) => (
-              <FormControl className={classes["input-item-wrapper"]}>
-                <InputLabel id="category">Category</InputLabel>
-                <Select
-                  {...field}
-                  className={classes["select-category"]}
-                  labelId="category"
-                  id="category"
-                  multiple
-                  value={field.value}
-                  input={<OutlinedInput label="Category" />}
-                >
-                  {categoryOptions.map((categ) => (
-                    <MenuItem key={categ.label} value={categ.value}>
-                      {categ.label}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            )}
-          />
-          <Controller
-            control={control}
-            name="tag"
-            defaultValue={[]}
-            render={({ field }) => (
-              <FormControl className={classes["input-item-wrapper"]}>
-                <InputLabel id="tag">Tag</InputLabel>
-                <Select
-                  {...field}
-                  className={classes["select-category"]}
-                  labelId="tag"
-                  id="tag"
-                  multiple
-                  value={field.value}
-                  input={<OutlinedInput label="Tag" />}
-                >
-                  {tagOptions.map((tag) => (
-                    <MenuItem key={tag.label} value={tag.value}>
-                      {tag.label}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            )}
-          />
-          <Controller
-            control={control}
-            name="image"
-            render={({ field }) => {
-              return (
-                <Button
-                  component="label"
-                  variant="outlined"
-                  startIcon={<UploadFileIcon />}
-                  size="large"
-                >
-                  Upload Cover Photo
-                  <input
-                    type="file"
-                    accept="image/*"
-                    hidden
-                    onChange={async (image) => {
-                      const fileInput = image.target as HTMLInputElement;
-
-                      if (fileInput.files && fileInput.files.length > 0) {
-                        const reader = new FileReader();
-                        reader.readAsDataURL(fileInput.files[0]);
-
-                        for (const file of fileInput.files) {
-                          console.log("file: ", URL.createObjectURL(file));
-                          formData.append("file", file);
-                        }
-
-                        formData.append(
-                          "upload_preset",
-                          import.meta.env.VITE_CLOUDINARY_PRESET_NAME
-                        );
-
-                        try {
-                          const response = await axios.post(
-                            import.meta.env.VITE_CLOUDINARY_URL,
-                            formData
-                          );
-                          const imageData = response.data;
-
-                          console.log("Image data:", imageData.secure_url);
-                          if (imageData.secure_url) {
-                            field.onChange(imageData.secure_url);
-                          }
-                        } catch (error) {
-                          console.error("Error uploading image:", error);
-                        }
-                      }
-                    }}
-                  />
-                </Button>
-              );
-            }}
-          />
-          {watch("image") && (
-            <Paper
-              // variant="outlined"
-              elevation={1}
-              className={classes["cover-photo-wrapper"]}
-            >
-              <img src={watch("image")} alt="cover photo" />
-            </Paper>
-          )}
-          <Controller
-            name="featured"
-            control={control}
-            render={({ field }) => (
-              <FormControlLabel
-                className={classes["form__checkbox-wrapper"]}
-                {...field}
-                control={<Checkbox checked={field.value} />}
-                label="Is featured?"
+          <div className={classes["new-form__form--right"]}>
+            <div className={classes["categories-and-tags-wrapper"]}>
+              <Controller
+                control={control}
+                name="category"
+                defaultValue={[]}
+                render={({ field }) => (
+                  <FormControl
+                    className={`${classes["input-item-wrapper"]} ${classes["category"]}`}
+                  >
+                    <InputLabel id="category">Category</InputLabel>
+                    <Select
+                      {...field}
+                      className={classes["select-category"]}
+                      labelId="category"
+                      id="category"
+                      multiple
+                      value={field.value}
+                      input={<OutlinedInput label="Category" />}
+                    >
+                      {categoryOptions.map((categ) => (
+                        <MenuItem key={categ.label} value={categ.value}>
+                          {categ.label}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                )}
               />
+              <Controller
+                control={control}
+                name="tag"
+                defaultValue={[]}
+                render={({ field }) => (
+                  <FormControl
+                    className={`${classes["input-item-wrapper"]} ${classes["tag"]}`}
+                  >
+                    <InputLabel id="tag">Tag</InputLabel>
+                    <Select
+                      {...field}
+                      className={classes["select-category"]}
+                      labelId="tag"
+                      id="tag"
+                      multiple
+                      value={field.value}
+                      input={<OutlinedInput label="Tag" />}
+                    >
+                      {tagOptions.map((tag) => (
+                        <MenuItem key={tag.label} value={tag.value}>
+                          {tag.label}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                )}
+              />
+            </div>
+            <div className={classes["status-visibility-wrapper"]}>
+              <Controller
+                control={control}
+                name="status"
+                render={({ field }) => (
+                  <FormControl
+                    className={`${classes["input-item-wrapper"]} ${classes["status"]}`}
+                  >
+                    <InputLabel id="status">Status</InputLabel>
+                    <Select
+                      {...field}
+                      className={classes["select-category"]}
+                      labelId="status"
+                      id="status"
+                      value={field.value}
+                      input={<OutlinedInput label="Name" />}
+                      // MenuProps={MenuProps}
+                    >
+                      {statusOptions.map((status) => (
+                        <MenuItem key={status.label} value={status.value}>
+                          {status.label}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                )}
+              />
+              <Controller
+                control={control}
+                name="visibility"
+                render={({ field }) => (
+                  <FormControl
+                    className={`${classes["input-item-wrapper"]} ${classes["visibility"]}`}
+                  >
+                    <InputLabel id="visibility">Visibility</InputLabel>
+                    <Select
+                      {...field}
+                      className={classes["select-category"]}
+                      labelId="visibility"
+                      id="visibility"
+                      value={field.value}
+                      input={<OutlinedInput label="Visibility" />}
+                      // MenuProps={MenuProps}
+                    >
+                      {visibilityOptions.map((visibility) => (
+                        <MenuItem
+                          key={visibility.label}
+                          value={visibility.value}
+                        >
+                          {visibility.label}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                )}
+              />
+            </div>
+            <div className={classes["featured-and-image-wrapper"]}>
+              <Controller
+                name="featured"
+                control={control}
+                render={({ field }) => (
+                  <FormControlLabel
+                    className={classes["form__checkbox-wrapper"]}
+                    {...field}
+                    control={<Checkbox checked={field.value} />}
+                    label="Is featured?"
+                    labelPlacement="start"
+                  />
+                )}
+              />
+              <Controller
+                control={control}
+                name="image"
+                render={({ field }) => {
+                  return (
+                    <Button
+                      component="label"
+                      variant="outlined"
+                      startIcon={<UploadFileIcon />}
+                      size="large"
+                      className={classes["upload-image-button"]}
+                    >
+                      Upload Cover Photo
+                      <input
+                        type="file"
+                        accept="image/*"
+                        hidden
+                        onChange={async (image) => {
+                          const fileInput = image.target as HTMLInputElement;
+
+                          if (fileInput.files && fileInput.files.length > 0) {
+                            const reader = new FileReader();
+                            reader.readAsDataURL(fileInput.files[0]);
+
+                            for (const file of fileInput.files) {
+                              console.log("file: ", URL.createObjectURL(file));
+                              formData.append("file", file);
+                            }
+
+                            formData.append(
+                              "upload_preset",
+                              import.meta.env.VITE_CLOUDINARY_PRESET_NAME
+                            );
+
+                            try {
+                              const response = await axios.post(
+                                import.meta.env.VITE_CLOUDINARY_URL,
+                                formData
+                              );
+                              const imageData = response.data;
+
+                              console.log("Image data:", imageData.secure_url);
+                              if (imageData.secure_url) {
+                                field.onChange(imageData.secure_url);
+                              }
+                            } catch (error) {
+                              console.error("Error uploading image:", error);
+                            }
+                          }
+                        }}
+                      />
+                    </Button>
+                  );
+                }}
+              />
+            </div>
+            {watch("image") && (
+              <Paper
+                // variant="outlined"
+                elevation={1}
+                className={classes["cover-photo-wrapper"]}
+              >
+                <img src={watch("image")} alt="cover photo" />
+              </Paper>
             )}
-          />
-          <Controller
-            control={control}
-            name="status"
-            render={({ field }) => (
-              <FormControl className={classes["input-item-wrapper"]}>
-                <InputLabel id="status">Status</InputLabel>
-                <Select
-                  {...field}
-                  className={classes["select-category"]}
-                  labelId="status"
-                  id="status"
-                  value={field.value}
-                  input={<OutlinedInput label="Name" />}
-                  // MenuProps={MenuProps}
-                >
-                  {statusOptions.map((status) => (
-                    <MenuItem key={status.label} value={status.value}>
-                      {status.label}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            )}
-          />
-          <Controller
-            control={control}
-            name="visibility"
-            render={({ field }) => (
-              <FormControl className={classes["input-item-wrapper"]}>
-                <InputLabel id="visibility">Visibility</InputLabel>
-                <Select
-                  {...field}
-                  className={classes["select-category"]}
-                  labelId="visibility"
-                  id="visibility"
-                  value={field.value}
-                  input={<OutlinedInput label="Visibility" />}
-                  // MenuProps={MenuProps}
-                >
-                  {visibilityOptions.map((visibility) => (
-                    <MenuItem key={visibility.label} value={visibility.value}>
-                      {visibility.label}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            )}
-          />
+          </div>
           <Controller
             name="content"
             control={control}
@@ -379,9 +400,14 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
               </Suspense>
             )}
           />
-          <Button type="submit" variant="contained">
-            {`${postToEdit ? "Update" : "Save"}`}
-          </Button>
+          <div className={classes["button-wrapper"]}>
+            <Button variant="outlined" size="large">
+              Cancel
+            </Button>
+            <Button type="submit" variant="contained" size="large">
+              {`${postToEdit ? "Update" : "Save"}`}
+            </Button>
+          </div>
         </div>
       </form>
     </div>

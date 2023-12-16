@@ -29,14 +29,51 @@
 }
 
 .new-form__form {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1rem;
 
   padding: 17.5px;
+
+  grid-template-areas:
+    "title"
+    "summary"
+    "rightForm"
+    "editor"
+    "buttons";
 }
 
+/* ============================ START NAMED GRID AREA ========================= */
+.input-texfield-item-wrapper.title {
+  grid-area: title;
+}
+.input-texfield-item-wrapper.summary {
+  grid-area: summary;
+}
+
+.new-form__form--right {
+  grid-area: rightForm;
+}
+.new-form__form--right,
+.categories-and-tags-wrapper,
+.status-visibility-wrapper,
+.featured-and-image-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.editor {
+  grid-area: editor;
+}
+
+.button-wrapper {
+  grid-area: buttons;
+}
+/* ============================ END NAMED GRID AREA ========================= */
+
 .input-texfield-item-wrapper div[class*="MuiInputBase-root"] textarea {
+  height: calc(56px * 2);
   color: var(--color);
 }
 .input-texfield-item-wrapper div[class*="MuiInputBase-root"] fieldset {
@@ -54,6 +91,12 @@
 }
 
 .select-category {
+}
+
+.upload-image-button[class*="MuiButtonBase-root"] {
+  height: 56px;
+  /* display: inline-block; */
+  word-break: keep-all;
 }
 
 .new-form__form .input-item-wrapper .select-category div:first-child {
@@ -120,18 +163,48 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  user-select: none;
 }
 
+.form__checkbox-wrapper[class*="MuiFormControlLabel-root"] {
+  color: hsl(var(--clr-neutral-border) / 0.1);
+  border: 1px solid var(--border-color);
+  width: 100%;
+  margin: 0;
+  height: 56px;
+  border-radius: 4px;
+  justify-content: space-between;
+  padding-left: 12px;
+  text-transform: uppercase;
+  background-color: hsl(var(--clr-neutral-body-bg) / 0.2);
+}
+
+.form__checkbox-wrapper[class*="MuiFormControlLabel-root"]:hover {
+  --border-color: hsl(var(--clr-neutral-border) / 0.2);
+}
 .form__checkbox-wrapper span:first-child:not([class~="Mui-checked"]) svg {
   color: hsl(var(--clr-neutral-border) / 0.1);
 }
 
 .form__checkbox-wrapper span:nth-child(2) {
   color: var(--label-color);
+  user-select: none;
 }
 
 .form__checkbox-wrapper span:nth-child(2):hover {
   color: var(--color);
+}
+
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: space-between;
+}
+
+.button-wrapper button {
+  width: 100%;
 }
 
 .editor {
@@ -148,12 +221,7 @@
 }
 .editor div:nth-child(2)[class~="ql-container"] {
   border-radius: 0 0 var(--border-radius) var(--border-radius);
-}
-
-.editor div:nth-child(2)[class~="ql-container"] div[class~="ql-editor"] {
-  resize: vertical;
-  height: 100%;
-  min-height: 100%;
+  height: 800px;
 }
 
 /* ===== START QUILL PICKER ===== */
@@ -1078,20 +1146,50 @@
 }
 /* ===== END QUILL CODE CLEAN ===== */
 
-/* .editor line,
-.editor path,
-.editor polygon,
-.editor svg,
-.editor rect,
-.editor polyline {
-  stroke: var(--label-color);
+@media (min-width: 500px) {
+  .button-wrapper {
+    flex-direction: row;
+  }
+}
+@media (min-width: 600px) {
+  .categories-and-tags-wrapper,
+  .status-visibility-wrapper,
+  .featured-and-image-wrapper {
+    flex-direction: row;
+  }
+  .categories-and-tags-wrapper > div,
+  .status-visibility-wrapper > div {
+    width: 100%;
+  }
+
+  .featured-and-image-wrapper label[class*="MuiButtonBase-root"],
+  .featured-and-image-wrapper label[class*="MuiFormControlLabel-root"] {
+    width: 50%;
+  }
 }
 
-.editor line,
-.editor path,
-.editor polygon,
-.editor svg,
-.editor rect,
-.editor polyline {
-  stroke: var(--label-color);
-} */
+@media (min-width: 1000px) {
+  .new-form__form {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    grid-template-areas:
+      "title title rightForm"
+      "summary summary rightForm"
+      "summary summary rightForm"
+      "editor editor rightForm"
+      "editor editor rightForm"
+      "editor editor rightForm"
+      "editor editor rightForm "
+      " buttons buttons .";
+  }
+
+  .categories-and-tags-wrapper,
+  .status-visibility-wrapper,
+  .featured-and-image-wrapper {
+    flex-direction: column;
+  }
+  .featured-and-image-wrapper label[class*="MuiButtonBase-root"],
+  .featured-and-image-wrapper label[class*="MuiFormControlLabel-root"] {
+    width: 100%;
+  }
+}

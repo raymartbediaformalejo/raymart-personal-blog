@@ -85,3 +85,37 @@
   --bg-color: 15 75% 28%;
   --border-color: 17 88% 40%;
 }
+
+/* ================== LIGHT MODE ============== */
+
+html[data-color-scheme="light"] .contained.js {
+  --bg-opacity: 1;
+  --color: #ca8a04; /*d: 600  */
+  --bg-color: 55 92% 95%; /*d: 50  */
+  --border-color: 53 98% 77%; /*d: 200  */
+}
+
+html[data-color-scheme="light"] .contained.react {
+  --bg-opacity: 1;
+  --color: #0284c7; /*d: 600  */
+  --bg-color: 204 100% 97%; /*d: 50  */
+  --border-color: 201 94% 86%; /*d: 200  */
+}
+html[data-color-scheme="light"] .contained.html {
+  --bg-opacity: 1;
+  --color: #ea580c; /*d: 600  */
+  --bg-color: 33 100% 96%; /*d: 50  */
+  --border-color: 32 98% 83%; /*d: 200  */
+}
+html[data-color-scheme="light"] .contained.css {
+  --bg-opacity: 1;
+  --color: #2563eb; /*d: 600  */
+  --bg-color: 214 100% 97%; /*d: 50  */
+  --border-color: 213 97% 87%; /*d: 200  */
+}
+html[data-color-scheme="light"] .contained.nodejs {
+  --bg-opacity: 1;
+  --color: #059669; /*d: 600  */
+  --bg-color: 152 81% 96%; /*d: 50  */
+  --border-color: 152 76% 80%; /*d: 200  */
+}

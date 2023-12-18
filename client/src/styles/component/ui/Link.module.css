@@ -49,6 +49,24 @@
 .transparent.primary {
   --color: var(--clr-primary-300);
 }
+
 .transparent.gray {
   --color: hsl(218, 11%, 65%);
+}
+
+/* ================== LIGHT MODE ============== */
+
+html[data-color-scheme="light"] .link[color="gray"] {
+  --color: #1f2937;
+}
+html[data-color-scheme="light"] .link[color="primary"] {
+  --color: var(--clr-primary-500);
+}
+
+html[data-color-scheme="light"] .link.transparent.gray:hover,
+html[data-color-scheme="light"] .link.transparent.gray:focus,
+html[data-color-scheme="light"] .link.transparent.primary:hover,
+html[data-color-scheme="light"] .link.transparent.primary:focus {
+  --bg-opacity: 1;
+  --bg-color: 220 14% 96%;
 }

@@ -22,3 +22,7 @@
   grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
   gap: 1rem;
 }
+
+html[data-color-scheme="light"] .title {
+  color: rgba(17, 24, 39, 1);
+}

@@ -145,3 +145,7 @@ a:has(.feature-post-card) {
   display: flex;
   gap: 6px;
 }
+
+html[data-color-scheme="light"] .summary {
+  color: var(--clr-subtitle);
+}

@@ -11,7 +11,7 @@
 }
 
 .sub-title {
-  color: rgba(209, 213, 219, 0.9);
+  color: var(--clr-subtitle);
   font-size: var(--fs-450);
   line-height: 28px;
   font-weight: var(--fw-500);
@@ -19,6 +19,8 @@
 
 .sub-title a {
   color: var(--clr-primary-400);
+  text-decoration: underline;
+  text-underline-offset: 2px;
   text-decoration-color: var(--clr-primary-500);
   transition: all 0.15s ease;
 }
@@ -27,4 +29,13 @@
 .sub-title a:focus {
   color: var(--clr-primary-200);
   text-decoration-color: var(--clr-primary-300);
+}
+
+html[data-color-scheme="light"] .sub-title a {
+  color: var(--clr-primary-500);
+  text-decoration-color: var(--clr-primary-300);
+}
+
+html[data-color-scheme="light"] .sub-title a:hover {
+  text-decoration-color: var(--clr-primary-500);
 }

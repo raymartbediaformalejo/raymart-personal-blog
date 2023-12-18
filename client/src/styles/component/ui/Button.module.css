@@ -31,6 +31,10 @@
   background-color: hsla(var(--clr-neutral-border) / 0.05);
 }
 
+.no-hover {
+  font-weight: var(--fw-600);
+}
+
 .transparent {
   --border: none;
   --width: fit-content;
@@ -68,5 +72,18 @@
 
 /* ================== LIGHT MODE ============== */
 
-html[data-color-scheme="light"] .main-wrapper {
+html[data-color-scheme="light"] .button {
+  color: var(--clr-primary-500);
+}
+html[data-color-scheme="light"]
+  .button.button:hover:not(.no-hover, .transparent),
+html[data-color-scheme="light"]
+  .button.button:focus:not(.no-hover, .transparent) {
+  --border: inset 0 0 0 0px #fff, inset 0 0 0 1px rgb(209 213 219), 0 0 #0000;
+
+  background-color: rgb(243 244 246);
+}
+html[data-color-scheme="light"] .button.button:hover:not(.no-hover),
+html[data-color-scheme="light"] .button.button:focus:not(.no-hover) {
+  background-color: hsl(220, 14%, 96%);
 }

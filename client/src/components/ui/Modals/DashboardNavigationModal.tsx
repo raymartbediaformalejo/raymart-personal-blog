@@ -16,7 +16,7 @@ const DashboardNavigationModal = ({
   isOpen,
   onClose,
 }: DashboardNavigationModalProps) => {
-  const [sendLogout, { isLoading }] = useSendLogoutMutation();
+  const [sendLogout] = useSendLogoutMutation();
   const navigate = useNavigate();
 
   const handleLogout = async () => {

@@ -7,6 +7,8 @@ import Button from "../../ui/Button";
 import Tooltip from "../../ui/Tooltip";
 import MainNavigationModal from "../../ui/Modals/MainNavigationModal";
 import { Link } from "react-router-dom";
+import LinkButton from "../../ui/LinkButton";
+import { MAIN_NAVIGATION_ITEMS } from "../../../utils/Constant";
 
 const Header = () => {
   const [isOpenNavModal, setIsOpenNavModal] = useState(false);
@@ -28,6 +30,15 @@ const Header = () => {
             </Tooltip>
           </Link>
           <div className={classes["nav__left-icons-wrapper"]}>
+            <div className={classes["big-screen-nav-links"]}>
+              {Object.entries(MAIN_NAVIGATION_ITEMS).map(
+                ([key, { url, name }]) => (
+                  <LinkButton key={key} to={url} color="gray">
+                    {name}
+                  </LinkButton>
+                )
+              )}
+            </div>
             <Button
               className={classes["hamburger-button"]}
               variant="icon"

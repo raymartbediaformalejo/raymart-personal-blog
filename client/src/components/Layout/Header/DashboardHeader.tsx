@@ -5,14 +5,27 @@ import HamburgerIcon from "../../icons/HamburgerIcon";
 import SunIcon from "../../icons/SunIcon";
 import Button from "../../ui/Button";
 import Tooltip from "../../ui/Tooltip";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DashboardNavigationModal from "../../ui/Modals/DashboardNavigationModal";
+import { DASHBOARD_MAIN_NAVIGATION_ITEMS } from "../../../utils/Constant";
+import LinkButton from "../../ui/LinkButton";
+import { useSendLogoutMutation } from "../../../redux/auth/auth.api";
 
 const DashboardHeader = () => {
   const [isOpenNavModal, setIsOpenNavModal] = useState(false);
+  const [sendLogout] = useSendLogoutMutation();
+  const navigate = useNavigate();
 
   const handleToggleNav = () => {
     setIsOpenNavModal((prev) => !prev);
+  };
+  const handleLogout = async () => {
+    try {
+      await sendLogout({});
+      navigate("/");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
   return (
     <>
@@ -20,7 +33,7 @@ const DashboardHeader = () => {
         isOpen={isOpenNavModal}
         onClose={handleToggleNav}
       />
-      <header className={classes["header"]}>
+      <header className={`${classes["header"]} ${classes["dashboard"]}`}>
         <nav className={classes["nav"]}>
           <Link to="/dashboard">
             <Tooltip text="Dashboard Raymart Blog">
@@ -30,7 +43,21 @@ const DashboardHeader = () => {
             </Tooltip>
           </Link>
           <div className={classes["nav__left-icons-wrapper"]}>
-            <Button variant="icon" onClick={handleToggleNav}>
+            <div className={classes["big-screen-nav-links"]}>
+              {Object.entries(DASHBOARD_MAIN_NAVIGATION_ITEMS).map(
+                ([key, { url, name }]) => (
+                  <LinkButton key={key} to={url} color="gray">
+                    {name}
+                  </LinkButton>
+                )
+              )}
+            </div>
+
+            <Button
+              className={classes["hamburger-button"]}
+              variant="icon"
+              onClick={handleToggleNav}
+            >
               <HamburgerIcon />
             </Button>
             <Tooltip text="Switch to light mode">
@@ -38,6 +65,14 @@ const DashboardHeader = () => {
                 <SunIcon />
               </Button>
             </Tooltip>
+            <Button
+              className={classes["logout-button"]}
+              variant="outlined"
+              size="small"
+              onClick={handleLogout}
+            >
+              <span>Logout</span>
+            </Button>
           </div>
         </nav>
       </header>

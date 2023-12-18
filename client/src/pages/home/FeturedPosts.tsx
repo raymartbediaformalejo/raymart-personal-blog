@@ -1,7 +1,7 @@
 import { useGetFeaturedPostsQuery } from "../../redux/posts/posts.api";
 import FeaturedPostCard from "./components/FeaturedPostCard";
 import classes from "../../styles/pages/home/FeaturedPost.module.css";
-import Chip from "../../components/ui/Chip";
+import LinkButton from "../../components/ui/LinkButton";
 
 const FeturedPosts = () => {
   const {
@@ -27,13 +27,13 @@ const FeturedPosts = () => {
   if (isError) content = <p>Error!</p>;
 
   if (isSuccess) {
-    // const { ids } = featuredPosts;
-
     content = (
       <section className={classes["featured-post-section"]}>
         <div className={classes["featured-post-section__title-wrapper"]}>
           <h3 className={classes["title"]}>Featured blog</h3>
-          <Chip text="View all" color="primary" />
+          <LinkButton to="/articles" color="primary">
+            View all
+          </LinkButton>
         </div>
         <div className={classes["featured-post-items-wrapper"]}>
           {featuredPosts.posts.map((post) => (

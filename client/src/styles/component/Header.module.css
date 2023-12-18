@@ -26,3 +26,9 @@
   align-items: center;
   gap: 1rem;
 }
+
+@media (min-width: 640px) {
+  .hamburger-button[type="button"] {
+    display: none;
+  }
+}

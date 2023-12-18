@@ -28,7 +28,11 @@ const Header = () => {
             </Tooltip>
           </Link>
           <div className={classes["nav__left-icons-wrapper"]}>
-            <Button variant="icon" onClick={handleToggleNav}>
+            <Button
+              className={classes["hamburger-button"]}
+              variant="icon"
+              onClick={handleToggleNav}
+            >
               <HamburgerIcon />
             </Button>
             <Tooltip text="Switch to light mode">

@@ -68,3 +68,10 @@
     gap: 0.75rem;
   }
 }
+
+/* ============== LIGHT MODE ==================== */
+html[data-color-scheme="light"] .header {
+  background-color: hsl(0 0% 100%/0.3);
+  border-color: rgba(229, 231, 235, 0.6);
+  backdrop-filter: blur(12px);
+}

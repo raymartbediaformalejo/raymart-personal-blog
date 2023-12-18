@@ -1,4 +1,4 @@
 .circle-icon {
-  fill: rgb(209 213 219/1);
-  color: rgb(209 213 219/1);
+  fill: var(--clr-icon);
+  color: var(--clr-icon);
 }

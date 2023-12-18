@@ -2,13 +2,13 @@ import { useState } from "react";
 
 import classes from "../../../styles/component/Header.module.css";
 import HamburgerIcon from "../../icons/HamburgerIcon";
-import SunIcon from "../../icons/SunIcon";
 import Button from "../../ui/Button";
 import Tooltip from "../../ui/Tooltip";
 import MainNavigationModal from "../../ui/Modals/MainNavigationModal";
 import { Link } from "react-router-dom";
 import LinkButton from "../../ui/LinkButton";
 import { MAIN_NAVIGATION_ITEMS } from "../../../utils/Constant";
+import ToggleTheme from "../../ToggleTheme";
 
 const Header = () => {
   const [isOpenNavModal, setIsOpenNavModal] = useState(false);
@@ -46,11 +46,7 @@ const Header = () => {
             >
               <HamburgerIcon />
             </Button>
-            <Tooltip text="Switch to light mode">
-              <Button variant="icon">
-                <SunIcon />
-              </Button>
-            </Tooltip>
+            <ToggleTheme />
           </div>
         </nav>
       </header>

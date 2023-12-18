@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
 
 :root {
-  color-scheme: dark;
+  color-scheme: dark light;
 
   --user-font-scale: 1rem - 16px;
 
@@ -47,8 +47,9 @@
   --clr-border: hsla(0 0% 100% / 0.1);
   --clr-card-bg: hsla(240, 12%, 5%, 0.8);
   --clr-body-bg: hsl(225 10% 8%);
-  --clr-neutral-body-bg: 225 10% 8%;
+  --clr-icon: hsl(216 12% 84%);
 
+  --clr-neutral-body-bg: 225 10% 8%;
   --clr-neutral-border: 0 0% 100%;
   --clr-neutral-off-white: 0 0% 95%;
   --clr-neutral-light-gray: 218 11% 65%;
@@ -78,7 +79,7 @@ body {
   min-height: 100dvh;
   line-height: 1.333;
   font-weight: normal;
-  background: #131317;
+  background: var(--clr-body-bg);
   font-size: clamp(
     1rem,
     0.4626rem + 1.0309vw + var(--user-font-scale),
@@ -156,4 +157,11 @@ video {
   display: grid;
   place-items: center;
   height: calc(100dvh - (105px + 57px));
+}
+
+/* ============== LIGHT MODE ==================== */
+:is(html[data-color-scheme="light"]) {
+  --clr-body-bg: hsl(0, 0%, 100%);
+  --clr-icon: hsl(215 14% 34%);
+  --clr-border: rgb(229 231 235);
 }

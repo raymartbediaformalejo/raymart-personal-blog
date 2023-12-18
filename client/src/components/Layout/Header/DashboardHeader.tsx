@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import classes from "../../../styles/component/Header.module.css";
 import HamburgerIcon from "../../icons/HamburgerIcon";
-import SunIcon from "../../icons/SunIcon";
 import Button from "../../ui/Button";
 import Tooltip from "../../ui/Tooltip";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,6 +9,7 @@ import DashboardNavigationModal from "../../ui/Modals/DashboardNavigationModal";
 import { DASHBOARD_MAIN_NAVIGATION_ITEMS } from "../../../utils/Constant";
 import LinkButton from "../../ui/LinkButton";
 import { useSendLogoutMutation } from "../../../redux/auth/auth.api";
+import ToggleTheme from "../../ToggleTheme";
 
 const DashboardHeader = () => {
   const [isOpenNavModal, setIsOpenNavModal] = useState(false);
@@ -60,11 +60,7 @@ const DashboardHeader = () => {
             >
               <HamburgerIcon />
             </Button>
-            <Tooltip text="Switch to light mode">
-              <Button variant="icon">
-                <SunIcon />
-              </Button>
-            </Tooltip>
+            <ToggleTheme />
             <Button
               className={classes["logout-button"]}
               variant="outlined"

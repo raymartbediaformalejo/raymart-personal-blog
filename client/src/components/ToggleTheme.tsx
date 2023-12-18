@@ -1,19 +1,33 @@
+import Button from "./ui/Button";
+import SunIcon from "./icons/SunIcon";
+import { useEffect, useState } from "react";
+import MoonIcon from "./icons/MoonIcon";
+
 const ToggleTheme = () => {
+  const [colorTheme, setColorTheme] = useState(
+    () => localStorage.getItem("theme") || "dark"
+  );
+  let iconColorTheme;
+
   const handleThemeClick = () => {
-    const htmlElement = document.documentElement;
-    const currentColorScheme = htmlElement.style.colorScheme;
-
-    // Toggle between light and dark themes
-    const newColorScheme = currentColorScheme === "light" ? "dark" : "light";
-
-    // Set the inline style for the color-scheme property
-    htmlElement.style.colorScheme = newColorScheme;
+    setColorTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
   };
+
+  useEffect(() => {
+    const htmlElement = document.documentElement;
+
+    htmlElement.setAttribute("data-color-scheme", colorTheme);
+    htmlElement.style.colorScheme = colorTheme;
+    localStorage.setItem("theme", colorTheme);
+  }, [colorTheme]);
+
+  if (colorTheme === "dark") iconColorTheme = <SunIcon />;
+  if (colorTheme === "light") iconColorTheme = <MoonIcon />;
+
   return (
-    <>
-      <p>Personal blog</p>
-      <button onClick={handleThemeClick}>Toggle Theme</button>
-    </>
+    <Button variant="icon" onClick={handleThemeClick}>
+      {iconColorTheme}
+    </Button>
   );
 };
 

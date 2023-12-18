@@ -65,3 +65,8 @@
 .primary {
   --color: var(--clr-primary-300);
 }
+
+/* ================== LIGHT MODE ============== */
+
+html[data-color-scheme="light"] .main-wrapper {
+}

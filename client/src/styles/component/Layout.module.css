@@ -24,3 +24,14 @@
 .main main.no-padding {
   padding: 0;
 }
+
+html[data-color-scheme="light"] .main-wrapper {
+  background: linear-gradient(
+      0deg,
+      rgba(154, 52, 18, 0.0001) 0%,
+      rgba(154, 52, 18, 0.03) 100%
+    )
+    no-repeat;
+
+  background-size: 100% 400px;
+}

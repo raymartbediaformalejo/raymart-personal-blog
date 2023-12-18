@@ -13,7 +13,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
-import { Paper } from "@mui/material";
+import { CircularProgress, Paper } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
 import classes from "../styles/component/PostForm.module.css";
@@ -406,7 +406,7 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
             name="content"
             control={control}
             render={({ field }) => (
-              <Suspense fallback={<div>Loading Quill editor</div>}>
+              <Suspense fallback={<CircularProgress />}>
                 <DynamicQuillNoSSRWrapper
                   {...field}
                   id="content"

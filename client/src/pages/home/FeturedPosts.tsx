@@ -2,6 +2,7 @@ import { useGetFeaturedPostsQuery } from "../../redux/posts/posts.api";
 import FeaturedPostCard from "./components/FeaturedPostCard";
 import classes from "../../styles/pages/home/FeaturedPost.module.css";
 import LinkButton from "../../components/ui/LinkButton";
+import { CircularProgress } from "@mui/material";
 
 const FeturedPosts = () => {
   const {
@@ -22,7 +23,12 @@ const FeturedPosts = () => {
 
   let content;
 
-  if (isLoading) content = <p>Loading...</p>;
+  if (isLoading)
+    content = (
+      <div className="loading-wrapper">
+        <CircularProgress size="3rem" />
+      </div>
+    );
 
   if (isError) content = <p>Error!</p>;
 

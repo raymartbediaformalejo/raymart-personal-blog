@@ -151,3 +151,9 @@ video {
   width: min(1300px, 100%);
   margin-inline: auto;
 }
+
+.loading-wrapper {
+  display: grid;
+  place-items: center;
+  height: calc(100dvh - (105px + 57px));
+}

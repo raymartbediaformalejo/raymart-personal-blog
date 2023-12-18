@@ -3,6 +3,7 @@ import { Outlet, Link } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks/useAppSelector";
 import { useRefreshMutation } from "../../redux/auth/auth.api";
 import usePersist from "../../hooks/usePersist";
+import { CircularProgress } from "@mui/material";
 
 const PersistLogin = () => {
   const [persist] = usePersist();
@@ -44,7 +45,11 @@ const PersistLogin = () => {
   if (!persist) {
     content = <Outlet />;
   } else if (isLoading) {
-    content = <p>Loading...</p>;
+    content = (
+      <div className="loading-wrapper">
+        <CircularProgress size="3rem" />
+      </div>
+    );
   } else if (isError) {
     content = (
       <p className="errmsg">

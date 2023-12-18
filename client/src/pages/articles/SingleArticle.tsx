@@ -1,4 +1,5 @@
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
@@ -7,6 +8,7 @@ import { useGetPostQuery } from "../../redux/posts/posts.api";
 import classes from "../../styles/pages/articles/SingleArticle.module.css";
 import ArticleTag from "./components/ArticleTag";
 import CalendarIcon from "../../components/icons/Calendar";
+import { CircularProgress } from "@mui/material";
 
 const SingleArticle = () => {
   const { id } = useParams();
@@ -119,8 +121,16 @@ const SingleArticle = () => {
       </article>
     );
   } else {
-    content = <p>Loading...</p>;
+    content = (
+      <div className="loading-wrapper">
+        <CircularProgress size="3rem" />
+      </div>
+    );
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return content;
 };

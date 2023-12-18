@@ -5,6 +5,7 @@ import CheckboxTag from "../../../components/CheckboxTag";
 import classes from "../../../styles/pages/articles/ArticleTagOptions.module.css";
 import { SetURLSearchParams } from "react-router-dom";
 import { POST_QUERY_KEYS } from "../../../utils/Constant";
+import { CircularProgress } from "@mui/material";
 
 type ArticleTagOptionsProps = {
   tagOptions: string[];
@@ -51,7 +52,12 @@ const ArticleTagOptions = ({
     });
   };
 
-  if (isLoading) content = <p>Loading...</p>;
+  if (isLoading)
+    content = (
+      <div className="loading-wrapper">
+        <CircularProgress size="3rem" />
+      </div>
+    );
 
   if (isError) content = <p>Something went wrong.</p>;
 

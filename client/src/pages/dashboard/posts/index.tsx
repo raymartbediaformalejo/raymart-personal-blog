@@ -5,7 +5,7 @@ import EnhancedTable from "./components/EnhancedTable";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { POST_QUERY_KEYS } from "../../../utils/Constant";
 import { TSortBy } from "../../../types/types";
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
 import classes from "../../../styles/pages/dashboard/Articles.module.css";
@@ -49,6 +49,7 @@ const Posts = () => {
             variant="contained"
             startIcon={<AddIcon />}
             onClick={handleGoToAddPost}
+            size="small"
           >
             <span className={classes["add-new-post-button__label"]}>
               Add new post
@@ -67,7 +68,11 @@ const Posts = () => {
       </>
     );
   } else {
-    content = <p>Loading...</p>;
+    content = (
+      <div className="loading-wrapper">
+        <CircularProgress size="3rem" />
+      </div>
+    );
   }
   return <div className="container__large">{content}</div>;
 };

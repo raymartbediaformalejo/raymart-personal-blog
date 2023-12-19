@@ -2,6 +2,7 @@ import { SVGProps } from "react";
 import classes from "../../styles/component/icons/ArrowIcon.module.css";
 
 type ArrowIconProps = SVGProps<SVGSVGElement> & {
+  variant?: "head" | "headtail";
   size?: "small" | "medium" | "large";
 };
 const ArrrowIcon = ({ size = "medium", className }: ArrowIconProps) => {

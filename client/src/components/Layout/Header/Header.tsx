@@ -5,13 +5,36 @@ import HamburgerIcon from "../../icons/HamburgerIcon";
 import Button from "../../ui/Button";
 import Tooltip from "../../ui/Tooltip";
 import MainNavigationModal from "../../ui/Modals/MainNavigationModal";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import LinkButton from "../../ui/LinkButton";
 import { MAIN_NAVIGATION_ITEMS } from "../../../utils/Constant";
 import ToggleTheme from "../../ToggleTheme";
+import ArrowLongIcon from "../../icons/ArrowLongIcon";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
   const [isOpenNavModal, setIsOpenNavModal] = useState(false);
+  let rightContent;
+
+  if (pathname === "/") {
+    rightContent = (
+      <Link to={pathname}>
+        <Tooltip text="Raymart Formalejo Blog">
+          <Button variant="icon">
+            <p className={classes["logo"]}>RB</p>
+          </Button>
+        </Tooltip>
+      </Link>
+    );
+  } else {
+    rightContent = (
+      <Button variant="icon" onClick={() => navigate(-1)}>
+        <ArrowLongIcon />
+      </Button>
+    );
+  }
 
   const handleToggleNav = () => {
     setIsOpenNavModal((prev) => !prev);
@@ -22,13 +45,7 @@ const Header = () => {
       <MainNavigationModal isOpen={isOpenNavModal} onClose={handleToggleNav} />
       <header className={classes["header"]}>
         <nav className={classes["nav"]}>
-          <Link to="/">
-            <Tooltip text="Raymart Formalejo Blog">
-              <Button variant="icon">
-                <p className={classes["logo"]}>RB</p>
-              </Button>
-            </Tooltip>
-          </Link>
+          {rightContent}
           <div className={classes["nav__left-icons-wrapper"]}>
             <div className={classes["big-screen-nav-links"]}>
               {Object.entries(MAIN_NAVIGATION_ITEMS).map(

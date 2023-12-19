@@ -1,4 +1,4 @@
-import  { useState, useEffect, useDeferredValue } from "react";
+import { useState, useEffect, useDeferredValue } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import SearchForm from "../../components/SearchForm";
@@ -104,16 +104,6 @@ const Articles = () => {
           color="primary"
         />
       )}
-
-      {/* {!!postLength && !!(Math.ceil(posts.total / POSTS_LIMIT) > 1) && (
-        <CustomPagination
-          activePage={page}
-          hasNextPage={end < postLength}
-          hasPrevPage={start > 0}
-          total={posts?.total}
-          setSearchParams={setSearchParams}
-        />
-      )} */}
     </div>
   );
 };

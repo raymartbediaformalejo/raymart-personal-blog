@@ -24,3 +24,11 @@
 .read-more-button {
   margin-top: 6px;
 }
+
+/* ============== LIGHT MODE ==================== */
+html[data-color-scheme="light"] .date {
+  color: #6b7280;
+}
+html[data-color-scheme="light"] .summary {
+  color: #374151;
+}

@@ -49,3 +49,36 @@
   color: var(--clr-primary-100);
   background-color: hsla(var(--clr-neutral-border) / 0.2);
 }
+
+/* ============== LIGHT MODE ==================== */
+html[data-color-scheme="light"]
+  .articles-pagination[class*="MuiPagination-root"]
+  ul
+  li
+  button[class*="MuiButtonBase-root"] {
+  color: var(--clr-white);
+}
+
+html[data-color-scheme="light"]
+  .articles-pagination[class*="MuiPagination-root"]
+  ul
+  li
+  button[class*="MuiButtonBase-root"]:hover {
+  background-color: hsla(var(--clr-neutral-border) / 0.4);
+}
+
+html[data-color-scheme="light"]
+  .articles-pagination[class*="MuiPagination-root"]
+  ul
+  li
+  button[class*="Mui-selected"] {
+  color: var(--clr-primary-500);
+  background-color: hsla(var(--clr-neutral-primary-300) / 0.2);
+}
+html[data-color-scheme="light"]
+  .articles-pagination[class*="MuiPagination-root"]
+  ul
+  li
+  button[class*="Mui-selected"]:hover {
+  background-color: hsla(var(--clr-neutral-primary-300) / 0.3);
+}

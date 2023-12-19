@@ -147,5 +147,5 @@ a:has(.feature-post-card) {
 }
 
 html[data-color-scheme="light"] .summary {
-  color: var(--clr-subtitle);
+  color: #374151;
 }

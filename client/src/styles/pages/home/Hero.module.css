@@ -31,6 +31,9 @@
   text-decoration-color: var(--clr-primary-300);
 }
 
+html[data-color-scheme="light"] .sub-title {
+  color: #374151;
+}
 html[data-color-scheme="light"] .sub-title a {
   color: var(--clr-primary-500);
   text-decoration-color: var(--clr-primary-300);

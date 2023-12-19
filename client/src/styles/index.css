@@ -164,13 +164,36 @@ video {
   height: calc(100dvh - (105px + 57px));
 }
 
+[role="tooltip"] div[class*="MuiTooltip-tooltip"] {
+  background-color: rgb(24 24 27/1);
+  color: rgb(229 231 235/1);
+  border-radius: 9999px;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid hsl(220, 9%, 46%, 0.2);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+
 /* ============== LIGHT MODE ==================== */
-:is(html[data-color-scheme="light"]) {
+html[data-color-scheme="light"] {
   --clr-neutral-border: 223 9% 85%;
+  --clr-neutral-white: 225 10% 8%;
 
   --clr-body-bg: hsl(0, 0%, 100%);
   --clr-icon: hsl(215 14% 34%);
   --clr-border: rgb(214, 216, 221);
-  --clr-white: hsl(225 10% 8%);
+  --clr-white: hsl(var(--clr-neutral-white));
   --clr-subtitle: hsl(var(--clr-neutral-border));
+}
+
+html[data-color-scheme="light"]
+  [role="tooltip"]
+  div[class*="MuiTooltip-tooltip"] {
+  background-color: hsl(220, 14%, 96%);
+  color: hsl(var(--clr-neutral-white) / 0.8);
+  border: 1px solid var(--clr-border);
 }

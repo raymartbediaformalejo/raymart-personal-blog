@@ -3,13 +3,13 @@ import { useState } from "react";
 import classes from "../../../styles/component/Header.module.css";
 import HamburgerIcon from "../../icons/HamburgerIcon";
 import Button from "../../ui/Button";
-import Tooltip from "../../ui/Tooltip";
 import MainNavigationModal from "../../ui/Modals/MainNavigationModal";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import LinkButton from "../../ui/LinkButton";
 import { MAIN_NAVIGATION_ITEMS } from "../../../utils/Constant";
 import ToggleTheme from "../../ToggleTheme";
 import ArrowLongIcon from "../../icons/ArrowLongIcon";
+import { Tooltip } from "@mui/material";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -20,19 +20,21 @@ const Header = () => {
 
   if (pathname === "/") {
     rightContent = (
-      <Link to={pathname}>
-        <Tooltip text="Raymart Formalejo Blog">
+      <Tooltip title="Raymart Formalejo">
+        <Link to={pathname}>
           <Button variant="icon">
             <p className={classes["logo"]}>RB</p>
           </Button>
-        </Tooltip>
-      </Link>
+        </Link>
+      </Tooltip>
     );
   } else {
     rightContent = (
-      <Button variant="icon" onClick={() => navigate(-1)}>
-        <ArrowLongIcon />
-      </Button>
+      <Tooltip title="Back">
+        <Button variant="icon" onClick={() => navigate(-1)}>
+          <ArrowLongIcon />
+        </Button>
+      </Tooltip>
     );
   }
 

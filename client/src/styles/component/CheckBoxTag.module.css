@@ -30,6 +30,7 @@
   font-weight: var(--font-weight);
   outline: var(--outline);
   transition: var(--transition);
+  overflow: hidden;
 }
 
 .tag-checkbox:hover,
@@ -52,4 +53,22 @@
   border-top-right-radius: var(--tag-border-raduis);
   border-bottom-right-radius: var(--tag-border-raduis);
   background: hsl(var(--bg-color) / var(--opacity));
+}
+
+/* ============== LIGHT MODE ==================== */
+html[data-color-scheme="light"] .tag-checkbox {
+  --color: hsl(225 10% 8%);
+  --bg-color: 223 9% 85%;
+}
+html[data-color-scheme="light"] .tag-checkbox.selected {
+  --border-color: var(--clr-primary-300);
+  --outline: 2px solid hsl(var(--clr-neutral-primary-300) / 0.4);
+}
+
+html[data-color-scheme="light"] .tag-count {
+  background: hsl(var(--bg-color) / 0.6);
+}
+html[data-color-scheme="light"] .tag-checkbox:hover,
+html[data-color-scheme="light"] .tag-checkbox:focus {
+  --opacity: 0.3;
 }

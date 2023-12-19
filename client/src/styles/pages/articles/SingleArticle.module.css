@@ -2,7 +2,6 @@
   --color: var(--clr-light-gray-400);
   --font-size: var(--fs-450);
   --line-height: 28px;
-  /* border: 1px solid red; */
 
   color: var(--color);
   font-size: var(--font-size);
@@ -17,6 +16,8 @@
 }
 
 .header-info-wrapper {
+  width: min(700px, 100%);
+  margin-inline: auto;
   padding: 1.75rem 1rem 0 1rem;
   border-bottom: 1px solid hsla(215 14% 34%/ 0.2);
 }
@@ -105,6 +106,14 @@
   .single-post {
     padding-top: 2rem;
   }
+  .header-info-wrapper {
+    padding: 1.75rem 0 0 0;
+    border: none;
+  }
+  .header-info-inner-wrapper {
+    margin: 0 1rem;
+    border-bottom: 1px solid hsla(215 14% 34%/ 0.2);
+  }
   .thumbnail {
     width: min(700px, 100%);
     margin-inline: auto;
@@ -112,4 +121,54 @@
     border-radius: 4px;
     overflow: hidden;
   }
+}
+
+/* ============== LIGHT MODE ==================== */
+html[data-color-scheme="light"] .single-post {
+  --color: #374151;
+}
+
+html[data-color-scheme="light"] .post-date-published,
+html[data-color-scheme="light"] .views-wrapper {
+  color: var(--color);
+}
+
+html[data-color-scheme="light"] .single-post__body pre {
+  background: hsl(var(--clr-neutral-border) / 0.2) !important;
+}
+html[data-color-scheme="light"] .single-post__body pre code {
+  color: var(--color);
+}
+html[data-color-scheme="light"] .single-post__body pre span {
+  color: var(--color);
+}
+html[data-color-scheme="light"]
+  .single-post__body
+  pre
+  span[style="color: rgb(156, 220, 254);"] {
+  color: #0284c7 !important;
+}
+html[data-color-scheme="light"]
+  .single-post__body
+  pre
+  span[style="color: gold;"] {
+  color: #ca8a04 !important;
+}
+html[data-color-scheme="light"]
+  .single-post__body
+  pre
+  span[style="color: rgb(215, 186, 125);"] {
+  color: #ea580c !important;
+}
+html[data-color-scheme="light"]
+  .single-post__body
+  pre
+  span[style="color: rgb(214, 157, 133);"] {
+  color: #ea580c !important;
+}
+html[data-color-scheme="light"]
+  .single-post__body
+  pre
+  span[style="color: rgb(87, 166, 74); font-style: italic;"] {
+  color: #10b981 !important;
 }

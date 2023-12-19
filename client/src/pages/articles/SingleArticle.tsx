@@ -68,29 +68,31 @@ const SingleArticle = () => {
             alt={post?.title}
             className={classes["thumbnail"]}
           />
-          <div className={`container ${classes["header-info-wrapper"]}`}>
-            <h1 className={classes["title"]}>{post?.title}</h1>
-            <div className={classes["date-and-views-wrapper"]}>
-              <div className={classes["post-date-published"]}>
-                <CalendarIcon />
-                <p>{`Posted at ${post.createdAt.toLocaleDateString("en-PH", {
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                })}`}</p>
+          <div className={`${classes["header-info-wrapper"]}`}>
+            <div className={`${classes["header-info-inner-wrapper"]}`}>
+              <h1 className={classes["title"]}>{post?.title}</h1>
+              <div className={classes["date-and-views-wrapper"]}>
+                <div className={classes["post-date-published"]}>
+                  <CalendarIcon />
+                  <p>{`Posted at ${post.createdAt.toLocaleDateString("en-PH", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })}`}</p>
+                </div>
+                <div className={classes["views-wrapper"]}>
+                  <VisibilityOutlinedIcon fontSize="small" />
+                  <p>{`${post.viewCount} views`}</p>
+                </div>
               </div>
-              <div className={classes["views-wrapper"]}>
-                <VisibilityOutlinedIcon fontSize="small" />
-                <p>{`${post.viewCount} views`}</p>
+              <div className={classes["tag-wrapper"]}>
+                {post &&
+                  post.tag.map((tag) => {
+                    if (typeof tag === "string") {
+                      return <ArticleTag key={tag} tagId={tag} />;
+                    } else return null;
+                  })}
               </div>
-            </div>
-            <div className={classes["tag-wrapper"]}>
-              {post &&
-                post.tag.map((tag) => {
-                  if (typeof tag === "string") {
-                    return <ArticleTag key={tag} tagId={tag} />;
-                  } else return null;
-                })}
             </div>
           </div>
         </header>

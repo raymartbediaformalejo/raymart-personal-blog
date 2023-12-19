@@ -39,7 +39,7 @@ const SearchForm = ({ q, setSearchParams }: SearchFormProps) => {
             variant="icon"
             onClick={handleDeleteQuery}
           >
-            <XIcon />
+            <XIcon fontSize="1.5rem" />
           </Button>
         )}
       </form>

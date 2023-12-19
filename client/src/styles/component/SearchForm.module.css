@@ -35,7 +35,6 @@
   font-size: var(--fs-500);
   line-height: 24px;
   outline: none;
-  /* border: 1px solid red; */
   width: 100%;
 }
 
@@ -68,4 +67,16 @@
 .search-button {
   height: 100%;
   padding: 0 1rem;
+}
+
+/* ============== LIGHT MODE ==================== */
+html[data-color-scheme="light"] .search-icon,
+html[data-color-scheme="light"] .search-form .delete-icon {
+  color: hsl(225 10% 8%);
+}
+html[data-color-scheme="light"] .search-form input {
+  color: hsl(225 10% 8%);
+}
+html[data-color-scheme="light"] .search-form input::placeholder {
+  color: hsl(210, 1%, 66%);
 }

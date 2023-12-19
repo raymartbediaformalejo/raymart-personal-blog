@@ -168,7 +168,7 @@ video {
 :is(html[data-color-scheme="light"]) {
   --clr-body-bg: hsl(0, 0%, 100%);
   --clr-icon: hsl(215 14% 34%);
-  --clr-border: rgb(229 231 235);
+  --clr-border: rgb(214, 216, 221);
   --clr-white: hsl(225 10% 8%);
   --clr-subtitle: rgb(55 65 81);
 }

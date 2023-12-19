@@ -31,9 +31,11 @@ const Header = () => {
   } else {
     rightContent = (
       <Tooltip title="Back">
-        <Button variant="icon" onClick={() => navigate(-1)}>
-          <ArrowLongIcon />
-        </Button>
+        <div>
+          <Button variant="icon" onClick={() => navigate(-1)}>
+            <ArrowLongIcon />
+          </Button>
+        </div>
       </Tooltip>
     );
   }

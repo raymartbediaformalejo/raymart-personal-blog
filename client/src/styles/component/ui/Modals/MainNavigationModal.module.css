@@ -50,3 +50,7 @@
   --bg-opacity: 0.9;
   color: #fee2e2;
 }
+
+html[data-color-scheme="light"] .nav-item {
+  --border-color: rgb(214, 216, 221);
+}

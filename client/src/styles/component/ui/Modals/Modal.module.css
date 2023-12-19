@@ -22,7 +22,6 @@
   width: var(--width);
   margin: var(--margin);
   overflow: hidden;
-  /* padding: var(--padding); */
 }
 
 .bottom {
@@ -78,12 +77,13 @@
   align-self: end;
 }
 
-/* .modal-header {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 1rem;
-} */
+html[data-color-scheme="light"] .modal {
+  --bg-color: hsl(0, 0%, 100%);
+  --color: hal(225 10% 8%);
+  --overlay-bg-color: hsl(240 12% 5% / 0.25);
+
+  --border-color: rgb(214, 216, 221);
+}
 
 @keyframes fade-in {
   0% {

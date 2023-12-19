@@ -75,6 +75,10 @@
 html[data-color-scheme="light"] .button {
   color: var(--clr-primary-500);
 }
+html[data-color-scheme="light"] .outlined {
+  --border: inset 0 0 0 0px #fff,
+    inset 0 0 0 1px hsla(var(--clr-neutral-border)), 0 0 #0000;
+}
 html[data-color-scheme="light"]
   .button.button:hover:not(.no-hover, .transparent),
 html[data-color-scheme="light"]

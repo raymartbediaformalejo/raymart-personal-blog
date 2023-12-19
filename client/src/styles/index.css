@@ -185,7 +185,7 @@ html[data-color-scheme="light"] {
 
   --clr-body-bg: hsl(0, 0%, 100%);
   --clr-icon: hsl(215 14% 34%);
-  --clr-border: rgb(214, 216, 221);
+  --clr-border: hsl(var(--clr-neutral-border));
   --clr-white: hsl(var(--clr-neutral-white));
   --clr-subtitle: hsl(var(--clr-neutral-border));
 }

@@ -106,25 +106,25 @@ const EnhancedTableRow = ({
             </MenuButton>
             <Menu className={classes["action-buttons"]}>
               <MenuItem
-                className={classes["edit-button"]}
+                className={classes["live-button"]}
                 onClick={() => handleViewLive(post._id)}
               >
-                <VisibilityIcon fontSize="small" />
                 <span>View live</span>
+                <VisibilityIcon fontSize="small" />
               </MenuItem>
               <MenuItem
                 className={classes["edit-button"]}
                 onClick={() => handleEdit(post._id)}
               >
-                <EditIcon fontSize="small" />
                 <span>Edit</span>
+                <EditIcon fontSize="small" />
               </MenuItem>
               <MenuItem
                 className={classes["delete-button"]}
                 onClick={() => handleOpen(post._id)}
               >
-                <DeleteIcon fontSize="small" />
                 <span>Delete</span>
+                <DeleteIcon fontSize="small" />
               </MenuItem>
             </Menu>
           </Dropdown>

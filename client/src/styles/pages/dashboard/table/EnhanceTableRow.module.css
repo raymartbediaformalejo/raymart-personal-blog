@@ -37,10 +37,12 @@
 }
 
 .edit-button,
+.live-button,
 .delete-button {
   display: flex;
-  gap: 8px;
   align-items: center;
+  justify-content: space-between;
+  gap: 8px;
   list-style: none;
   padding: 8px;
   border-radius: 8px;
@@ -48,7 +50,7 @@
   user-select: none;
   transition: var(--transition);
 }
-
+.live-button:hover,
 .edit-button:hover {
   background-color: hsl(var(--clr-neutral-primary-500));
 }
@@ -79,10 +81,17 @@ html[data-color-scheme="light"] .row {
   color: var(--clr-white);
 }
 
+[data-color-scheme="light"] .live-button:hover,
 [data-color-scheme="light"] .edit-button:hover {
   background-color: var(--clr-primary-200);
 }
 
 [data-color-scheme="light"] .delete-button:hover {
   background-color: #fecaca;
+}
+
+[data-color-scheme="light"] .edit-button svg[class*="MuiSvgIcon-root"],
+[data-color-scheme="light"] .live-button svg[class*="MuiSvgIcon-root"],
+[data-color-scheme="light"] .delete-button svg[class*="MuiSvgIcon-root"] {
+  color: hsl(var(--clr-neutral-gray) / 0.7);
 }

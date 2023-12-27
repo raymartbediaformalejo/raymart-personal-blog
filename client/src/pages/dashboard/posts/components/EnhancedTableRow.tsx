@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import Checkbox from "@mui/material/Checkbox";
@@ -6,10 +6,16 @@ import { useAppSelector } from "../../../../redux/hooks/useAppSelector";
 import { selectPostById } from "../../../../redux/posts/posts.api";
 import EnhanceTableCategories from "./EnhanceTableCategories";
 import EnhancedTableTags from "./EnhancedTableTags";
-import { Button } from "@mui/material";
+
+import { Dropdown } from "@mui/base/Dropdown";
+import { Menu } from "@mui/base/Menu";
+import { MenuButton } from "@mui/base/MenuButton";
+import { MenuItem } from "@mui/base/MenuItem";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 import classes from "../../../../styles/pages/dashboard/table/EnhanceTableRow.module.css";
 import { useNavigate } from "react-router-dom";
+import PostDeleteModal from "../../../../components/ui/Modals/PostDeleteModal";
 
 type EnhancedTableRowProps = {
   rowId: string;
@@ -24,11 +30,22 @@ const EnhancedTableRow = ({
   labelId,
 }: EnhancedTableRowProps) => {
   const post = useAppSelector((state) => selectPostById(state, rowId));
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState<string[]>([]);
   const navigate = useNavigate();
   let content;
 
   const handleEdit = (id: string) => {
     if (id) navigate(`/dashboard/articles/${id}`);
+  };
+
+  const handleOpen = (id: string) => {
+    setSelected([id]);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   if (post) {
@@ -75,23 +92,42 @@ const EnhancedTableRow = ({
         <TableCell align="right">{post.visibility}</TableCell>
         <TableCell align="right">{post.status}</TableCell>
         <TableCell align="right">{post.featured ? "YES" : "NO"}</TableCell>
-        <TableCell align="right">
-          <div onClick={() => console.log("keme eme")}>
-            <Button
-              variant="outlined"
-              size="medium"
-              onClick={() => handleEdit(post._id)}
-            >
-              Edit
-            </Button>
-          </div>
+        <TableCell align="right" onClick={(e) => e.stopPropagation()}>
+          <Dropdown>
+            <MenuButton>
+              <MoreHorizIcon fontSize="small" />
+            </MenuButton>
+            <Menu className={classes["action-buttons"]}>
+              <MenuItem
+                className={classes["edit-button"]}
+                onClick={() => handleEdit(post._id)}
+              >
+                Edit
+              </MenuItem>
+              <MenuItem
+                className={classes["delete-button"]}
+                onClick={() => handleOpen(post._id)}
+              >
+                Delete
+              </MenuItem>
+            </Menu>
+          </Dropdown>
         </TableCell>
       </TableRow>
     );
   } else {
     <p>Loading...</p>;
   }
-  return content;
+  return (
+    <>
+      <PostDeleteModal
+        open={open}
+        onClose={handleClose}
+        selectedItem={selected}
+      />
+      {content}
+    </>
+  );
 };
 
 export default EnhancedTableRow;

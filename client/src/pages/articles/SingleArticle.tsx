@@ -1,5 +1,4 @@
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
@@ -130,9 +129,9 @@ const SingleArticle = () => {
     );
   }
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   return content;
 };

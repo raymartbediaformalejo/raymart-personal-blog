@@ -2,7 +2,7 @@ import Button from "./ui/Button";
 import SunIcon from "./icons/SunIcon";
 import { useEffect, useState } from "react";
 import MoonIcon from "./icons/MoonIcon";
-import { Tooltip } from "@mui/material";
+import ManagedTooltip from "./ui/ManagedTooltip";
 
 const ToggleTheme = () => {
   const [colorTheme, setColorTheme] = useState(
@@ -26,13 +26,13 @@ const ToggleTheme = () => {
   if (colorTheme === "light") iconColorTheme = <MoonIcon />;
 
   return (
-    <Tooltip title={`Switch to ${colorTheme} mode`}>
+    <ManagedTooltip title={`Switch to ${colorTheme} mode`}>
       <div>
         <Button variant="icon" onClick={handleThemeClick}>
           {iconColorTheme}
         </Button>
       </div>
-    </Tooltip>
+    </ManagedTooltip>
   );
 };
 

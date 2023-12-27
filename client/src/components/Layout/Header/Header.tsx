@@ -9,7 +9,7 @@ import LinkButton from "../../ui/LinkButton";
 import { MAIN_NAVIGATION_ITEMS } from "../../../utils/Constant";
 import ToggleTheme from "../../ToggleTheme";
 import ArrowLongIcon from "../../icons/ArrowLongIcon";
-import { Tooltip } from "@mui/material";
+import ManagedTooltip from "../../ui/ManagedTooltip";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -20,23 +20,23 @@ const Header = () => {
 
   if (pathname === "/") {
     rightContent = (
-      <Tooltip title="Raymart Formalejo">
+      <ManagedTooltip title="Raymart Formalejo">
         <Link to={pathname}>
           <Button variant="icon">
             <p className={classes["logo"]}>RB</p>
           </Button>
         </Link>
-      </Tooltip>
+      </ManagedTooltip>
     );
   } else {
     rightContent = (
-      <Tooltip title="Back">
+      <ManagedTooltip title="Back">
         <div>
           <Button variant="icon" onClick={() => navigate(-1)}>
             <ArrowLongIcon />
           </Button>
         </div>
-      </Tooltip>
+      </ManagedTooltip>
     );
   }
 

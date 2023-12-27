@@ -21,3 +21,35 @@
 .row td[class*="MuiTableCell-body"] span[class*="Mui-checked"] {
   color: var(--clr-primary-500);
 }
+.action-buttons {
+  font-size: 0.875rem;
+  padding: 6px;
+  margin: 12px 1rem;
+  min-width: 150px;
+  border-radius: 12px;
+  overflow: auto;
+  outline: 0px;
+  background: var(--clr-body-bg);
+  border: 1px solid var(--clr-border);
+  box-shadow: 0px 4px 6px var(--clr-body-bg);
+  z-index: 2;
+  color: var(--clr-off-white);
+}
+
+.edit-button,
+.delete-button {
+  list-style: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: default;
+  user-select: none;
+  transition: var(--transition);
+}
+
+.edit-button:hover {
+  background-color: hsl(var(--clr-neutral-primary-500));
+}
+
+.delete-button:hover {
+  background-color: hsl(var(--clr-neutral-danger));
+}

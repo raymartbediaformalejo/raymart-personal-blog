@@ -6,21 +6,15 @@ import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import {
-  Button,
-  FormControl,
-  InputAdornment,
-  Modal,
-  TextField,
-} from "@mui/material";
+import { FormControl, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
 import { SetURLSearchParams } from "react-router-dom";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
 import classes from "../../../../styles/pages/dashboard/table/EnhanceTableToolbar.module.css";
 import { POST_QUERY_KEYS } from "../../../../utils/Constant";
-import { useDeletePostMutation } from "../../../../redux/posts/posts.api";
+// import { useDeletePostMutation } from "../../../../redux/posts/posts.api";
+import PostDeleteModal from "../../../../components/ui/Modals/PostDeleteModal";
 
 type EnhancedTableToolbarProps = {
   query: string | null;
@@ -34,7 +28,7 @@ const EnhancedTableToolbar = ({
 }: EnhancedTableToolbarProps) => {
   const [open, setOpen] = useState(false);
   const numSelected = selected.length;
-  const [deletePost, { isLoading }] = useDeletePostMutation();
+  // const [deletePost, { isLoading }] = useDeletePostMutation();
   const handleChangeSearch = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -51,10 +45,10 @@ const EnhancedTableToolbar = ({
     });
   };
 
-  const handleDeletePosts = async () => {
-    await deletePost(selected);
-    setOpen(false);
-  };
+  // const handleDeletePosts = async () => {
+  //   await deletePost(selected);
+  //   setOpen(false);
+  // };
 
   const handleOpen = () => {
     setOpen(true);
@@ -66,43 +60,13 @@ const EnhancedTableToolbar = ({
 
   return (
     <>
-      <Modal open={open} onClose={handleClose}>
-        <div className={classes["delete-modal"]}>
-          <IconButton
-            onClick={handleClose}
-            className={classes["close-modal-button"]}
-          >
-            <CloseOutlinedIcon fontSize="small" />
-          </IconButton>
-          <div className={classes["delete-modal-inner-wrapper"]}>
-            <DeleteIcon
-              className={classes["delete-modal-illustrator"]}
-              fontSize="large"
-            />
-            <h2>Are you sure?</h2>
-            <p
-              className={classes["delete-modal-description"]}
-            >{`Do you really want to delete ${
-              numSelected > 1 ? "these" : "this"
-            } ${numSelected} post(s)? This process cannot be undone.`}</p>
-            <div className={classes["delete-modal__button-wrapper"]}>
-              <Button
-                className={classes["cancel-button"]}
-                variant="contained"
-                onClick={handleClose}
-              >
-                Cancel
-              </Button>
-              <Button
-                className={classes["delete-button"]}
-                variant="contained"
-                onClick={handleDeletePosts}
-                disabled={isLoading}
-              >{`${isLoading ? "Loading..." : "Delete"}`}</Button>
-            </div>
-          </div>
-        </div>
-      </Modal>
+      <PostDeleteModal
+        open={open}
+        onClose={handleClose}
+        selectedItem={selected}
+        // isLoading={isLoading}
+        // onDelete={handleDeletePosts}
+      />
       <Toolbar
         sx={{
           padding: "1.3rem 1rem",

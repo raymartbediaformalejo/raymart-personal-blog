@@ -12,6 +12,9 @@ import { Menu } from "@mui/base/Menu";
 import { MenuButton } from "@mui/base/MenuButton";
 import { MenuItem } from "@mui/base/MenuItem";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import LinkIcon from "@mui/icons-material/Link";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 import classes from "../../../../styles/pages/dashboard/table/EnhanceTableRow.module.css";
 import { useNavigate } from "react-router-dom";
@@ -37,6 +40,10 @@ const EnhancedTableRow = ({
 
   const handleEdit = (id: string) => {
     if (id) navigate(`/dashboard/articles/${id}`);
+  };
+
+  const handleViewLive = (id: string) => {
+    if (id) navigate(`/articles/${id}`);
   };
 
   const handleOpen = (id: string) => {
@@ -100,15 +107,24 @@ const EnhancedTableRow = ({
             <Menu className={classes["action-buttons"]}>
               <MenuItem
                 className={classes["edit-button"]}
+                onClick={() => handleViewLive(post._id)}
+              >
+                <LinkIcon fontSize="small" />
+                <span>View live</span>
+              </MenuItem>
+              <MenuItem
+                className={classes["edit-button"]}
                 onClick={() => handleEdit(post._id)}
               >
-                Edit
+                <EditIcon fontSize="small" />
+                <span>Edit</span>
               </MenuItem>
               <MenuItem
                 className={classes["delete-button"]}
                 onClick={() => handleOpen(post._id)}
               >
-                Delete
+                <DeleteIcon fontSize="small" />
+                <span>Delete</span>
               </MenuItem>
             </Menu>
           </Dropdown>

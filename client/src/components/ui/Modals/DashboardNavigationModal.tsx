@@ -49,6 +49,18 @@ const DashboardNavigationModal = ({
         )
       )}
 
+      <Link
+        className={classes["nav-item"]}
+        key="my-site"
+        to="/"
+        onClick={onClose}
+      >
+        <div className={classes["nav-item-inner"]}>
+          My site
+          <ArrrowIcon className={classes["arrow"]} size="large" />
+        </div>
+      </Link>
+
       <div className={classes["button-wrapper"]}>
         <Button
           className={classes["logout-button"]}

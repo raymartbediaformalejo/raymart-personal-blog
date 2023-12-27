@@ -51,6 +51,10 @@ const DashboardHeader = () => {
                   </LinkButton>
                 )
               )}
+
+              <LinkButton key="my-site" to="/" color="gray">
+                My site
+              </LinkButton>
             </div>
 
             <Button

@@ -12,9 +12,9 @@ import { Menu } from "@mui/base/Menu";
 import { MenuButton } from "@mui/base/MenuButton";
 import { MenuItem } from "@mui/base/MenuItem";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import LinkIcon from "@mui/icons-material/Link";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import classes from "../../../../styles/pages/dashboard/table/EnhanceTableRow.module.css";
 import { useNavigate } from "react-router-dom";
@@ -109,7 +109,7 @@ const EnhancedTableRow = ({
                 className={classes["edit-button"]}
                 onClick={() => handleViewLive(post._id)}
               >
-                <LinkIcon fontSize="small" />
+                <VisibilityIcon fontSize="small" />
                 <span>View live</span>
               </MenuItem>
               <MenuItem

@@ -58,10 +58,7 @@ const EnhanceTableHead = ({
     });
   };
   return (
-    <TableHead
-      className={classes["header"]}
-      sx={{ backgroundColor: "hsl(225 10% 8% / 0.33)" }}
-    >
+    <TableHead className={classes["header"]}>
       <TableRow>
         <TableCell padding="checkbox">
           <Checkbox

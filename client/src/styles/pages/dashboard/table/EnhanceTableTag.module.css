@@ -40,7 +40,7 @@
 }
 
 .tag.html {
-  --background-color: hsl(15 75% 28%); /*d: 900  */
+  --background-color: #7d2d12; /*d: 900  */
   --border-color: hsl(17 88% 40%); /*d: 700  */
 }
 
@@ -54,4 +54,47 @@
 
 .tag.nodejs span[class*="MuiChip-label"] {
   --color: hsl(142 77% 73%); /*d: 300  */
+}
+
+/* ================== LIGHT MODE ============== */
+
+[data-color-scheme="light"] .tag.js {
+  --background-color: #fef9c3; /*d: 100  */
+  --border-color: #fde047; /*d: 300  */
+}
+
+[data-color-scheme="light"] .tag.js span[class*="MuiChip-label"] {
+  --color: #a16207; /*d: 700  */
+}
+[data-color-scheme="light"] .tag.react {
+  --background-color: #e0f2fe; /*d: 100  */
+  --border-color: #7dd3fc; /*d: 300  */
+}
+
+[data-color-scheme="light"] .tag.react span[class*="MuiChip-label"] {
+  --color: #0369a1; /*d: 700  */
+}
+[data-color-scheme="light"] .tag.css {
+  --background-color: #dbeafe; /*d: 100  */
+  --border-color: #93c5fd; /*d: 300  */
+}
+
+[data-color-scheme="light"] .tag.css span[class*="MuiChip-label"] {
+  --color: #1d4ed8; /*d: 700  */
+}
+[data-color-scheme="light"] .tag.html {
+  --background-color: #ffedd5; /*d: 100  */
+  --border-color: #fdba74; /*d: 300  */
+}
+
+[data-color-scheme="light"] .tag.html span[class*="MuiChip-label"] {
+  --color: #c2410c; /*d: 700  */
+}
+[data-color-scheme="light"] .tag.nodejs {
+  --background-color: #d1fae5; /*d: 100  */
+  --border-color: #6ee7b7; /*d: 300  */
+}
+
+[data-color-scheme="light"] .tag.nodejs span[class*="MuiChip-label"] {
+  --color: #047857; /*d: 700  */
 }

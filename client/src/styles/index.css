@@ -184,7 +184,11 @@ video {
 html[data-color-scheme="light"] {
   --clr-neutral-border: 223 9% 85%;
   --clr-neutral-white: 225 10% 8%;
+  --clr-neutral-light-gray: 240 4% 90%;
+  --clr-neutral-gray: 233 4% 53%;
 
+  --clr-gay: hsl(var(--clr-neutral-gray));
+  --clr-light-gray: hsl(var(--clr-neutral-light-gray));
   --clr-body-bg: hsl(0, 0%, 100%);
   --clr-icon: hsl(215 14% 34%);
   --clr-border: hsl(var(--clr-neutral-border));

@@ -1,5 +1,6 @@
 .header {
   --color: var(--clr-primary-100);
+  background-color: hsl(225 10% 8% / 0.33);
 }
 
 .header tr th {
@@ -35,4 +36,24 @@
   span[class*="MuiTableSortLabel-root"]:hover
   svg[class*="MuiSvgIcon-root"] {
   color: var(--color);
+}
+
+/* ============== LIGHT MODE ==================== */
+[data-color-scheme="light"] .header {
+  --color: var(--clr-white);
+
+  background-color: transparent;
+  border-top: 1px solid var(--clr-light-gray);
+}
+[data-color-scheme="light"] .header tr th span[class*="MuiCheckbox-root"] {
+  color: hsl(var(--clr-gray, 233 4% 53%));
+}
+
+[data-color-scheme="light"] .header tr th span[class*="Mui-checked"],
+[data-color-scheme="light"]
+  .header
+  tr
+  th
+  span[class*="MuiCheckbox-indeterminate"] {
+  color: var(--clr-primary-500);
 }

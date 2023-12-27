@@ -29,3 +29,21 @@
 .category.til span[class*="MuiChip-label"] {
   --color: #c4b5fd; /*d: 300  */
 }
+
+/* ============== LIGHT MODE ==================== */
+[data-color-scheme="light"] .category.blog {
+  --background-color: #ecfccb; /*d: 100  */
+  --border-color: #bef264; /*d: 300  */
+}
+
+[data-color-scheme="light"] .category.blog span[class*="MuiChip-label"] {
+  --color: #4d7c0f; /*d: 700  */
+}
+[data-color-scheme="light"] .category.til {
+  --background-color: #ede9fe; /*d: 100  */
+  --border-color: #c4b5fd; /*d: 300  */
+}
+
+[data-color-scheme="light"] .category.til span[class*="MuiChip-label"] {
+  --color: #6d28d9; /*d: 700  */
+}

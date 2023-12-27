@@ -8,10 +8,12 @@
 
   margin-bottom: 1.75rem;
 }
+
 .all-posts-table-wrapper[class*="MuiPaper-rounded MuiPaper-elevation1"] {
   background-color: hsl(var(--clr-neutral-off-white) / 0.1);
   border: 1px solid var(--clr-border);
 }
+
 .all-posts-table-wrapper[class*="MuiPaper-rounded MuiPaper-elevation1"],
 .all-posts-table-wrapper[class*="MuiPaper-rounded MuiPaper-elevation1"]
   div[class*="MuiToolbar-root"]
@@ -33,4 +35,27 @@
   button[class*="Mui-disabled"]
   svg[class*="MuiSvgIcon-root"] {
   color: hsl(var(--clr-neutral-light-gray) / 0.5);
+}
+
+/* ============== LIGHT MODE ==================== */
+html[data-color-scheme="light"] .all-posts {
+  --border-color: var(--clr-light-gray, hsl(240 4% 90%));
+  --color: var(--clr-white);
+}
+
+html[data-color-scheme="light"]
+  .all-posts-table-wrapper[class*="MuiPaper-rounded MuiPaper-elevation1"],
+html[data-color-scheme="light"]
+  .all-posts-table-wrapper[class*="MuiPaper-rounded MuiPaper-elevation1"]
+  div[class*="MuiToolbar-root"]
+  button[class*="MuiButtonBase-root"] {
+  color: var(--clr-white);
+}
+
+[data-color-scheme="light"]
+  .table-pagination[class*="MuiTablePagination-root"]
+  div[class="MuiTablePagination-actions"]
+  button[class*="Mui-disabled"]
+  svg[class*="MuiSvgIcon-root"] {
+  color: hsl(var(--clr-neutral-gray) / 0.5);
 }

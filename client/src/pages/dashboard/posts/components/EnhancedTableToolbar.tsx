@@ -45,11 +45,6 @@ const EnhancedTableToolbar = ({
     });
   };
 
-  // const handleDeletePosts = async () => {
-  //   await deletePost(selected);
-  //   setOpen(false);
-  // };
-
   const handleOpen = () => {
     setOpen(true);
   };
@@ -133,13 +128,16 @@ const EnhancedTableToolbar = ({
         </FormControl>
         {numSelected > 0 ? (
           <Tooltip title="Delete">
-            <IconButton onClick={handleOpen}>
+            <IconButton
+              className={classes["delete-button-toolbar"]}
+              onClick={handleOpen}
+            >
               <DeleteIcon />
             </IconButton>
           </Tooltip>
         ) : (
           <Tooltip title="Filter list">
-            <IconButton>
+            <IconButton className={classes["filter-button-toolbar"]}>
               <FilterListIcon />
             </IconButton>
           </Tooltip>

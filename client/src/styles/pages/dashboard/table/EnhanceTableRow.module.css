@@ -53,3 +53,33 @@
 .delete-button:hover {
   background-color: hsl(var(--clr-neutral-danger));
 }
+
+/* ============== LIGHT MODE ==================== */
+html[data-color-scheme="light"] .row {
+  --color: var(--clr-white);
+}
+
+[data-color-scheme="light"]
+  .row
+  td[class*="MuiTableCell-body"]
+  span[class*="MuiButtonBase-root MuiCheckbox-root"] {
+  color: hsl(var(--clr-gray, 233 4% 53%));
+}
+[data-color-scheme="light"]
+  .row
+  td[class*="MuiTableCell-body"]
+  span[class*="Mui-checked"] {
+  color: var(--clr-primary-500);
+}
+
+[data-color-scheme="light"] .action-buttons {
+  color: var(--clr-white);
+}
+
+[data-color-scheme="light"] .edit-button:hover {
+  background-color: var(--clr-primary-200);
+}
+
+[data-color-scheme="light"] .delete-button:hover {
+  background-color: #fecaca;
+}

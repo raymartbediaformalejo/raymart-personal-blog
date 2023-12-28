@@ -40,7 +40,6 @@
   background-color: var(--bg-color-form);
   border-radius: var(--border-radius);
   border: 1px solid var(--clr-border);
-  overflow: hidden;
   margin: 1.25rem 0;
 }
 
@@ -227,7 +226,11 @@
 
 .editor div:first-child[class~="ql-toolbar"],
 .editor div:nth-child(2)[class~="ql-container"] {
+  font-size: 1rem;
   border: 1px solid var(--border-color);
+}
+.editor div:nth-child(2)[class~="ql-snow"] {
+  line-height: 1.8;
 }
 
 .editor div:first-child[class~="ql-toolbar"] {
@@ -1201,6 +1204,8 @@
 
 @media (min-width: 1000px) {
   .new-form__form {
+    min-block-size: 100%;
+    min-height: 100%;
     grid-template-columns: repeat(3, minmax(0, 1fr));
 
     grid-template-areas:
@@ -1222,6 +1227,14 @@
   .featured-and-image-wrapper label[class*="MuiButtonBase-root"],
   .featured-and-image-wrapper label[class*="MuiFormControlLabel-root"] {
     width: 100%;
+  }
+
+  .new-form__form--right {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 5.7rem;
+    left: 0;
+    align-self: flex-start;
   }
 }
 

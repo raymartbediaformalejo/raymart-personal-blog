@@ -1,12 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks/useAppSelector";
 import { useRefreshMutation } from "../../redux/auth/auth.api";
 import usePersist from "../../hooks/usePersist";
 import { CircularProgress } from "@mui/material";
+import ErrorUnauthorized from "../../assets/401 Error Unauthorized-cuate2.svg";
+import { Button } from "@mui/material";
+
+import classes from "../../styles/pages/sign/PersistLogin.module.css";
 
 const PersistLogin = () => {
   const [persist] = usePersist();
+  const navigate = useNavigate();
   const token = useAppSelector((state) => state.auth.token);
   const effectRan = useRef(false);
 
@@ -14,6 +19,10 @@ const PersistLogin = () => {
 
   const [refresh, { isUninitialized, isLoading, isSuccess, isError, error }] =
     useRefreshMutation();
+
+  const handleLoginAgain = () => {
+    navigate("/login");
+  };
 
   // @ts-expect-error: Unreachable code error
   useEffect(() => {
@@ -52,11 +61,27 @@ const PersistLogin = () => {
     );
   } else if (isError) {
     content = (
-      <p className="errmsg">
-        {/* @ts-expect-error: Unreachable code error */}
-        {`${error?.data?.message} - `}
-        <Link to="/login">Please login again</Link>.
-      </p>
+      <div className={classes["unauthorized-wrapper"]}>
+        <div className={classes["unauthorized-inner-wrapper"]}>
+          <div className={classes["error-message-wrapper"]}>
+            <p className={classes["error-subtitle"]}>Error</p>
+            <h1 className={classes["error-title"]}>
+              <span>4</span> <span>1</span>
+            </h1>
+            <p className={classes["error-description"]}>
+              <span>
+                {/* @ts-expect-error: Unreachable code error */}
+
+                {`${error?.data?.message}`}
+              </span>
+            </p>
+          </div>
+          <img src={ErrorUnauthorized} alt="" />
+          <Button onClick={handleLoginAgain} variant="outlined">
+            Please login again
+          </Button>
+        </div>
+      </div>
     );
   } else if (isSuccess && trueSuccess) {
     content = <Outlet />;

@@ -76,10 +76,15 @@ const PersistLogin = () => {
               </span>
             </p>
           </div>
-          <img src={ErrorUnauthorized} alt="" />
-          <Button onClick={handleLoginAgain} variant="outlined">
-            Please login again
-          </Button>
+          <img src={ErrorUnauthorized} />
+          <div className={classes["buttons-wrapper"]}>
+            <Button onClick={() => navigate("/")} variant="outlined">
+              Home
+            </Button>
+            <Button onClick={handleLoginAgain} variant="contained">
+              Please login again
+            </Button>
+          </div>
         </div>
       </div>
     );

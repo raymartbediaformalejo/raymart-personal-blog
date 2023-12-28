@@ -67,3 +67,26 @@
   font-weight: 600;
   box-shadow: 5px 5px 0px 0px var(--clr-primary-600);
 }
+
+.buttons-wrapper {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.buttons-wrapper button {
+  width: 100%;
+}
+
+@media (min-width: 700px) {
+  .buttons-wrapper {
+    flex-direction: row;
+  }
+
+  .buttons-wrapper button {
+    width: 50%;
+  }
+}

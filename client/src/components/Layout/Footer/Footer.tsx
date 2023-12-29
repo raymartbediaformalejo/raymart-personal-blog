@@ -17,6 +17,12 @@ const Footer = () => {
                 className={classes["social-icon"]}
                 variant="transparent"
                 size="large"
+                onClick={() =>
+                  window.open(
+                    "https://github.com/raymartbediaformalejo",
+                    "_blank"
+                  )
+                }
               >
                 <LinkenIcon />
               </Button>
@@ -28,6 +34,12 @@ const Footer = () => {
                 className={classes["social-icon"]}
                 variant="transparent"
                 size="large"
+                onClick={() =>
+                  window.open(
+                    "https://github.com/raymartbediaformalejo",
+                    "_blank"
+                  )
+                }
               >
                 <GithubIcon />
               </Button>
@@ -39,6 +51,9 @@ const Footer = () => {
                 className={classes["social-icon"]}
                 variant="transparent"
                 size="large"
+                onClick={() =>
+                  window.open("https://www.facebook.com/raymartform", "_blank")
+                }
               >
                 <FacebookIcon />
               </Button>

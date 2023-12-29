@@ -6,7 +6,7 @@ const Hero = () => {
     <section className={classes["hero"]}>
       <h1 className={classes["title"]}>G'day－how's it going? 🤙</h1>
       <h2 className={classes["sub-title"]}>
-        I'm <Link to="/">Raymart</Link>, a frontend developer. I thrive on
+        I'm <Link to="/about">Raymart</Link>, a frontend developer. I thrive on
         learning about web.
       </h2>
       <h2 className={classes["sub-title"]}>

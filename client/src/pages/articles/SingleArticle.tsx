@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import { useParams } from "react-router-dom";
 import { vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -8,8 +9,10 @@ import classes from "../../styles/pages/articles/SingleArticle.module.css";
 import ArticleTag from "./components/ArticleTag";
 import CalendarIcon from "../../components/icons/Calendar";
 import { CircularProgress } from "@mui/material";
+import ReadingProgressBar from "../../components/ReadingProgressBar";
 
 const SingleArticle = () => {
+  const target = useRef<HTMLDivElement>(null);
   const { id } = useParams();
 
   const { data: post } = useGetPostQuery({ id: id! });
@@ -60,7 +63,8 @@ const SingleArticle = () => {
 
   if (post) {
     content = (
-      <article className={`${classes["single-post"]}`}>
+      <article ref={target} className={`${classes["single-post"]}`}>
+        <ReadingProgressBar target={target} />
         <header className={classes["single-post__header"]}>
           <img
             src={post?.image}

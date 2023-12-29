@@ -17,7 +17,7 @@ const ArticleCard = ({ postId }: ArticleCardProps) => {
   if (post) {
     content = (
       <Link to={`/articles/${postId}`}>
-        <article className="card">
+        <article className={`card ${classes["card-wrapper"]}`}>
           <header>
             <h2 className={classes["title"]}>{post.title}</h2>
             <p

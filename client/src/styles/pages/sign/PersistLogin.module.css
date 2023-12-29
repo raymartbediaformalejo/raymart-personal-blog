@@ -18,11 +18,9 @@
   display: grid;
   place-items: center;
   gap: 1rem;
-  border: 1px solid var(--border-color);
   width: min(600px, 90%);
   padding: 1.75rem;
   border-radius: 8px;
-  background: var(--bg-color);
 }
 
 .error-message-wrapper {

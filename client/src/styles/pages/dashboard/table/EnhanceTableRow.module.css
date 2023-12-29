@@ -59,6 +59,11 @@
   background-color: hsl(var(--clr-neutral-danger));
 }
 
+button[class*="MuiMenuButton-root"] {
+  background: transparent;
+  user-select: none;
+}
+
 /* ============== LIGHT MODE ==================== */
 html[data-color-scheme="light"] .row {
   --color: var(--clr-white);

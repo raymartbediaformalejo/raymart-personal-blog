@@ -30,6 +30,7 @@ const Articles = () => {
       prev.set("page", `${newPage}`);
       return prev;
     });
+    window.scrollTo({ top: 0 });
   };
 
   let articlesContent;

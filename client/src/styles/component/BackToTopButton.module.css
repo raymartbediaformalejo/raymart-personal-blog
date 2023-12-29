@@ -1,0 +1,49 @@
+.back-to-top-button[class*="MuiButtonBase-root"][type="button"] {
+  --bg-color: var(--clr-neutral-primary-500);
+  --bg-opacity: 0.4;
+  --border-color: var(--clr-border);
+
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  display: none;
+  transition: var(--transition);
+  width: 2rem;
+  height: 2rem;
+  background-color: hsl(var(--bg-color) / var(--bg-opacity));
+  border: 1px solid var(--border-color);
+}
+
+.back-to-top-button[class*="MuiButtonBase-root"][type="button"]
+  span[class*="MuiTouchRipple-root"] {
+  /* background-color: red; */
+}
+
+.back-to-top-button.show[class*="MuiButtonBase-root"] {
+  display: inline-flex;
+}
+
+.arrow {
+  color: var(--clr-primary-300);
+  rotate: 90deg;
+}
+
+.back-to-top-button[class*="MuiButtonBase-root"]:hover,
+.back-to-top-button[class*="MuiButtonBase-root"]:focus {
+  --bg-opacity: 0.6;
+}
+
+/* ============== LIGHT MODE ==================== */
+[data-color-scheme="light"]
+  .back-to-top-button[class*="MuiButtonBase-root"][type="button"] {
+  --bg-color: var(--clr-neutral-primary-300);
+  --bg-opacity: 0.2;
+}
+
+[data-color-scheme="light"]
+  .back-to-top-button[class*="MuiButtonBase-root"]:hover,
+[data-color-scheme="light"]
+  .back-to-top-button[class*="MuiButtonBase-root"]:focus {
+  --border-color: var(--clr-primary-300);
+  --bg-opacity: 0.3;
+}

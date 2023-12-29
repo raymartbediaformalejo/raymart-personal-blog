@@ -9,15 +9,13 @@ import { store } from "./redux/index.ts";
 import { Analytics } from "@vercel/analytics/react";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./components/errors/ErrorFallback.tsx";
+import ScrollToTop from "./components/ScrollToTop.tsx";
 
 const theme = createTheme({
   palette: {
     primary: {
       main: "hsl(26, 90%, 40%)",
     },
-    // secondary: {
-    //   main: "#264653",
-    // },
   },
 });
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -32,6 +30,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <ThemeProvider theme={theme}>
           <Provider store={store}>
             <BrowserRouter>
+              <ScrollToTop />
               <Routes>
                 <Route path="/*" element={<App />} />
               </Routes>

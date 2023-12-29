@@ -10,6 +10,7 @@ import ArticleTag from "./components/ArticleTag";
 import CalendarIcon from "../../components/icons/Calendar";
 import { CircularProgress } from "@mui/material";
 import ReadingProgressBar from "../../components/ReadingProgressBar";
+import BackToTopButton from "../../components/BackToTopButton";
 
 const SingleArticle = () => {
   const target = useRef<HTMLDivElement>(null);
@@ -65,6 +66,7 @@ const SingleArticle = () => {
     content = (
       <article ref={target} className={`${classes["single-post"]}`}>
         <ReadingProgressBar target={target} />
+        <BackToTopButton />
         <header className={classes["single-post__header"]}>
           <img
             src={post?.image}
@@ -132,10 +134,6 @@ const SingleArticle = () => {
       </div>
     );
   }
-
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
 
   return content;
 };

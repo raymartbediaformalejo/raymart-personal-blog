@@ -6,8 +6,6 @@ type ReadingProgressBarProps = {
   target?: React.RefObject<HTMLDivElement>;
 };
 const ReadingProgressBar = ({ target }: ReadingProgressBarProps) => {
-  console.log("target: ", target);
-
   const [barWidth, setBarWidth] = useState(0);
 
   const scrollListener = () => {

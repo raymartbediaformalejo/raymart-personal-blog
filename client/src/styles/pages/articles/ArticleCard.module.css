@@ -1,6 +1,6 @@
 .card-wrapper {
-  --bg-color: rgba(11, 11, 14, 0.8);
-  --border-color: rgba(75, 85, 99, 0.2);
+  --bg-color: var(--clr-card-bg);
+  --border-color: var(--clr-card-border-color);
 
   transition: var(--transition);
   padding: 1.5rem;
@@ -48,8 +48,4 @@ html[data-color-scheme="light"] .date {
 }
 html[data-color-scheme="light"] .summary {
   color: #374151;
-}
-html[data-color-scheme="light"] .card-wrapper:hover {
-  --bg-color: hsl(210, 20%, 98%);
-  --border-color: hsl(220, 13%, 91%);
 }

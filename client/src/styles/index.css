@@ -41,6 +41,8 @@
   --clr-neutral-off-white: 0 0% 95%;
   --clr-neutral-light-gray: 218 11% 65%;
   --clr-neutral-white: 0 0% 100%;
+  --clr-neutral-card-bg: 240 12% 5%;
+  --clr-neutral-card-border-color: 215 14% 34%;
 
   --clr-neutral-danger: 0 77% 53%;
 
@@ -56,7 +58,8 @@
   --clr-light-gray-400: hsl(216 12% 84% / 0.9);
   --clr-light-gray: hsl(var(--clr-neutral-light-gray));
   --clr-border: hsla(var(--clr-neutral-border) / 0.1);
-  --clr-card-bg: hsla(240, 12%, 5%, 0.8);
+  --clr-card-bg: hsl(var(--clr-neutral-card-bg) / 0.8);
+  --clr-card-border-color: hsl(var(--clr-neutral-card-border-color) / 0.2);
   --clr-body-bg: hsl(var(--clr-neutral-body-bg));
   --clr-icon: hsl(216 12% 84%);
   --clr-subtitle: rgba(209, 213, 219, 0.9);
@@ -188,6 +191,8 @@ html[data-color-scheme="light"] {
   --clr-neutral-white: 225 10% 8%;
   --clr-neutral-light-gray: 240 4% 90%;
   --clr-neutral-gray: 233 4% 53%;
+  --clr-neutral-card-bg: 210 20% 98%;
+  --clr-card-border-color: hsl(220 13% 91%);
 
   --clr-gay: hsl(var(--clr-neutral-gray));
   --clr-light-gray: hsl(var(--clr-neutral-light-gray));

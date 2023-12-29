@@ -6,6 +6,7 @@ const ManagedTooltip = (props: TooltipProps) => {
 
   return (
     <div
+      style={{ height: "100%" }}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       onClick={() => setOpen(false)}

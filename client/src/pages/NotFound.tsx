@@ -1,5 +1,3 @@
-import React from "react";
-
 import NotFoundIllustration from "../assets/404 Error-pana.svg";
 import Button from "../components/ui/Button";
 import { useNavigate } from "react-router-dom";

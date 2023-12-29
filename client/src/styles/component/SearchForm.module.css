@@ -53,7 +53,7 @@
 }
 
 .tooltip {
-  height: 100%;
+  height: inherit;
 }
 
 .search-form .delete-icon {

@@ -2,10 +2,10 @@ import { SetURLSearchParams } from "react-router-dom";
 
 import SearchIcon from "./icons/SearchIcon";
 import Button from "./ui/Button";
-import Tooltip from "./ui/Tooltip";
 import classes from "../styles/component/SearchForm.module.css";
 import { POST_QUERY_KEYS } from "../utils/Constant";
 import XIcon from "./icons/XIcon";
+import ManagedTooltip from "./ui/ManagedTooltip";
 
 type SearchFormProps = {
   q: string | null;
@@ -44,15 +44,17 @@ const SearchForm = ({ q, setSearchParams }: SearchFormProps) => {
         )}
       </form>
       <div className={classes["search-button-wrapper"]}>
-        <Tooltip text="Search" className={classes["tooltip"]}>
-          <Button
-            className={classes["search-button"]}
-            variant="transparent"
-            noHover
-          >
-            <SearchIcon className={classes["search-icon"]} />
-          </Button>
-        </Tooltip>
+        <ManagedTooltip title="Search" className={classes["tooltip"]}>
+          <div>
+            <Button
+              className={classes["search-button"]}
+              variant="transparent"
+              noHover
+            >
+              <SearchIcon className={classes["search-icon"]} />
+            </Button>
+          </div>
+        </ManagedTooltip>
       </div>
     </div>
   );

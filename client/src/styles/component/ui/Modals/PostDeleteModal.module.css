@@ -1,16 +1,22 @@
 .delete-modal {
+  --bg-color: #27272a;
+  --color: var(--clr-primary-100);
+  --border-color: var(--clr-border);
+
+  --light-gray-neutral: var(--clr-neutral-border);
+
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #27272a;
+  background-color: var(--bg-color);
   border-radius: 4px;
-  border: 1px solid var(--clr-border);
+  border: 1px solid var(--border-color);
   padding: 4px;
   width: min(400px, 90%);
   display: flex;
   flex-direction: column;
-  color: var(--clr-primary-100);
+  color: var(--color);
 }
 
 .delete-modal-inner-wrapper {
@@ -23,18 +29,17 @@
 }
 
 .close-modal-button[class*="MuiButtonBase-root"] {
-  color: var(--clr-primary-100);
+  color: var(--color);
   align-self: end;
 }
 
 .close-modal-button[class*="MuiButtonBase-root"] svg {
-  /* font-size: 1rem; */
-  color: hsl(var(--clr-neutral-border) / 0.6);
+  color: hsl(var(--light-gray-neutral) / 0.6);
 }
 
 .delete-modal-illustrator[class*="MuiSvgIcon-root"] {
   font-size: 4rem;
-  fill: hsl(var(--clr-neutral-border) / 0.3);
+  fill: hsl(var(--light-gray-neutral) / 0.3);
 }
 
 .delete-modal-description {
@@ -42,7 +47,7 @@
   font-size: var(--fs-400);
   line-height: 1.6;
   font-weight: normal;
-  color: hsl(var(--clr-neutral-border) / 0.6);
+  color: hsl(var(--light-gray-neutral) / 0.6);
 }
 
 .delete-modal__button-wrapper {
@@ -71,4 +76,51 @@
   background-color: #b91c1c;
   border: 1px solid #ef4444;
   color: #fecaca;
+}
+
+/* ============== LIGHT MODE ==================== */
+html[data-color-scheme="light"] .delete-modal {
+  --bg-color: var(--clr-body-bg);
+  --color: var(--clr-white);
+  --border-color: var(--clr-gray, hsl(233 4% 53%));
+  --light-gray-neutral: var(--clr-neutral-gray, 233 4% 53%);
+}
+
+html[data-color-scheme="light"]
+  .close-modal-button[class*="MuiButtonBase-root"]
+  svg {
+  color: hsl(var(--clr-neutral-gray, 233 4% 53%) / 1);
+}
+
+html[data-color-scheme="light"]
+  .delete-modal-illustrator[class*="MuiSvgIcon-root"] {
+  fill: hsl(var(--clr-neutral-gray, 233 4% 53%) / 1);
+}
+
+html[data-color-scheme="light"] .delete-modal-description {
+  color: hsl(var(--light-gray-neutral) / 1);
+}
+
+html[data-color-scheme="light"] .cancel-button[class*="MuiButtonBase-root"] {
+  background-color: #e4e4e7;
+  border: 1px solid #d4d4d8;
+  color: #52525b;
+}
+html[data-color-scheme="light"]
+  .cancel-button[class*="MuiButtonBase-root"]:hover {
+  background-color: #d4d4d8;
+  border: 1px solid #a1a1aa;
+  color: #3f3f46;
+}
+
+html[data-color-scheme="light"] .delete-button[class*="MuiButtonBase-root"] {
+  background-color: #fecaca; /* 200*/
+  border: 1px solid #fca5a5; /* 300*/
+  color: #dc2626; /* 600*/
+}
+html[data-color-scheme="light"]
+  .delete-button[class*="MuiButtonBase-root"]:hover {
+  background-color: #fca5a5; /* 300*/
+  border: 1px solid #f87171; /* 400*/
+  color: #b91c1c; /* 700*/
 }

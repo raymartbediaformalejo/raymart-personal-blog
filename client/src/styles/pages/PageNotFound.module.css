@@ -1,5 +1,9 @@
+html {
+  scrollbar-gutter: auto;
+}
+
 .not-found-wrapper {
-  --header-height: 57px;
+  --header-height: 65px;
   --footer-height: 105px;
 
   display: flex;

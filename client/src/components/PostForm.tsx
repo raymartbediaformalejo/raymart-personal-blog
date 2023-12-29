@@ -90,11 +90,9 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
     { value: "Draft", label: "Draft" },
     { value: "Published", label: "Published" },
   ];
-  throw new Error(`Something went wrong`);
 
   const onSubmit = async (data: TPostResponse) => {
     try {
-      throw new Error(`Something went wrong`);
       if (postToEdit) {
         await updatePost({ ...data });
       } else {

@@ -7,6 +7,9 @@ import { Provider } from "react-redux";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { store } from "./redux/index.ts";
 import { Analytics } from "@vercel/analytics/react";
+import { ErrorBoundary } from "react-error-boundary";
+import PostFetchingError from "./components/errors/ProstFetchingError.tsx";
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -20,6 +23,9 @@ const theme = createTheme({
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <>
     <React.StrictMode>
+      <ErrorBoundary FallbackComponent={PostFetchingError} onError={() => console.log(`💥 Error occured!`)
+      }>
+
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <BrowserRouter>
@@ -29,6 +35,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           </BrowserRouter>
         </Provider>
       </ThemeProvider>
+      </ErrorBoundary>
     </React.StrictMode>
     <Analytics />
   </>

@@ -13,6 +13,7 @@ import Dashboard from "./pages/dashboard";
 import DashboardLayout from "./components/Layout/DashboardLayout";
 import DashArticles from "./pages/dashboard/posts/index";
 import SingleArticle from "./pages/articles/SingleArticle";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             </Route>
           </Route>
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

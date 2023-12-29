@@ -1,0 +1,35 @@
+.not-found-wrapper {
+  --header-height: 57px;
+  --footer-height: 105px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
+}
+
+.not-found__illustration {
+  width: min(600px, 90%);
+}
+
+.not-found__body {
+  display: grid;
+  place-items: center;
+  gap: 4px;
+}
+.not-found__title {
+  text-transform: capitalize;
+  font-size: var(--fs-700);
+  color: var(--clr-white);
+}
+.not-found__description {
+  color: hsl(var(--clr-neutral-white) / 0.65);
+  font-size: var(--fs-400);
+}
+.home-button {
+  width: 6rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}

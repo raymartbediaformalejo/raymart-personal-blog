@@ -8,6 +8,7 @@
   --font-size: var(--fs-500);
   --color: var(--clr-primary-300);
   --letter-spacing: 0;
+  --bg-color: transparent;
 
   position: relative;
   display: flex;
@@ -24,11 +25,16 @@
   box-shadow: var(--border);
   border-radius: var(--border-radius);
   transition: var(--transition);
+  background: var(--bg-color);
 }
 
 .button:hover:not(.no-hover),
 .button:focus:not(.no-hover) {
-  background-color: hsla(var(--clr-neutral-border) / 0.05);
+  --bg-color: hsla(var(--clr-neutral-border) / 0.05);
+}
+.button:hover:not(.no-hover):is(.contained),
+.button:focus:not(.no-hover):is(.contained) {
+  --bg-color: hsl(var(--clr-neutral-primary-500) / 0.75);
 }
 
 .no-hover {
@@ -43,6 +49,10 @@
 .outlined {
   --border: inset 0 0 0 0px #fff,
     inset 0 0 0 1px hsla(var(--clr-neutral-border) / 0.1), 0 0 #0000;
+}
+.contained {
+  --bg-color: var(--clr-primary-500);
+  --color: var(--clr-white);
 }
 
 .icon {
@@ -73,7 +83,10 @@
 /* ================== LIGHT MODE ============== */
 
 html[data-color-scheme="light"] .button {
-  color: var(--clr-primary-500);
+  --color: var(--clr-primary-500);
+}
+html[data-color-scheme="light"] .button.contained {
+  --color: var(--clr-white);
 }
 html[data-color-scheme="light"] .outlined {
   --border: inset 0 0 0 0px #fff,
@@ -85,9 +98,19 @@ html[data-color-scheme="light"]
   .button.button:focus:not(.no-hover, .transparent) {
   --border: inset 0 0 0 0px #fff, inset 0 0 0 1px rgb(209 213 219), 0 0 #0000;
 
-  background-color: rgb(243 244 246);
+  --bg-color: rgb(243 244 246);
 }
 html[data-color-scheme="light"] .button.button:hover:not(.no-hover),
 html[data-color-scheme="light"] .button.button:focus:not(.no-hover) {
-  background-color: hsl(220, 14%, 96%);
+  --bg-color: hsl(220, 14%, 96%);
+}
+html[data-color-scheme="light"] .button.button:not(.no-hover):is(.contained),
+html[data-color-scheme="light"] .button.button:not(.no-hover):is(.contained) {
+  --color: #fff;
+}
+html[data-color-scheme="light"]
+  .button.button:hover:not(.no-hover):is(.contained),
+html[data-color-scheme="light"]
+  .button.button:focus:not(.no-hover):is(.contained) {
+  --bg-color: hsl(var(--clr-neutral-primary-500) / 0.75);
 }

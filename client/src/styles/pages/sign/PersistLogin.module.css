@@ -1,3 +1,7 @@
+html {
+  scrollbar-gutter: auto;
+}
+
 .unauthorized-wrapper {
   --bg-color: hsl(var(--clr-neutral-off-white) / 0.1);
   --border-color: var(--clr-border);

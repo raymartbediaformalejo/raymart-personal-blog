@@ -29,6 +29,7 @@ import {
   useUpdatePostMutation,
 } from "../redux/posts/posts.api";
 import { useNavigate } from "react-router-dom";
+import { useErrorBoundary } from "react-error-boundary";
 
 type PostFormProps = {
   postToEdit?: TPostResponse;
@@ -40,6 +41,7 @@ const loadQuillNoSSRWrapper = () =>
 const DynamicQuillNoSSRWrapper = React.lazy(loadQuillNoSSRWrapper);
 
 const PostForm = ({ postToEdit }: PostFormProps) => {
+  const { showBoundary } = useErrorBoundary();
   const { handleSubmit, control, watch, setValue, reset } =
     useForm<TPostResponse>({
       shouldFocusError: false,
@@ -88,9 +90,11 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
     { value: "Draft", label: "Draft" },
     { value: "Published", label: "Published" },
   ];
+  throw new Error(`Something went wrong`);
 
   const onSubmit = async (data: TPostResponse) => {
     try {
+      throw new Error(`Something went wrong`);
       if (postToEdit) {
         await updatePost({ ...data });
       } else {
@@ -109,7 +113,7 @@ const PostForm = ({ postToEdit }: PostFormProps) => {
       }
       reset();
     } catch (error) {
-      console.log(`💥 ${error}`);
+      showBoundary(error);
     }
   };
 

@@ -67,6 +67,7 @@ const refresh = (req, res) => {
     refreshToken,
     process.env.REFRESH_TOKEN_SECRET,
     async (err, decoded) => {
+      console.log(decoded);
       if (err) return res.status(403).json({ message: "Forbidden" });
 
       const foundUser = await User.findOne({
